@@ -7,6 +7,7 @@ use App\Http\Controllers\GeneralSettingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReadersController;
 use App\Http\Controllers\TestController;
 use App\Models\GeneralSetting;
 use Artesaos\SEOTools\Facades\SEOTools;
@@ -57,6 +58,12 @@ Route::controller(DashboardController::class)->group(function () {
         ->name('dashboard');
     Route::get('/logout', [DashboardController::class, 'logout']);
 });
+
+Route::get('users/register', [ReadersController::class, 'register'])->name('reader.register');
+Route::post('users/login', [ReadersController::class, 'login'])->name('reader.login');
+Route::get('users/dashboard', [ReadersController::class, 'dashboard'])->name('reader.dashboard');
+Route::post('users/profile', [ReaderController::class, 'createProfile'])->name('readerprofile.create');
+Route::patch('users/profile/update', [ReaderController::class, 'updateProfile'])->name('readerprofile.update');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
