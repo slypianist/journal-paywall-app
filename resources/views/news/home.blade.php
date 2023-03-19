@@ -67,7 +67,7 @@
                                 </ul> -->
                                 <!-- /.nav-third-level -->
                             </li>
-                            <li><a href="login%26registration.html">Login & Registration</a></li>
+                            <li><a href="/user/login">Login & Registration</a></li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
@@ -123,7 +123,7 @@
                 <div class="col-sm-4 col-md-3">
                     <div class="top_header_menu_wrap">
                         <ul class="top-header-menu">
-                            <li><a href="login%26registration.html">REGISTER</a></li>
+                            <li><a href="/user/login">REGISTER</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">LOGIN</a>
                                 <ul class="dropdown-menu">

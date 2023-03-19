@@ -1,10 +1,10 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-# Dashr
+# Journal Paywall
 Blog CMS made with laravel framework.
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Dashr Features
+## Journal Paywall Features
 
 - Intuitive Dashboard.
 - Responsive Themes.
@@ -15,10 +15,6 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 - Creating and editing content.
 - Blogger and role-based administration.
 
-# Demo
-Front End [dashr.miguelemmara.me](https://dashr.miguelemmara.me/)
-<br>
-Dashboard [dashr.miguelemmara.me/login](https://dashr.miguelemmara.me/login)
 
 Demo login
 ``` 
@@ -28,7 +24,7 @@ password: password
 
 ## Getting Started
 ```shell
-git clone https://github.com/MiguelEmmara-ai/dashr.git dashr
+git clone https://github.com/slypianist/journal-paywall-app.git
 cd dashr
 cp .env.example .env
 composer install OR composer update

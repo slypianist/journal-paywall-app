@@ -34,7 +34,7 @@
             class="menu-item {{ request()->is('posts') ? 'active' : '' }} {{ request()->is('posts/*/*') ? 'active' : '' }}">
             <a href="{{ route('posts.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">NEWS</div>
+                <div data-i18n="Basic">News</div>
             </a>
         </li>
 
@@ -79,6 +79,26 @@
                     <div data-i18n="Basic">News Authors</div>
                 </a>
             </li>
+
+            {{-- Podcasts --}}
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">PODCASTS</span></li>
+
+        <!-- Podcast List -->
+        <li
+            class="menu-item {{ request()->is('podcasts') ? 'active' : '' }} ? 'active' : '' }}">
+            <a href="{{ route('podcasts.create') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">Podcasts</div>
+            </a>
+        </li>
+
+        <li
+            class="menu-item {{ request()->is('podcasts/create') ? 'active' : '' }} ? 'active' : '' }}">
+            <a href="{{ route('podcasts.create') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">Create Podcast</div>
+            </a>
+        </li>
 
             <!-- Subscription -->
         <li class="menu-header small text-uppercase">

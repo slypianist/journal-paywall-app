@@ -14,7 +14,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Title</th>
-                                <th>Featured Image</th>
+                               {{--  <th>Featured Image</th> --}}
                                 <th>Author</th>
                                 <th>Status</th>
                                 <th>Actions</th>
@@ -25,7 +25,7 @@
                                 <tr>
                                     <td>{{ $post->id }}</td>
                                     <td><strong>{{ $post->title }}</strong></td>
-                                    <td>
+                                   {{--  <td>
                                         @if ($post->image)
                                             <img style="width: 290px;max-height:181px"
                                                 src="{{ asset('storage/' . $post->image) }}" class="img-fluid"
@@ -35,7 +35,7 @@
                                                 src="https://via.placeholder.com/1200x800"
                                                 class="img-fluid" loading="lazy">
                                         @endif
-                                    </td>
+                                    </td> --}}
 
                                     <td>
                                         <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
@@ -45,11 +45,11 @@
                                                     <a href="/?author={{ $post->author->username }}"><img
                                                             class="rounded-circle flex-shrink-0 me-3 fit-cover"
                                                             width="40" src="{{ asset('storage/' . $post->author->avatar) }}"></a>
-                                                @else
+                                                {{-- @else
                                                     <a href="/?author={{ $post->author->username }}"><img
                                                             class="rounded-circle flex-shrink-0 me-3 fit-cover"
                                                             width="40"
-                                                            src="{{ asset($post->author->default_avatar) }}"></a>
+                                                            src="{{ asset($post->author->default_avatar) }}"></a> --}}
                                                 @endif
 
                                             </li>

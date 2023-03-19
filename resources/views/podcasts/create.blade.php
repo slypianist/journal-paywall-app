@@ -8,17 +8,29 @@
             <!-- Form controls -->
             <div class="col-md-12">
                 <div class="card mb-4">
-                    <h5 class="card-header">Create News Item</h5>
+                    <h5 class="card-header">Create Podcast</h5>
                     <div class="card-body">
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{$error}}</li>
 
-                        <form action="{{ route('posts.store') }}" method="POST" class="mb-5" enctype="multipart/form-data">
+                                @endforeach
+                            </ul>
+                        </div>
+
+                    @endif
+                        <form action="{{route('podcast.store')}}" method="POST" class="mb-5" enctype="multipart/form-data">
                             @csrf
+
                             <div class="form-group mb-3">
-                                <label for="title" class="form-label">Title</label>
+                                <label for="name" class="form-label">Podcast Title</label>
                                 <input type="text" class="form-control @error('title') is-invalid @enderror"
-                                    name="title" id="title" required placeholder="News headline..."
-                                    autofocus value="{{ old('title') }}">
-                                @error('title')
+                                    name="title" id="title" required placeholder="Podcast Title" autofocus
+                                    value="{{ old('title') }}">
+                                @error('name')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -33,31 +45,10 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="tags" class="form-label">Tags (Coma Seperated)</label>
-                                <input type="text" data-role="tagsinput" name="tags" class="form-control @error('tags') is-invalid @enderror" value="{{ old('tags') }}" />
-                                @if ($errors->has('tags'))
-                                    <span class="text-danger">{{ $errors->first('tags') }}</span>
-                                @endif
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label for="category" class="form-label">Category</label>
-                                <select class="form-select" name="category_id">
-                                    @foreach ($categories as $category)
-                                        @if (old('category_id') == $category->id)
-                                            <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
-                                        @else
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label for="image" class="form-label">Thumbnail / Feature Image</label>
+                                <label for="image" class="form-label">Podcast Thumbnail</label>
                                 <img class="img-preview img-fluid mb-3 col-sm-5">
                                 <input class="form-control @error('image') is-invalid @enderror" type="file"
-                                    id="image" name="image" onchange="previewImage()">
+                                    id="image" name="cover_image" onchange="previewImage()">
                                 @error('image')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -66,18 +57,15 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="body" class="form-label">Body</label>
-                                <textarea name="body" id="body"></textarea>
-                                {{-- <input id="body" type="hidden" name="body" required value="{{ old('body') }}"> --}}
-                                 {{-- <trix-editor input="body"></trix-editor> --}}
+                                <label for="body" class="form-label">Description</label>
+                                <textarea name="description" id="body"></textarea>
                                 @error('body')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
 
-
                             <div class="form-group mb-3">
-                                <button type="submit" class="btn btn-primary">Create News</button>
+                                <button type="submit" class="btn btn-primary">Create Podcast</button>
                             </div>
                         </form>
 
@@ -96,29 +84,19 @@
     <!-- / Layout page -->
     </div>
 
-    <!-- Overlay -->
-    <div class="layout-overlay layout-menu-toggle"></div>
+
     </div>
     <!-- / Layout wrapper -->
 
     <script>
-        const title = document.querySelector('#title');
+        const name = document.querySelector('#title');
         const slug = document.querySelector('#slug');
 
-        title.addEventListener('change', function() {
-            fetch('/posts/checkSlug?title=' + title.value)
+        name.addEventListener('change', function() {
+            fetch('/podcasts/checkPodcastSlug?title=' + name.value)
                 .then(response => response.json())
                 .then(data => slug.value = data.slug);
         });
-
-        /* document.addEventListener("trix-file-accept", event => {
-            event.preventDefault()
-        }); */
-
-
-
-
-
 
         function previewImage() {
             const image = document.querySelector('#image');
@@ -132,7 +110,6 @@
         };
     </script>
 
-    <!-- CK Editor -->
 <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
 <script>
 ClassicEditor
@@ -147,6 +124,6 @@ ClassicEditor
 
 </script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
 @endsection

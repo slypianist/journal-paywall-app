@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!-- Mirrored from news365htmllatest.bdtask.com/Demo/DemoNews365/details-style-one.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Mar 2023 15:46:57 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

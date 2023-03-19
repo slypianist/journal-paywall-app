@@ -47,18 +47,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        // General Setting of the website
-        /* $general_setting = GeneralSetting::first();
 
-        SEOTools::setTitle("Create Category | Dashboard");
-        SEOTools::setDescription("$general_setting->site_meta_description");
-        SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'webiste'); */
 
         return view('pages.admin.create-categories', [
-            /* 'site_title' => $general_setting->site_title,
-            "logo_image" => $general_setting->logo_image,
-            "footer_copyright" => $general_setting->footer_copyright, */
+
             "categories" => Category::all(),
             "user" => Auth::user()
         ]);
