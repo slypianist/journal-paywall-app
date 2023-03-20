@@ -25,9 +25,9 @@
                     <div class="headding-border bg-color-1"></div>
                     <form action="{{route('reader.login')}}" method="post">
                         <label>Username Or Email <sup>*</sup></label>
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Username or Email">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Username or Email" required>
                         <label>Password <sup>*</sup></label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="*******">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="*******" required>
                         <label class="checkbox-inline">
                             <input type="checkbox" value="">Remember me</label>
                         <button type="submit" class="btn btn-style">Login</button>
@@ -72,15 +72,15 @@
                             @endif
                     <form method="post" action="{{route('reader.register')}}">
                         <label>First Name <sup>*</sup></label>
-                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" >
+                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" required >
                         <label>Last Name <sup>*</sup></label>
-                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" required>
                         <label>Email <sup>*</sup></label>
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Username or Email">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Username or Email" required>
                         <label>Password <sup>*</sup></label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Write Your Password Here ...">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Write Your Password Here ..." required>
                         <label>Repeat Password <sup>*</sup></label>
-                        <input type="password" class="form-control" id="pass" name="confirm-password" placeholder="Rewrite Your Password Here ...">
+                        <input type="password" class="form-control" id="pass" name="confirm-password" placeholder="Rewrite Your Password Here ..." required>
                         {{-- <button type="submit" class="btn btn-style">Register Now!</button> --}}
                         <input type="submit" value="Submit" class="btn btn-style">
                         @csrf

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Podcast;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +13,13 @@ class PodcastController extends Controller
     public function index(){
         $podcasts = Podcast::withCount('episodes')->orderByDesc('created_at')->get();
         return view('podcasts.index', compact('podcasts'));
+
+    }
+
+    public function adminIndex(){
+        $user = Auth::user();
+        $podcasts = Podcast::withCount('episodes')->orderByDesc('created_at')->paginate(5);
+        return view('pages.admin.podcasts', compact('podcasts', 'user'));
 
     }
 

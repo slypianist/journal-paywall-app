@@ -93,7 +93,7 @@ Route::patch('user/profile/update', [ReaderController::class, 'updateProfile'])-
 Route::middleware('auth')->group(function(){
     Route::get('test', [TestController::class, 'index']);
     Route::get('/podcasts/create', [PodcastController::class, 'create'])->name('podcasts.create');
-    Route::get('podcasts', [PodcastController::class, 'index'])->name('podcasts.index');
+    Route::get('podcasts', [PodcastController::class, 'adminIndex'])->name('podcasts.admin');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

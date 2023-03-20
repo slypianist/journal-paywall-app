@@ -86,7 +86,7 @@
         <!-- Podcast List -->
         <li
             class="menu-item {{ request()->is('podcasts') ? 'active' : '' }} ? 'active' : '' }}">
-            <a href="{{ route('podcasts.create') }}" class="menu-link">
+            <a href="{{ route('podcasts.admin') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Podcasts</div>
             </a>

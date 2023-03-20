@@ -114,8 +114,9 @@ class PostController extends Controller
     {
       // dd($post->author->name);
       $posts = Post::with(['category'])->orderBy('posts.created_at', 'desc')->get();
-      $category = $post->category->name;
-      $related = Category::with('posts')->where('name', $category)->get();
+      $category = $post->category->id;
+    //  $related = Category::with('posts')->where('name', $category)->get();
+    $related = Post::where('category_id', $category)->limit(3)->get();
     // dd($related);
         return view('news.show', compact('post', 'posts', 'related'));
     }

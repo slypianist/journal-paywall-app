@@ -18,71 +18,17 @@
                         </div>
                         <!-- /input-group -->
                     </li>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="/">HOME</a></li>
+
+                    <li><a href="#">BUSINESS & FINANCE</a></li>
+                    <li><a href="#">POLITICS & GOVERNMENT</a></li>
+                    <li><a href="#">OPINION</a></li>
+                    <li><a href="#">FOOD</a></li>
+                    <li><a href="#">ECONOMY</a></li>
+
                     <li>
-                        <a href="#">All pages<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="/">Home <span class="fa arrow"></span></a>
-                                <!-- <ul class="nav nav-third-level">
-                                    <li><a href="home-style-one.html">Home style one</a> </li>
-                                    <li><a href="home-style-two.html">Home style two</a></li>
-                                    <li><a href="home-style-three.html">Home style three</a></li>
-                                    <li><a href="home-style-four.html">Home style four</a></li>
-                                    <li><a href="home-style-five.html">Home style five</a></li>
-                                </ul> -->
-                                <!-- /.nav-third-level -->
-                            </li>
-                            <li>
-                                <a href="#">Categories <span class="fa arrow"></span></a>
-                                <!-- <ul class="nav nav-third-level">
-                                    <li><a href="category-style-one.html">Category style one</a> </li>
-                                    <li><a href="category-style-two.html">Category style two</a></li>
-                                    <li><a href="category-style-three.html">Category style three</a></li>
-                                </ul> -->
-                                <!-- /.nav-third-level -->
-                            </li>
-                            <li>
-                                <a href="#">Archive <span class="fa arrow"></span></a>
-                                <!-- <ul class="nav nav-third-level">
-                                    <li><a href="archive-one.html">Archive style one</a> </li>
-                                    <li><a href="archive-two.html">Archive style two</a></li>
-                                </ul> -->
-                                <!-- /.nav-third-level -->
-                            </li>
-                            <li>
-                                <a href="#">News <span class="fa arrow"></span></a>
-                                <!-- <ul class="nav nav-third-level">
-                                    <li><a href="details-style-one.html">News post one</a> </li>
-                                    <li><a href="details-style-two.html">News post two</a></li>
-                                    <li><a href="details-style-three.html">News post three</a></li>
-                                </ul> -->
-                                <!-- /.nav-third-level -->
-                            </li>
-                            <li>
-                                <a href="#">Contact <span class="fa arrow"></span></a>
-                                <!-- <ul class="nav nav-third-level">
-                                    <li><a href="contact-style-one.html">Contact style one</a> </li>
-                                    <li><a href="contact-style-two.html">Contact style two</a></li>
-                                </ul> -->
-                                <!-- /.nav-third-level -->
-                            </li>
-                            <li><a href="/user/login">Login & Registration</a></li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    <li><a href="#">International</a></li>
-                    <!-- <li><a href="#">Fashion</a></li>
-                    <li><a href="#">Travel</a></li>
-                    <li><a href="#">Food</a></li>
-                    <li><a href="#">Technology</a></li>
-                    <li><a href="#">Lifestyle</a></li> -->
-                    <li>
-                        <a href="#">Contact<span class="fa arrow"></span></a>
-                        <!-- <ul class="nav nav-second-level">
-                            <li><a href="contact-style-one.html">Contact style one</a> </li>
-                            <li><a href="contact-style-two.html">Contact style two</a></li>
-                        </ul> -->
+                        <a href="#">CONTACT<span class="fa arrow"></span></a>
+
                     </li>
                     <!-- social icon -->
                     <li>
@@ -219,7 +165,7 @@
                     <li><a href="#" class="category06">FOOD</a></li>
                     <li><a href="#" class="category07">OPINION</a></li>
 
-                    <li><a href="#" class="others">LOGIN</a></li>
+                    <li><a href="{{route('reader.login')}}" class="others">LOGIN</a></li>
                     <li><a href="#" class="others">SUBSCRIBE</a></li>
                 </ul>
             </div>
@@ -693,7 +639,7 @@
                                 <div class="headding-border bg-color-3"></div>
                                 <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
                                     <!-- post title -->
-                                    <h3><a href="#"></a></h3>
+                                    <h3><a href="#">{{$economy->title}}</a></h3>
                                     <!-- post image -->
                                     <div class="post-thumb">
                                         <a href="{{route('post.list', [$economy->slug])}}">
@@ -809,6 +755,35 @@
                             </div>
                         </div>
                         <!-- /.health -->
+
+                        <div class="col-md-4 col-sm-4">
+                            <!-- health -->
+                            <div class="health-inner">
+                                <h3 class="category-headding ">Gender & Human Rights</h3>
+                                <div class="headding-border bg-color-3"></div>
+                                <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
+                                    <!-- post title -->
+                                    <h3><a href="{{route('post.list', [$opinion->slug])}}">{{$opinion->title}}</a></h3>
+                                    <!-- post image -->
+                                    <div class="post-thumb">
+                                        <a href="#">
+                                            <img src="storage/{{$opinion->image}}" class="img-responsive" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="post-title-author-details">
+                                    <div class="post-editor-date">
+                                        <!-- post date -->
+                                        <div class="post-date">
+                                            <i class="pe-7s-clock"></i> {{date('f-m-Y',strtotime($ecoPost->created_at))}}
+                                        </div>
+                                        <!-- post comment -->
+
+                                    </div>
+                                    <p>{{$opinion->excerpt}} <a href="{{route('post.list', [$opinion->slug])}}">{{$opinion->title}}">Read more...</a></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

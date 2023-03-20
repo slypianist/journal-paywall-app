@@ -265,7 +265,7 @@
                   <a class="btn btn-danger" href="#">Register</a>
                     <a class="btn btn-danger paywall-btn" href="#">Subscribe</a>
                  </div>
-               
+
                 <!-- tags -->
                 {{-- <div class="tags">
                     <ul>
@@ -292,8 +292,8 @@
                             <!-- item-1 -->
                             <div class="item">
                                 <div class="row rn_block">
-                                    @foreach ($related as $relatedArticles )
-                                    @foreach ($relatedArticles->posts as $article)
+                                   {{--  @foreach ($related as $relatedArticles ) --}}
+                                    @foreach ($related as $article)
 
                                     <div class="col-xs-12 col-md-4 col-sm-4 padd">
                                         <div class="post-wrapper wow fadeIn" data-wow-duration="2s">
@@ -327,8 +327,8 @@
 
                                     </div>
                                     @endforeach
-
-                                    @endforeach
+{{--
+                                    @endforeach --}}
 
 
 

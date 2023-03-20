@@ -25,7 +25,7 @@ password: password
 ## Getting Started
 ```shell
 git clone https://github.com/slypianist/journal-paywall-app.git
-cd dashr
+cd journal-paywall-app
 cp .env.example .env
 composer install OR composer update
 php artisan key:generate
