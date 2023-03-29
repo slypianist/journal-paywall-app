@@ -8,6 +8,11 @@
             <!-- Bootstrap Table with Header - Light -->
             <div class="card">
                 <h5 class="card-header">All Authors</h5>
+                <ul class="flex-column flex-md-row mb-3">
+                        <li class="" style="list-style: none">
+                      <a href="{{ route('profile.edit') }}"><button class="btn btn-info">Add Author</button></a>
+                        </li>
+                    </ul>
                 <div class="table-responsive text-nowrap">
                     <table class="table">
                         <thead class="table-light">

@@ -11,7 +11,7 @@
             <div class="row gx-2 gy-2 row-cols-1 row-cols-md-2 row-cols-xl-3 photos" data-bss-baguettebox="">
                 @forelse ($categories as $category)
                     <div class="col item article">
-                        <a href="/?category={{ $category->slug }}">
+                        <a href="test/?category={{ $category->slug }}">
 
                             @if ($category->image)
                                 <img class="img-fluid" style="width: 800px;height:250px" src="{{ asset('storage/' . $category->image) }}">

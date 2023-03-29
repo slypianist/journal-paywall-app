@@ -17,8 +17,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-       // $post = Post::latest()->filter(request(['search', 'category', 'author']))->paginate(8)->withQueryString();
-        $posts = Post::with(['category'])->orderBy('posts.created_at', 'desc')->get();
+        $posts = Post::latest()->filter(request(['search', 'category', 'author']))->paginate(8)->withQueryString();
+       // $posts = Post::with(['category'])->orderBy('posts.created_at', 'desc')->get();
 
       $politicsPost= DB::table('categories')
                         ->whereIn('categories.name',['Politics & Government',])
@@ -166,22 +166,17 @@ class HomeController extends Controller
         );
     }
 
-    public function showCategories()
+    public function allCategories()
     {
-        // General Setting of the website
-      /*   $general_setting = GeneralSetting::first(); */
         $categories = Category::with('posts')->get();
 
-        /* SEOTools::setTitle("Categories | $general_setting->site_tagline");
-        SEOTools::setDescription("$general_setting->site_meta_description");
-        SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'webiste'); */
-
         return view('pages.categories', [
-            /* 'site_title' => $general_setting->site_title,
-            'logo_image' => $general_setting->logo_image,
-            'footer_copyright' => $general_setting->footer_copyright, */
+
             'categories' => $categories
         ]);
+    }
+
+    public function showCategory(Category $category){
+        dd($category);
     }
 }

@@ -108,7 +108,7 @@
                     <div class="newsticker-inner">
                         <ul class="newsticker">
                             @foreach ($posts as $post )
-                            <li><span class="color-1">{{$post->category->name}}</span><a href="{{route('post.list', [$post->slug])}}">{{$post->title}}</a></li>
+                            <li><span class="color-1">{{$post->category->name}}</span><a href="test/?category={{$post->category->slug}}">{{$post->title}}</a></li>
                             @endforeach
                         </ul>
                         <div class="next-prev-inner">
@@ -288,7 +288,7 @@
                         <!-- twitter feed -->
                         <h3 class="category-headding ">AFRICA IN BRIEF</h3>
                         <div class="headding-border"></div>
-                        <a href="?categories=africa-in-brief" target="_blank" rel="noopener noreferrer">
+                        <a href="test/?category=africa-in-brief" target="_blank">
 
                             <div class="feed-inner">
 

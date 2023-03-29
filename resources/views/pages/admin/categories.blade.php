@@ -14,7 +14,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                                <th>Actions</th>
+                                <th>Actionss</th>
                             </tr>
                         </thead>
                         @forelse ($categories as $category)
