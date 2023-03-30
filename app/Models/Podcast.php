@@ -29,10 +29,15 @@ class Podcast extends Model
         return $this->hasMany(Episode::class);
     }
 
+    public function author(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     protected $fillable = [
         'title',
         'description',
         'cover_image',
+
     ];
 
 }

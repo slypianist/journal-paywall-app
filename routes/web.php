@@ -73,7 +73,7 @@ Route::get('user/profile/view', function(){
 
 
 /* Podcast Routes======================================= */
-Route::get('podcasts', [PodcastController::class, 'index'])->name('podcasts.admin');
+Route::get('admin/podcasts', [PodcastController::class, 'adminIndex'])->name('podcasts.admin');
 Route::get('/podcasts/{podcast}/episodes/{episode}', [EpisodeController::class, 'show'])->name('episodes.show');
 
 //Route::get('podcasts/{podcast}', [PodcastController::class, 'show'])->name('podcasts.show');
@@ -100,7 +100,7 @@ Route::middleware('auth')->group(function(){
     Route::get('test', [TestController::class, 'index']);
     // Podcast routes....
 
-    Route::get('podcasts/create', [PodcastController::class, 'create'])->name('podcasts.create');
+    Route::get('admin/podcasts/create', [PodcastController::class, 'create'])->name('podcasts.create');
     Route::post('podcast', [PodcastController::class, 'store'])->name('podcast.store');
     Route::get('podcast/{podcast}/edit', [PodcastController::class, 'edit'])->name('podcast.edit');
     Route::patch('podcast/{podcast}', [PodcastController::class, 'update'])->name('podcast.update');

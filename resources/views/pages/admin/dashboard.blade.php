@@ -29,7 +29,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <span class="d-block mb-1">Your News</span>
+                                    <span class="d-block mb-1">Your Posts</span>
                                     <h3 class="card-title text-nowrap mb-2">{{ $yourPost }}</h3>
                                 </div>
                             </div>
@@ -53,7 +53,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <span class="fw-semibold d-block mb-1">Total News Items</span>
+                                    <span class="fw-semibold d-block mb-1">Total Post(s)</span>
                                     <h3 class="card-title mb-2">{{ $totalPost }}</h3>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <span>Total News Category</span>
+                                    <span>Total Post Category</span>
                                     <h3 class="card-title text-nowrap mb-1">{{ $categoryLists }}</h3>
                                 </div>
                             </div>
@@ -101,7 +101,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <span>Total News Authors</span>
+                                    <span class="fw-semibold d-block mb-1">Total  Podcasts</span>
                                     <h3 class="card-title text-nowrap mb-1">{{ $totalAuthors }}</h3>
                                 </div>
                             </div>

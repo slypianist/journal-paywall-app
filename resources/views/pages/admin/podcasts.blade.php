@@ -14,7 +14,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Title</th>
-                               {{--  <th>Featured Image</th> --}}
+                                 <th>Episodes</th>
                                 <th>Author</th>
                                 <th>Status</th>
                                 <th>Actions</th>
@@ -36,49 +36,45 @@
                                                 class="img-fluid" loading="lazy">
                                         @endif
                                     </td> --}}
+                                    <td>{{$podcast->episodes_count}}</td>
 
                                     <td>
                                         <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                                class="avatar avatar-xs pull-up" title="Lilian Fuller">
-                                                {{-- @if ($post->author->haveAvatar == true)
-                                                    <a href="/?author={{ $post->author->username }}"><img
+                                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top">
+                                                {{-- class="avatar avatar-xs pull-up" title="Lilian Fuller"> --}}
+                                                 {{-- @if ($podcast->author->haveAvatar == true)
+                                                    <a href="/?author={{ $podcast->author->username }}"><img
                                                             class="rounded-circle flex-shrink-0 me-3 fit-cover"
-                                                            width="40" src="{{ asset('storage/' . $post->author->avatar) }}"></a> --}}
-                                                {{-- @else
-                                                    <a href="/?author={{ $post->author->username }}"><img
-                                                            class="rounded-circle flex-shrink-0 me-3 fit-cover"
-                                                            width="40"
-                                                            src="{{ asset($post->author->default_avatar) }}"></a> --}}
-                                               {{--  @endif --}}
+                                                            width="40" src="{{ asset('storage/' . $podcast->author->avatar) }}"></a>
+                                                 @else --}}
+                                                    <a href="/?author={{ $podcast->author->username }}">
+                                                             {{-- src="{{ asset($podcast->author->default_avatar) }}" --}}</a>
+                                               {{--   @endif --}}
 
                                             </li>
-                                            {{-- <strong>{{ $post->author->name }}</strong> --}}
+                                            <strong>{{ $podcast->author->name }}</strong>
                                         </ul>
                                     </td>
 
                                     <td><span class="badge bg-label-success me-1">Published</span></td>
                                     <td>
-                                        <div class="dropdown">
-                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                                data-bs-toggle="dropdown">
-                                                <i class="bx bx-dots-vertical-rounded"></i>
-                                            </button>
-                                            {{-- <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="{{ route('posts.edit', $post->id) }}"><i
-                                                        class="bx bx-edit-alt me-1"></i> Edit</a>
 
-                                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST"
+                                                <button class="btn btn-success mx-2">
+                                                <a href="{{ route('podcast.edit', [$podcast->id]) }}"><i
+                                                        class="bx bx-edit-alt me-1"></i> Edit</a>
+                                                    </button>
+
+                                                <form action="{{ route('podcast.destroy', $podcast->id) }}" method="POST"
                                                     class="d-inline">
                                                     @csrf
 
                                                     @method('delete')
-                                                    <button class="dropdown-item">
+                                                    <button class="btn btn-danger">
                                                         <i class="bx bx-trash me-1"></i> Delete</button>
                                                 </form>
 
-                                            </div> --}}
-                                        </div>
+
+
                                     </td>
                                 </tr>
 
@@ -86,7 +82,7 @@
                         @empty
                             <tr>
                                 <td colspan="6" class="text-center p5">
-                                    No Posts
+                                    No Podcast Added.
                                 </td>
                             </tr>
                         @endforelse

@@ -38,7 +38,7 @@ class PostController extends Controller
            /*  'site_title' => $general_setting->site_title,
             "logo_image" => $general_setting->logo_image,
             "footer_copyright" => $general_setting->footer_copyright, */
-            "posts" => Post::latest()->orderBy('id', 'desc')->filter(request(['search', 'category', 'author']))->paginate(8)->withQueryString(),
+            "posts" => Post::latest()->orderBy('id', 'desc')->filter(request(['search', 'category', 'author']))->paginate(3)->withQueryString(),
             "user" => Auth::user()
         ]);
     }
@@ -101,7 +101,7 @@ class PostController extends Controller
         // Save tags
         $post->tag($tags);
 
-        return Redirect::route('posts.create')->with('success', " Post created successfully. [$request->title]");
+        return Redirect::route('posts.create')->with('success', "Post created successfully.");
     }
 
     /**
@@ -237,16 +237,9 @@ class PostController extends Controller
         // Get posts records where user_id = $id, paginate by 5
         $posts = Post::with('category')->where('user_id', $id)->paginate(5);
 
-        /* SEOTools::setTitle("Post By $user_post->name");
-        SEOTools::setDescription("$general_setting->site_meta_description");
-        SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'webiste'); */
+
 
         return view('pages.admin.author-post', [
-           /*  'site_title' => $general_setting->site_title,
-            "logo_image" => $general_setting->logo_image,
-            "footer_copyright" => $general_setting->footer_copyright,
-            "general_settings" => GeneralSetting::first(), */
             "posts" => $posts,
             "user_post" => $user_post,
             "user" => Auth::user()
@@ -335,8 +328,8 @@ class PostController extends Controller
             $fileExtension = $request->file('upload')->getClientOriginalExtension();
             $fileName = pathinfo($fileNameExtension, PATHINFO_FILENAME);
             $filename = $fileName.'_'.time().'.'. $fileExtension;
-            $request->file('upload')->move(public_path('media'), $filename);
-            $url = asset('media/' . $filename);
+            $request->file('upload')->move(public_path('podcasts'), $filename);
+            $url = asset('podcasts/' . $filename);
             return response()->json(['filename' => $filename, 'uploaded'=> 1, 'url' => $url]);
         }
     }

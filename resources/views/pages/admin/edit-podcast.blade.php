@@ -8,7 +8,7 @@
             <!-- Form controls -->
             <div class="col-md-12">
                 <div class="card mb-4">
-                    <h5 class="card-header">Create Podcast</h5>
+                    <h5 class="card-header">Edit Podcast</h5>
                     <div class="card-body">
                         @if ($errors->any())
                         <div class="alert alert-danger">
@@ -22,15 +22,16 @@
                         </div>
 
                     @endif
-                        <form action="{{route('podcast.store')}}" method="POST" class="mb-5" enctype="multipart/form-data">
+                        <form action="{{route('podcast.update', [$podcast->id])}}" method="POST" class="mb-5" enctype="multipart/form-data">
                             @csrf
+                            @method('PATCH')
 
                             <div class="form-group mb-3">
                                 <label for="name" class="form-label">Podcast Title</label>
                                 <input type="text" class="form-control @error('title') is-invalid @enderror"
                                     name="title" id="title" required placeholder="Podcast Title" autofocus
-                                    value="{{ old('title') }}">
-                                @error('name')
+                                    value="{{ old('title') ? old('title') : $podcast->title }}">
+                                @error('title')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -38,17 +39,24 @@
                             <div class="form-group mb-3">
                                 <label for="slug" class="form-label">Slug</label>
                                 <input type="text" class="form-control @error('slug') is-invalid @enderror"
-                                    name="slug" id="slug" required value="{{ old('slug') }}">
+                                    name="slug" id="slug" required value="{{ old('slug') ? old('slug'): $podcast->slug }}">
                                 @error('slug')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="image" class="form-label">Podcast Thumbnail</label>
-                                <img class="img-preview img-fluid mb-3 col-sm-5">
-                                <input class="form-control @error('image') is-invalid @enderror" type="file"
-                                    id="image" name="cover_image" onchange="previewImage()">
+
+                                <label for="image" class="form-label">Thumbnail</label>
+                                @if ($podcast->cover_image)
+                                    <img src="{{ asset('podcasts/' . $podcast->cover_image) }}"
+                                        class="img-preview img-fluid mb-3 col-sm-5 d-block">
+                                @else
+                                    <img class="img-preview img-fluid mb-3 col-sm-5">
+                                @endif
+
+                                <input class="form-control @error('cover_image') is-invalid @enderror" type="file"
+                                    id="image" name="image" onchange="previewImage()">
                                 @error('image')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -58,14 +66,14 @@
 
                             <div class="form-group mb-3">
                                 <label for="body" class="form-label">Description</label>
-                                <textarea name="description" id="body"></textarea>
-                                @error('body')
+                                <textarea name="description" id="body">{!!$podcast->description!!}</textarea>
+                                @error('description')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="form-group mb-3">
-                                <button type="submit" class="btn btn-primary">Create Podcast</button>
+                                <button type="submit" class="btn btn-primary">Edit Podcast</button>
                             </div>
                         </form>
 

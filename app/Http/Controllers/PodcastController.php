@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Episode;
 use App\Models\Podcast;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,67 +25,82 @@ class PodcastController extends Controller
     }
 
     public function create(){
-        return view('podcasts.create', [
-         'podcast' => Podcast::all(),
+
+        return view('pages.admin.create-podcast', [
+
          'user'  => Auth::user()
         ]);
 
     }
 
-    public function store(Request $request){
+    public function store(Request $request, User $user){
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'cover_image' => 'nullable|file'
+
 
         ]);
 
-        dd($request->all());
+      //  dd($request->all());
 
-        if($request->hasFile('cover_image')){
-            $fileNameExtension = $request->file('cover_image')->getClientOriginalName();
-            $fileExtension = $request->file('cover_image')->getClientOriginalExtension();
+        if($request->hasFile('image')){
+            $fileNameExtension = $request->file('image')->getClientOriginalName();
+            $fileExtension = $request->file('image')->getClientOriginalExtension();
             $fileName = pathinfo($fileNameExtension, PATHINFO_FILENAME);
-            $filename = $fileName.'_'.now().'.'.$fileExtension;
-        $cover_image =    $request->file('cover_image')->move(public_path('podcasts'), $filename);
+            $filename = $fileName.'_'.time().'.'.$fileExtension;
+         $request->file('image')->move(public_path('podcasts'), $filename);
         }
 
         $data= $request->all();
         $data['cover_image'] = $filename;
+      $id = Auth::user()->id;
 
-        $data = Podcast::create($data);
-        return redirect()->route('podcast.index')->with(['message'=>'Podcast has been created.']);
+      $user = User::findOrFail($id);
+
+      $user->podcasts()->create($data);
+        return back()->with(['success'=>'Podcast has been created.']);
 
     }
 
     public function show(Podcast $podcast){
-        return view('podcasts.show', compact('podcast'));
+        $episode = Episode::where('id', $podcast->id);
+        return view('podcasts.show', compact('podcast', 'episode'));
 
     }
 
-    public function edit(Podcast $podcast){
-        return view('podcasts.edit', compact('podcast'));
+    public function edit(Podcast $podcast, User $user){
+        $user = Auth::user();
+       // dd($user);
+
+        return view('pages.admin.edit-podcast', compact('podcast', 'user'));
 
     }
 
     public function update(Request $request, Podcast $podcast){
 
-        $podcast->title = $request->input('title');
-    $podcast->description = $request->input('description');
+       // dd($request->all());
 
-    if ($request->hasFile('cover_image')) {
-        $coverImage = $request->file('cover_image')->move(public_path('podcasts'));
-        $podcast->cover_image = $coverImage;
+    if ($request->hasFile('image')) {
+        $fileNameExtension = $request->file('image')->getClientOriginalName();
+            $fileExtension = $request->file('image')->getClientOriginalExtension();
+            $fileName = pathinfo($fileNameExtension, PATHINFO_FILENAME);
+            $filename = $fileName.'_'.time().'.'.$fileExtension;
+            $request->file('image')->move(public_path('podcasts'), $filename);
+      //  $podcast->cover_image = $filename;
     }
 
-    $podcast->save();
+   $podcast->title = $request->input('title');
+   $podcast->description = $request->input('description');
+   $podcast['cover_image'] = $filename;
 
-    return redirect()->route('podcasts.show', $podcast->id)->with('success', 'Podcast updated successfully.');
+    $podcast->update();
+
+    return redirect()->route('podcasts.admin')->with('success', 'Podcast updated successfully.');
 }
 
     public function destroy(Podcast $podcast){
         $podcast->delete();
-        return redirect()->route('podcasts.index')->with('message', 'Podcast deleted successfully.');
+        return redirect()->route('podcasts.admin')->with('message', 'Podcast deleted successfully.');
     }
 
     public function checkPodcastSlug(Request $request)
