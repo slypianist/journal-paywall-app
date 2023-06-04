@@ -25,8 +25,12 @@ jobs:
         run: npm install
 
       - name: Deploy to production
+
         run: |
-          ssh -o StrictHostKeyChecking=no sylvester@198.58.101.124 'cd /var/www/html/sshjournal && git pull origin main && composer install --no-progress --no-interaction --prefer-dist && php artisan migrate --force'
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > deploy_key.pem
+          chmod 600 deploy_key.pem
+          ssh-add deploy_key.pem
+          ssh -i deploy_key.pem sylvester@198.58.101.124 'cd /var/www/html/sshjournal && git pull origin main && composer install --no-progress --no-interaction --prefer-dist && php artisan migrate --force'
         env:
           SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
