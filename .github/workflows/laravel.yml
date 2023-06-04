@@ -24,6 +24,10 @@ jobs:
       - name: Build assets (optional)
         run: npm install
 
+      - name: Update SSH known_hosts
+        run: ssh-keyscan 198.58.101.124 >> ~/.ssh/known_hosts
+
+
       - name: Deploy to production
 
         run: |
