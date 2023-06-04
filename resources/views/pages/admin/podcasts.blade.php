@@ -59,10 +59,10 @@
                                     <td><span class="badge bg-label-success me-1">Published</span></td>
                                     <td>
 
-                                                <button class="btn btn-success mx-2">
-                                                <a href="{{ route('podcast.edit', [$podcast->id]) }}"><i
-                                                        class="bx bx-edit-alt me-1"></i> Edit</a>
-                                                    </button>
+
+                                                <a href="{{ route('podcast.edit', [$podcast->id]) }}"><button class="btn btn-success mx-2"><i
+                                                        class="bx bxs-edit me-1"></i></button></a>
+
 
                                                 <form action="{{ route('podcast.destroy', $podcast->id) }}" method="POST"
                                                     class="d-inline">
@@ -70,7 +70,7 @@
 
                                                     @method('delete')
                                                     <button class="btn btn-danger">
-                                                        <i class="bx bx-trash me-1"></i> Delete</button>
+                                                        <i class="bx bx-trash me-1"></i></button>
                                                 </form>
 
 

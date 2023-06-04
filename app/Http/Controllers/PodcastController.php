@@ -86,12 +86,12 @@ class PodcastController extends Controller
             $fileName = pathinfo($fileNameExtension, PATHINFO_FILENAME);
             $filename = $fileName.'_'.time().'.'.$fileExtension;
             $request->file('image')->move(public_path('podcasts'), $filename);
-      //  $podcast->cover_image = $filename;
+        $podcast->cover_image = $filename;
     }
 
    $podcast->title = $request->input('title');
    $podcast->description = $request->input('description');
-   $podcast['cover_image'] = $filename;
+  // $podcast['cover_image'] = $filename;
 
     $podcast->update();
 
