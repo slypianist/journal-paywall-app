@@ -20,6 +20,14 @@ class HomeController extends Controller
         $posts = Post::latest()->filter(request(['search', 'category', 'author']))->paginate(8)->withQueryString();
        // $posts = Post::with(['category'])->orderBy('posts.created_at', 'desc')->get();
 
+       //Get random post
+       $post = Post::all();
+        $random_id = $post->random()->id;
+        $randomPost = Post::where('id', $random_id)->first();
+     // dd($randomPost);
+
+
+
       $politicsPost= DB::table('categories')
                         ->whereIn('categories.name',['Politics & Government',])
                           ->join('posts', 'categories.id', '=', 'posts.category_id')
@@ -27,7 +35,7 @@ class HomeController extends Controller
                           ->select('categories.name', 'posts.title', 'posts.image', 'posts.created_at', 'users.name AS writer',
                           'posts.excerpt', 'posts.slug')
                           ->orderBy('posts.created_at', 'desc')
-                          ->limit(4)
+                          ->limit(3)
                           ->get();
 
       $business= DB::table('categories')
@@ -38,6 +46,7 @@ class HomeController extends Controller
                             ->select('categories.name', 'posts.title', 'posts.image', 'posts.created_at', 'users.name AS writer',
                             'posts.excerpt', 'posts.slug')
                             ->orderBy('posts.created_at', 'desc')
+                            ->limit(3)
                             ->get();
 
         $energy = DB::table('categories')
@@ -103,7 +112,7 @@ class HomeController extends Controller
                             'posts.excerpt', 'posts.slug')
                             ->orderBy('posts.created_at', 'desc')
                             ->first();
-                         //   dd($life);
+
 
          $tech = DB::table('categories')
                             ->where('categories.name',
@@ -161,7 +170,7 @@ class HomeController extends Controller
 
 
         return view('news.home', compact('posts', 'business','politicsPost', 'energy',
-        'energyPosts', 'africaID', 'briefs','opinion', 'tech', 'life', 'social', 'economy', 'ecoPosts')
+        'energyPosts', 'africaID', 'briefs','opinion', 'tech', 'life', 'social', 'economy', 'ecoPosts', 'randomPost')
             //'posts' => Post::latest()->filter(request(['search', 'category', 'author']))->paginate(8)->withQueryString()
         );
     }

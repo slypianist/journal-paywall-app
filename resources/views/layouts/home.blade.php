@@ -1,42 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="news/images/favi-icon.png" />
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Journal Africa Newspaper</title>
-    <!-- google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Ubuntu:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="{{asset('assets/news/css/bootstrap.min.css')}}">
-    <!-- Scrollbar css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/news/css/jquery.mCustomScrollbar.css')}}" />
-    <!-- Owl Carousel css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/news/owl-carousel/owl.carousel.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/news/owl-carousel/owl.theme.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/news/owl-carousel/owl.transitions.css')}}" />
-    <!-- youtube css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/news/css/RYPP.css')}}" />
-    <!-- jquery-ui css -->
-    <link rel="stylesheet" href="{{asset('assets/news/css/jquery-ui.css')}}">
-    <!-- animate -->
-    <link rel="stylesheet" href="{{asset('assets/news/css/animate.min.css')}}">
-    <!-- fonts css -->
-    <link rel="stylesheet" href="{{asset('assets/news/font-awesome/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/news/css/Pe-icon-7-stroke.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/news/css/flaticon.css')}}" />
-    <!-- custom css -->
-    <link rel="stylesheet" href="{{asset('assets/news/css/style.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('assets/news/css/home.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/news/css/media.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+    <title>Journal Africa</title>
 </head>
-<div class="se-pre-con"></div>
-
-<body>
     {{-- @include('includes.news.home-header') --}}
 @yield('h-content')
 @include('includes.news.footer')
+
 </body>
 
 </html>

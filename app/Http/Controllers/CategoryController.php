@@ -23,18 +23,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        // General Setting of the website
-      //  $general_setting = GeneralSetting::first();
-
-        /* SEOTools::setTitle("Categories List | Dashboard");
-        SEOTools::setDescription("$general_setting->site_meta_description");
-        SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'webiste'); */
-
         return view('pages.admin.categories', [
-            /* 'site_title' => $general_setting->site_title,
-            'logo_image' => $general_setting->logo_image,
-            'footer_copyright' => $general_setting->footer_copyright, */
             'categories' => Category::latest()->paginate(10)->withQueryString(),
             'user' => Auth::user()
         ]);
@@ -101,19 +90,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category, $id)
     {
-        // General Setting of the website
-      //  $general_setting = GeneralSetting::first();
         $category = Category::findOrFail($id);
 
-       /*  SEOTools::setTitle("Edit | Dashboard");
-        SEOTools::setDescription("$general_setting->site_meta_description");
-        SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'webiste'); */
-
         return view('pages.admin.edit-categories')->with([
-            /* 'site_title' => $general_setting->site_title,
-            "logo_image" => $general_setting->logo_image,
-            "footer_copyright" => $general_setting->footer_copyright, */
             "category" => $category,
             "categories" => Category::all(),
             "user" => Auth::user()

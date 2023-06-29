@@ -13,7 +13,8 @@ class PodcastController extends Controller
 {
     public function index(){
         $podcasts = Podcast::withCount('episodes')->orderByDesc('created_at')->get();
-        return view('podcasts.index', compact('podcasts'));
+        return response()->json(['podcast'=> $podcasts]);
+       // return view('podcasts.index', compact('podcasts'));
 
     }
 
@@ -63,8 +64,11 @@ class PodcastController extends Controller
     }
 
     public function show(Podcast $podcast){
-        $episode = Episode::where('id', $podcast->id);
-        return view('podcasts.show', compact('podcast', 'episode'));
+        $podcast = Podcast::with(['episodes'])->orderBy('created_at', 'desc')->get();
+        //$episode = Episode::where('id', $podcast->id);
+        return response()->json(['podcast'=>$podcast]);
+
+        //return view('podcasts.show', compact('podcast', 'episode'));
 
     }
 

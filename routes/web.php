@@ -29,7 +29,7 @@ use App\Http\Controllers\PodcastController;
 /* Non Autheticated Routes........................ */
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('news/{post:slug}', [PostController::class, 'show'])->name('post.list');
+    Route::get('post/{post:slug}', [PostController::class, 'show'])->name('post.list');
     Route::get('about', [PagesController::class, 'about']);
     Route::get('terms-and-conditions', [PagesController::class, 'termsConditions']);
     Route::get('advertise', [PagesController::class, 'advertise']);
@@ -73,10 +73,11 @@ Route::get('user/profile/view', function(){
 
 
 /* Podcast Routes======================================= */
+Route::get('podcast', [PodcastController::class, 'index'])->name('podcasts.all');
 Route::get('admin/podcasts', [PodcastController::class, 'adminIndex'])->name('podcasts.admin');
 Route::get('/podcasts/{podcast}/episodes/{episode}', [EpisodeController::class, 'show'])->name('episodes.show');
 
-//Route::get('podcasts/{podcast}', [PodcastController::class, 'show'])->name('podcasts.show');
+Route::get('podcasts/{podcast}', [PodcastController::class, 'show'])->name('podcasts.show');
 
 
 /* End of Non Autheticated Routes........................ */
@@ -92,12 +93,12 @@ Route::get('/podcasts/{podcast}/episodes/{episode}', [EpisodeController::class, 
     Route::get('user/dashboard', [ReadersController::class, 'dashboard'])->name('reader.dashboard');
     Route::post('user/profile', [ReaderController::class, 'createProfile'])->name('readerprofile.create');
     Route::patch('user/profile/update', [ReaderController::class, 'updateProfile'])->name('readerprofile.update');
-
+    Route::get('category', [TestController::class, 'index']);
     /* End of Readers' Autheticated Routes........................ */
 
 Route::middleware('auth')->group(function(){
 
-    Route::get('test', [TestController::class, 'index']);
+
     // Podcast routes....
 
     Route::get('admin/podcasts/create', [PodcastController::class, 'create'])->name('podcasts.create');
@@ -109,14 +110,14 @@ Route::middleware('auth')->group(function(){
     // EPisodes Routes....
     Route::get('podcasts/{podcast}/episodes/create', [EpisodeController::class, 'create'])->name('episodes.create');
     Route::post('podcasts/{podcast}/episodes', [EpisodeController::class, 'store'])->name('episodes.store');
-    Route::get('/podcasts/{podcast}/episodes/{episode}/edit', [EpisodeController::class, 'edit'])->name('episodes.edit');
-    Route::put('/podcasts/{podcast}/episodes/{episode}', [EpisodeController::class, 'update'])->name('episodes.update');
-    Route::delete('/podcasts/{podcast}/episodes/{episode}', [EpisodeController::class, 'destroy'])->name('episodes.destroy');
+    Route::get('podcasts/{podcast}/episodes/{episode}/edit', [EpisodeController::class, 'edit'])->name('episodes.edit');
+    Route::put('podcasts/{podcast}/episodes/{episode}', [EpisodeController::class, 'update'])->name('episodes.update');
+    Route::delete('podcasts/{podcast}/episodes/{episode}', [EpisodeController::class, 'destroy'])->name('episodes.destroy');
 
     // Admin Profile Routes....
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('posts/checkSlug', [PostController::class, 'checkSlug'])->name('checkSlug');
     Route::get('posts/authorpost/{id}', [PostController::class, 'authorPost'])->name('authorPost');
@@ -126,8 +127,6 @@ Route::middleware('auth')->group(function(){
 
     Route::get('categories/checkCategorySlug', [CategoryController::class, 'checkCategorySlug'])->name('checkCategorySlug');
     Route::get('podcasts/checkPodcastSlug', [PodcastController::class, 'checkPodcastSlug'])->name('checkPodcastSlug');
-
-    // Route::resource('general-settings', GeneralSettingController::class);
 
     Route::get('manage-sub', [])->name('manage.sub');
 

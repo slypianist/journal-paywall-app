@@ -6,8 +6,6 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
-use App\Models\GeneralSetting;
-use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
@@ -26,18 +24,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        // General Setting of the website
-        /* $general_setting = GeneralSetting::first();
-
-        SEOTools::setTitle("Post List | Dashboard");
-        SEOTools::setDescription("$general_setting->site_meta_description");
-        SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'webiste'); */
-
         return view('pages.admin.posts', [
-           /*  'site_title' => $general_setting->site_title,
-            "logo_image" => $general_setting->logo_image,
-            "footer_copyright" => $general_setting->footer_copyright, */
             "posts" => Post::latest()->orderBy('id', 'desc')->filter(request(['search', 'category', 'author']))->paginate(3)->withQueryString(),
             "user" => Auth::user()
         ]);
@@ -50,18 +37,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        // General Setting of the website
-        /* $general_setting = GeneralSetting::first();
-
-        SEOTools::setTitle("Create Post | Dashboard");
-        SEOTools::setDescription("$general_setting->site_meta_description");
-        SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'webiste'); */
 
         return view('pages.admin.create-posts', [
-           /*  'site_title' => $general_setting->site_title,
-            "logo_image" => $general_setting->logo_image,
-            "footer_copyright" => $general_setting->footer_copyright, */
             "categories" => Category::all(),
             "user" => Auth::user()
         ]);
@@ -117,7 +94,6 @@ class PostController extends Controller
       $category = $post->category->id;
     //  $related = Category::with('posts')->where('name', $category)->get();
     $related = Post::where('category_id', $category)->limit(3)->get();
-    // dd($related);
         return view('news.show', compact('post', 'posts', 'related'));
     }
 
@@ -134,18 +110,7 @@ class PostController extends Controller
         // Authorize if user is the owner of the post or user_types is 'Admin'
         Gate::authorize('update-post', $post);
 
-        // General Setting of the website
-        /* $general_setting = GeneralSetting::first();
-
-        SEOTools::setTitle("Edit | $post->title");
-        SEOTools::setDescription("$general_setting->site_meta_description");
-        SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'webiste'); */
-
         return view('pages.admin.edit-post')->with([
-            /* 'site_title' => $general_setting->site_title,
-            "logo_image" => $general_setting->logo_image,
-            "footer_copyright" => $general_setting->footer_copyright, */
             "post" => $post,
             "categories" => Category::all(),
             "user" => Auth::user()
