@@ -347,64 +347,6 @@
             </div>
         </div>
     </div>
-
-    <div class="othernews mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5 class="borderr">Life & Culture</h5>
-                    <div>
-                        <a href="" class="tiledanchor">
-                            <h5 class="tiltedHeading">Cum et vero id at est omnis<h5>
-                        </a>
-                        <figure>
-                            <img src="https://source.unsplash.com/random/?health" alt="newspfoto" class="imgstyledd" style="width:100%">
-                            <figcaption>
-                                <small class="smalled"><i class="fa-regular fa-clock-nine"></i>23-03-2021</small>
-                                <p class="styleinfo">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis sit volupta... <a href="" class="mored"><i>Read More</i></a>
-                                </p>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <h5 class="borderr">Social Issues</h5>
-                    <div>
-                        <a href="" class="tiledanchor">
-                            <h5 class="tiltedHeading">Complete account of the system2<h5>
-                        </a>
-                        <figure>
-                            <img src="https://source.unsplash.com/random/?Asia" alt="newspfoto" style="width:100%" class="imgstyledd">
-                            <figcaption>
-                                <small class="smalled"><i class="fa-regular fa-clock-nine"></i>23-03-2021</small>
-                                <p class="styleinfo">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis sit volupta... <a href="" class="mored"><i>Read More</i></a>
-                                </p>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <h5 class="borderr">Economy</h5>
-                    <div>
-                        <a href="" class="tiledanchor">
-                            <h5 class="tiltedHeading">Lorem Ipsum is that it has a more<h5>
-                        </a>
-                        <figure>
-                            <img src="https://source.unsplash.com/random/?africa" alt="newspfoto" style="width:100%" class="imgstyledd">
-                            <figcaption>
-                                <small class="smalled"><i class="fa-regular fa-clock-nine"></i>23-03-2021</small>
-                                <p class="styleinfo">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis sit volupta... <a href="" class="mored"><i>Read More</i></a>
-                                </p>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="othernews mt-5">
         <div class="container">
             <div class="row">
@@ -424,6 +366,7 @@
                             </figcaption>
                         </figure>
                     </div>
+
                 </div>
                 <div class="col-md-4">
                     <h5 class="borderr">Social Issues</h5>
@@ -462,5 +405,168 @@
             </div>
         </div>
     </div>
+</section>
+
+<div class="journalafricafooterpodcast mt-5">
+    <h2 class="journalafriclpodTitle">Podcast</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <figure class="relatived">
+                        <img src="https://source.unsplash.com/random/?information" alt="image" class="newsimage_footer">
+                        <i class="fa-sharp fa-solid fa-play played"></i>
+                        <figcaption class="mt-3">
+                            <a href="#">
+                                <h5 class="headers">Credible Elections</h5>
+                            </a>
+                            <p class="postInfor">By <b class="postby">super admin</b> Oct 6, 2016</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <figure class="relatived">
+                    <img src="https://source.unsplash.com/random/?education" alt="image" class="newsimage_footer">
+                    <i class="fa-sharp fa-solid fa-play played"></i>
+                    <figcaption class="mt-3">
+                        <a href="#">
+                            <h5 class="headers">Podcast Title</h5>
+                        </a>
+                        <p class="postInfor">By <b class="postby">super admin</b> Sept 12, 2016</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-md-4">
+                <figure class="relatived">
+                    <img src="https://source.unsplash.com/random/?event" alt="image" class="newsimage_footer">
+                    <i class="fa-sharp fa-solid fa-play played"></i>
+                    <figcaption class="mt-3">
+                        <a href="#">
+                            <h5 class="headers">Podcast Title</h5>
+                        </a>
+                        <p class="postInfor">By <b class="postby">super admin</b> Oct 6, 2018</p>
+                    </figcaption>
+                </figure>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="adbanner">
+        <img src="https://source.unsplash.com/random/?digital" alt="adverts image">
+        <p class="adsInfo">Place your ADS here</p>
+    </div>
+</div>
+
+<footer class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="images/journal-africa-logo.png" alt="" class="journalafricafooterlogo">
+                <p class="journalafricafootertitle">about</p>
+                <div class="borderheading"></div>
+                <ul class="journalafricafooterlist">
+                    <li><a href="" class="lists">About Us</a></li>
+                    <li><a href="" class="lists">Terms and Conditions</a></li>
+                    <li><a href="" class="lists">Code of Ethics</a></li>
+                    <li><a href="" class="lists">Privacy Policy</a></li>
+                    <li><a href="" class="lists">Copyright Policy</a></li>
+                    <li><a href="" class="lists">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <p class="journalafricafootertitle">products</p>
+                <ul class="journalafricafooterlist">
+                    <li><a href="" class="lists">The company</a></li>
+                    <li><a href="" class="lists">Journal Africa Intelligence</a></li>
+                    <li><a href="" class="lists">Podcast</a></li>
+                    <li><a href="" class="lists">Gender and humn rights</a></li>
+                    <li><a href="" class="lists">Advertising</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <p class="journalafricafootertitle">connect</p>
+                <ul class="journalafricafooterlist">
+                    <li><a href="" class="lists">Contact Us</a></li>
+                    <li><a href="" class="lists">Write for us</a></li>
+                    <li><a href="" class="lists">Subscription plan</a></li>
+                    <li><a href="" class="lists">Newsletter</a></li>
+                    <li><a href="" class="lists">Site map</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <p class="journalafricafootertitle titlewidth">featured news</p>
+                <ul class="journalafricafooterlistexmt">
+                    <li>
+                        <div class="thumbnail_news mb-3">
+                            <div class="thumbed">
+                                <img src="https://source.unsplash.com/random/?religion" alt="news graphics" class="thumbnail_style_footer">
+                            </div>
+                            <div class="news-desrciption footertext">
+                                <p class="titlefooter">TECHNOLOGY</p>
+                                <a href="" class="journalafrical_thumblink">
+                                    <p class="news_desription footerdesc">
+                                        Lorem ipsum dolor sit, amet coctetur adipisicing elit. Nece
+                                    </p>
+                                </a>
+                                <div>
+                                    <span class="journalnewsleft"><i class="fa-sharp fa-regular fa-clock clocked"></i> Oct 6, 2016</span>
+
+                                    <span class="journalnewsright"><i class="fa-solid fa-messages"></i>13</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="thumbnail_news">
+                            <div class="thumbed">
+                                <img src="https://source.unsplash.com/random/?lagos" alt="news graphics" class="thumbnail_style_footer">
+                            </div>
+                            <div class="news-desrciption footertext">
+                                <p class="titlefooter">SPORTS</p>
+                                <a href="" class="journalafrical_thumblink">
+                                    <p class="news_desription footerdesc">
+                                        Lorem ipsum dolor sit, amet ectetur adipisicing elit.
+                                    </p>
+                                </a>
+                                <div>
+                                    <span class="journalnewsleft"><i class="fa-sharp fa-regular fa-clock clocked"></i> Oct 6, 2016</span>
+
+                                    <span class="journalnewsright"><i class="fa-solid fa-messages"></i>13</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="subfooter">
+    <div class="journalafricasubfooterflex">
+        <div class="initialflexed">
+            <div>
+                <p><a href="" class="bordered">Journal Africa Newspaper </a><span class="spannedfooter"> All rights Reserved &#169;2023</span></p>
+            </div>
+        </div>
+        <div>
+            <ul>
+                <li class="listssocial twitsocial">
+                    <a href=""><i class="fa-brands fa-twitter"></i></a>
+                </li>
+                <li class="listssocial">
+                    <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+                </li>
+                <li class="listssocial">
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 </section>
 @endsection
