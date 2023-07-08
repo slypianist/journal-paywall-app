@@ -353,150 +353,95 @@
                 <div class="col-md-4">
                     <h5 class="borderr">Life & Culture</h5>
                     <div>
-                        <a href="" class="tiledanchor">
-                            <h5 class="tiltedHeading">Cum et vero id at est omnis<h5>
+                        <a href="{{route('post.list', [$life->slug])}}" class="tiledanchor">
+                            <h5 class="tiltedHeading">{{$life->title}}<h5>
                         </a>
                         <figure>
-                            <img src="https://source.unsplash.com/random/?grass" alt="newspfoto" class="imgstyledd" style="width:100%">
+                            <img src="storage/{{$life->image}}" alt="newspfoto" class="imgstyledd" style="width:100%">
                             <figcaption>
-                                <small class="smalled"><i class="fa-regular fa-clock-nine"></i>23-03-2021</small>
+                                <small class="smalled"><i class="fa-regular fa-clock-nine"></i>{{$life->created_at}}</small>
                                 <p class="styleinfo">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis sit volupta... <a href="" class="mored"><i>Read More</i></a>
+                                    {{$life->excerpt}} <a href="{{route('post.list', [$life->slug])}}" class="mored"><i>Read More</i></a>
                                 </p>
                             </figcaption>
                         </figure>
                     </div>
                     <div class="journalafrical_thumblink">
+                        @foreach ($business as $lifes)
                         <div class="thumbnail_news">
+
                             <div class="thumbed">
-                                <img src="https://source.unsplash.com/random/?egypt" alt="news graphics" class="thumbnail_style">
+                                <img src="storage/{{$lifes->image}}" alt="news graphics" class="thumbnail_style">
                             </div>
                             <div class="news-desrciption conatined">
                                 <p class="news_desription ">
                                     <span class="ellipsis">
-                                        <a href="../SingleNews/index.html" class="journalafricathumbs">
-                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, dolores officiis tempora.
+                                        <a href="{{route('post.list', [$lifes->slug])}}" class="journalafricathumbs">
+                                            {{$lifes->excerpt}}
                                         </a>
                                     </span>
                                 </p>
                             </div>
+
                         </div>
-                    </div>
-                    <div class="journalafrical_thumblink">
-                        <div class="thumbnail_news">
-                            <div class="thumbed">
-                                <img src="https://source.unsplash.com/random/?education" alt="news graphics" class="thumbnail_style">
-                            </div>
-                            <div class="news-desrciption conatined">
-                                <p class="news_desription ">
-                                    <span class="ellipsis">
-                                        <a href="../SingleNews/index.html" class="journalafricathumbs">
-                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, dolores officiis tempora.
-                                        </a>
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="journalafrical_thumblink">
-                        <div class="thumbnail_news">
-                            <div class="thumbed">
-                                <img src="https://source.unsplash.com/random/?idea" alt="news graphics" class="thumbnail_style">
-                            </div>
-                            <div class="news-desrciption conatined">
-                                <p class="news_desription ">
-                                    <span class="ellipsis">
-                                        <a href="../SingleNews/index.html" class="journalafricathumbs">
-                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, dolores officiis tempora.
-                                        </a>
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-md-4">
                     <h5 class="borderr">Social Issues</h5>
                     <div>
-                        <a href="" class="tiledanchor">
-                            <h5 class="tiltedHeading">Complete account of the system2<h5>
+                        <a href="{{route('post.list', [$social->slug])}}" class="tiledanchor">
+                            <h5 class="tiltedHeading">{{$social->title}}<h5>
                         </a>
                         <figure>
-                            <img src="https://source.unsplash.com/random/?religion" alt="newspfoto" style="width:100%" class="imgstyledd">
+                            <img src="storage/{{$social->image}}" alt="newspfoto" style="width:100%" class="imgstyledd">
                             <figcaption>
-                                <small class="smalled"><i class="fa-regular fa-clock-nine"></i>23-03-2021</small>
+                                <small class="smalled"><i class="fa-regular fa-clock-nine"></i>{{$social->created_at}}</small>
                                 <p class="styleinfo">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis sit volupta... <a href="" class="mored"><i>Read More</i></a>
+                                   {{$social->excerpt}} <a href="{{route('post.list', [$social->slug])}}" class="mored"><i>Read More</i></a>
                                 </p>
                             </figcaption>
                         </figure>
                     </div>
+
                     <div class="journalafrical_thumblink">
+                        @foreach ($socialsRelated as $socials)
                         <div class="thumbnail_news">
                             <div class="thumbed">
-                                <img src="https://source.unsplash.com/random/?light" alt="news graphics" class="thumbnail_style">
+                                <img src="storage/{{$socials->image}}" alt="news graphics" class="thumbnail_style">
                             </div>
                             <div class="news-desrciption conatined">
                                 <p class="news_desription ">
                                     <span class="ellipsis">
-                                        <a href="../SingleNews/index.html" class="journalafricathumbs">
-                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, dolores officiis tempora.
+                                        <a href="{{route('post.list', [$socials->slug])}}" class="journalafricathumbs">
+                                            {{$socials->excerpt}}
                                         </a>
                                     </span>
                                 </p>
                             </div>
+                            @endforeach
                         </div>
                     </div>
-                    <div class="journalafrical_thumblink">
-                        <div class="thumbnail_news">
-                            <div class="thumbed">
-                                <img src="https://source.unsplash.com/random/?sport" alt="news graphics" class="thumbnail_style">
-                            </div>
-                            <div class="news-desrciption conatined">
-                                <p class="news_desription ">
-                                    <span class="ellipsis">
-                                        <a href="../SingleNews/index.html" class="journalafricathumbs">
-                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, dolores officiis tempora.
-                                        </a>
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="journalafrical_thumblink">
-                        <div class="thumbnail_news">
-                            <div class="thumbed">
-                                <img src="https://source.unsplash.com/random/?event" alt="news graphics" class="thumbnail_style">
-                            </div>
-                            <div class="news-desrciption conatined">
-                                <p class="news_desription ">
-                                    <span class="ellipsis">
-                                        <a href="../SingleNews/index.html" class="journalafricathumbs">
-                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, dolores officiis tempora.
-                                        </a>
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="col-md-4">
-                    <h5 class="borderr">Economy</h5>
+                    <h5 class="borderr">Opinion</h5>
                     <div>
-                        <a href="" class="tiledanchor">
-                            <h5 class="tiltedHeading">Lorem Ipsum is that it has a more<h5>
+                        <a href="{{route('post.list', [$opinion->slug])}}" class="tiledanchor">
+                            <h5 class="tiltedHeading">{{$opinion->title}}<h5>
                         </a>
                         <figure>
-                            <img src="https://source.unsplash.com/random/?art" alt="newspfoto" style="width:100%" class="imgstyledd">
+                            <img src="storage/{{$opinion->image}}" alt="newspfoto" style="width:100%" class="imgstyledd">
                             <figcaption>
-                                <small class="smalled"><i class="fa-regular fa-clock-nine"></i>23-03-2021</small>
+                                <small class="smalled"><i class="fa-regular fa-clock-nine"></i>{{$opinion->created_at}}</small>
                                 <p class="styleinfo">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis sit volupta... <a href="" class="mored"><i>Read More</i></a>
+                                    {{$opinion->excerpt}} <a href="" class="mored"><i>Read More</i></a>
                                 </p>
                             </figcaption>
                         </figure>
                     </div>
                     <div class="journalafrical_thumblink">
+{{--                         @foreach ($ as $item) --}}
                         <div class="thumbnail_news">
                             <div class="thumbed">
                                 <img src="https://source.unsplash.com/random/?business" alt="news graphics" class="thumbnail_style">
@@ -511,39 +456,9 @@
                                 </p>
                             </div>
                         </div>
+                       {{--  @endforeach --}}
                     </div>
-                    <div class="journalafrical_thumblink">
-                        <div class="thumbnail_news">
-                            <div class="thumbed">
-                                <img src="https://source.unsplash.com/random/?strategy" alt="news graphics" class="thumbnail_style">
-                            </div>
-                            <div class="news-desrciption conatined">
-                                <p class="news_desription ">
-                                    <span class="ellipsis">
-                                        <a href="../SingleNews/index.html" class="journalafricathumbs">
-                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, dolores officiis tempora.
-                                        </a>
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="journalafrical_thumblink">
-                        <div class="thumbnail_news">
-                            <div class="thumbed">
-                                <img src="https://source.unsplash.com/random/?school" alt="news graphics" class="thumbnail_style">
-                            </div>
-                            <div class="news-desrciption conatined">
-                                <p class="news_desription ">
-                                    <span class="ellipsis">
-                                        <a href="../SingleNews/index.html" class="journalafricathumbs">
-                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, dolores officiis tempora.
-                                        </a>
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>

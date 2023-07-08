@@ -103,6 +103,18 @@ class HomeController extends Controller
                             ->orderBy('posts.created_at', 'desc')
                             ->first();
 
+         $socialsRelated = DB::table('categories')
+                            ->where('categories.name',
+                            'Social issues')
+                            ->join('posts', 'categories.id', '=', 'posts.category_id')
+                            ->join('users', 'posts.user_id', '=', 'users.id')
+                            ->select('categories.name', 'posts.title', 'posts.image', 'posts.created_at', 'users.name AS writer',
+                            'posts.excerpt', 'posts.slug')
+                            ->orderBy('posts.created_at', 'desc')
+                            ->limit(3)
+                            ->get();
+
+
         $life = DB::table('categories')
                             ->where('categories.name',
                             'Life & Culture')
@@ -112,6 +124,16 @@ class HomeController extends Controller
                             'posts.excerpt', 'posts.slug')
                             ->orderBy('posts.created_at', 'desc')
                             ->first();
+
+        $lifesRelated = DB::table('categories')
+                            ->where('categories.name',
+                            'Life & Culture')
+                            ->join('posts', 'categories.id', '=', 'posts.category_id')
+                            ->join('users', 'posts.user_id', '=', 'users.id')
+                            ->select('categories.name', 'posts.title', 'posts.image', 'posts.created_at', 'users.name AS writer',
+                            'posts.excerpt', 'posts.slug')
+                            ->orderBy('posts.created_at', 'desc')
+                            ->limit(3);
 
 
          $tech = DB::table('categories')
@@ -170,7 +192,8 @@ class HomeController extends Controller
 
 
         return view('news.home', compact('posts', 'business','politicsPost', 'energy',
-        'energyPosts', 'africaID', 'briefs','opinion', 'tech', 'life', 'social', 'economy', 'ecoPosts', 'randomPost')
+        'energyPosts', 'africaID', 'briefs','opinion', 'tech', 'life', 'social', 'economy', 'ecoPosts', 'randomPost', 'lifesRelated',
+         'socialsRelated'                                                                           )
             //'posts' => Post::latest()->filter(request(['search', 'category', 'author']))->paginate(8)->withQueryString()
         );
     }
