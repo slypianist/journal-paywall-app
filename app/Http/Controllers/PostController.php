@@ -91,10 +91,15 @@ class PostController extends Controller
     {
       // dd($post->author->name);
       $posts = Post::with(['category'])->orderBy('posts.created_at', 'desc')->get();
+      //dd($post);
       $category = $post->category->id;
     //  $related = Category::with('posts')->where('name', $category)->get();
     $related = Post::where('category_id', $category)->limit(3)->get();
-        return view('news.show', compact('post', 'posts', 'related'));
+
+    $newPost = Post::all();
+        $random_id = $newPost->random()->id;
+        $randomPost = Post::where('id', $random_id)->first();
+        return view('news.show', compact('post', 'newPost', 'related', 'randomPost'));
     }
 
     /**
@@ -220,7 +225,6 @@ class PostController extends Controller
     public function checkSlug(Request $request)
     {
         $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
-
         return response()->json(['slug' => $slug]);
     }
 

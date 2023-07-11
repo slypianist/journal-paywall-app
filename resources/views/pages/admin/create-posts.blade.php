@@ -8,7 +8,7 @@
             <!-- Form controls -->
             <div class="col-md-12">
                 <div class="card mb-4">
-                    <h5 class="card-header">Create News Item</h5>
+                    <h5 class="card-header">Create Post</h5>
                     <div class="card-body">
 
                         <form action="{{ route('posts.store') }}" method="POST" class="mb-5" enctype="multipart/form-data">

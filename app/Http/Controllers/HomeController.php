@@ -156,6 +156,17 @@ class HomeController extends Controller
                             ->orderBy('posts.created_at', 'desc')
                             ->first();
 
+        $opinionsRelated = DB::table('categories')
+                            ->where('categories.name',
+                            'Opinion')
+                            ->join('posts', 'categories.id', '=', 'posts.category_id')
+                            ->join('users', 'posts.user_id', '=', 'users.id')
+                            ->select('categories.name', 'posts.title', 'posts.image', 'posts.created_at', 'users.name AS writer',
+                            'posts.excerpt', 'posts.slug')
+                            ->orderBy('posts.created_at', 'desc')
+                            ->limit(3)
+                            ->get();
+
         $africaID = DB::table('categories')
                             ->where('categories.name',
                             'In-depth Africa')
@@ -193,7 +204,7 @@ class HomeController extends Controller
 
         return view('news.home', compact('posts', 'business','politicsPost', 'energy',
         'energyPosts', 'africaID', 'briefs','opinion', 'tech', 'life', 'social', 'economy', 'ecoPosts', 'randomPost', 'lifesRelated',
-         'socialsRelated'                                                                           )
+         'socialsRelated', 'opinionsRelated'                                                                      )
             //'posts' => Post::latest()->filter(request(['search', 'category', 'author']))->paginate(8)->withQueryString()
         );
     }

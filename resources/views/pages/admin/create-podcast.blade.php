@@ -93,7 +93,7 @@
         const slug = document.querySelector('#slug');
 
         name.addEventListener('change', function() {
-            fetch('/podcasts/checkPodcastSlug?title=' + name.value)
+            fetch('/pod/checkPodcastSlug?title=' + name.value)
                 .then(response => response.json())
                 .then(data => slug.value = data.slug);
         });

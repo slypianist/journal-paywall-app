@@ -38,6 +38,7 @@ class PodcastController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
+            'image' => 'required|file|mimes:png,jpg,jpeg'
 
 
         ]);
@@ -66,9 +67,9 @@ class PodcastController extends Controller
     public function show(Podcast $podcast){
         $podcast = Podcast::with(['episodes'])->orderBy('created_at', 'desc')->get();
         //$episode = Episode::where('id', $podcast->id);
-        return response()->json(['podcast'=>$podcast]);
+       // return response()->json(['podcast'=>$podcast]);
 
-        //return view('podcasts.show', compact('podcast', 'episode'));
+        return view('podcasts.show', compact('podcast', 'episode'));
 
     }
 
@@ -110,7 +111,6 @@ class PodcastController extends Controller
     public function checkPodcastSlug(Request $request)
     {
         $slug = SlugService::createSlug(Podcast::class, 'slug', $request->title);
-
         return response()->json(['slug' => $slug]);
     }
 }

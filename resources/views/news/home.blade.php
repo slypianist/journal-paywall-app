@@ -2,115 +2,6 @@
  @section('h-content')
 
  <section class="main">
-    <div class="top-bar">
-        <div class="container">
-            <div class="top-bar-wrap">
-                <div class="flex-item">
-                    <ul class="links mt-2">
-                        <li><a href="#">Register</a></li>
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="flex-item mt-2">
-                    <div id="carouselExampleControls" class="topbarCarousel carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active aditems">
-                                <div class="heighgted">
-                                    <a href="category/?category={{$randomPost->category->slug}}" class="newsDetail">
-                                        <p class=""><b class="bolded"></b> <span>{{$randomPost->title}}</span></p>
-                                    </a>
-                                </div>
-                              </div>
-                            @foreach ($posts as $post)
-                          <div class="carousel-item aditems">
-                            <div class="heighgted">
-                                <a href="category/?category={{$post->category->slug}}" class="newsDetail">
-                                    <p class=""><b class="bolded">{{$post->category->name}}: </b> <span>{{$post->title}}</span></p>
-                                </a>
-                            </div>
-                          </div>
-                          @endforeach
-                        </div>
-
-                        </div>
-
-
-                      <!-- <div>
-                        <span>Africa In Brief:</span><marquee class="css1">Lorem ipsum dolor sit amet cons</marquee>
-                      </div> -->
-                </div>
-
-                <div class="flex-item">
-                    <ul class="icons mt-2">
-                        <li><i class="fa-brands fa-twitter"></i></li>
-                        <li><i class="fa-brands fa-facebook-f"></i></li>
-                        <li><p id="dated"></p></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container mt-3">
-        <div class="logo-wrapper">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="logo">
-                        <a href="">
-                            <img src="images/journal-africa-logo.png" alt="journal-africa-logo">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="img-wrap">
-                        <img class="img-style" src="images/adsimages.jpg" alt="">
-                        <div class="centered"><p>Place your ADS here</p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="navigation mt-3">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-                    <div></div>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                      <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Business & finance</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">politics & government</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Economy</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">food</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">opinion</a>
-                      </li>
-                    </ul>
-                    <div class="d-flex">
-                        <button class="btn btn-nav">Login</button>
-                      <button class="btn btn-nav">Subscribe</button>
-                    </div>
-                  </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-
     <div class="banner-wrap">
         <div class="">
             <div class="newsimg-wrap">
@@ -441,22 +332,22 @@
                         </figure>
                     </div>
                     <div class="journalafrical_thumblink">
-{{--                         @foreach ($ as $item) --}}
+                        @foreach ($opinionsRelated as $opinions)
                         <div class="thumbnail_news">
                             <div class="thumbed">
-                                <img src="https://source.unsplash.com/random/?business" alt="news graphics" class="thumbnail_style">
+                                <img src="storage/{{$opinions->image}}" alt="news graphics" class="thumbnail_style">
                             </div>
                             <div class="news-desrciption conatined">
                                 <p class="news_desription ">
                                     <span class="ellipsis">
-                                        <a href="../SingleNews/index.html" class="journalafricathumbs">
-                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, dolores officiis tempora.
+                                        <a href="{{route('post.list', [$opinions->slug])}}" class="journalafricathumbs">
+                                            {{$opinions->excerpt}}
                                         </a>
                                     </span>
                                 </p>
                             </div>
                         </div>
-                       {{--  @endforeach --}}
+                        @endforeach
                     </div>
 
                 </div>

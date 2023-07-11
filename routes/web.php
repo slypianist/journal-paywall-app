@@ -126,7 +126,7 @@ Route::middleware('auth')->group(function(){
     Route::resource('admin-categories', CategoryController::class);
 
     Route::get('categories/checkCategorySlug', [CategoryController::class, 'checkCategorySlug'])->name('checkCategorySlug');
-    Route::get('podcasts/checkPodcastSlug', [PodcastController::class, 'checkPodcastSlug'])->name('checkPodcastSlug');
+    Route::get('pod/checkPodcastSlug', [PodcastController::class, 'checkPodcastSlug'])->name('checkPodcastSlug');
 
     Route::get('manage-sub', [])->name('manage.sub');
 
