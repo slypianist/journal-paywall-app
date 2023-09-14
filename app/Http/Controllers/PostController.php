@@ -92,9 +92,10 @@ class PostController extends Controller
       // dd($post->author->name);
       $posts = Post::with(['category'])->orderBy('posts.created_at', 'desc')->get();
       //dd($post);
-      $category = $post->category->id;
+      $categoryID = $post->category->id;
     //  $related = Category::with('posts')->where('name', $category)->get();
-    $related = Post::where('category_id', $category)->limit(3)->get();
+    $related = Post::where('category_id', $categoryID)->limit(3)->get();
+
 
     $newPost = Post::all();
         $random_id = $newPost->random()->id;

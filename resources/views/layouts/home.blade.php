@@ -7,10 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/news/css/home.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/news/css/media.css')}}">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="{{asset('assets/news/css/home.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/news/css/media.css')}}"> --}}
+    @stack('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
     <title>Journal Africa</title>
@@ -21,12 +22,12 @@
             <div class="top-bar-wrap">
                 <div class="flex-item">
                     <ul class="links mt-2">
-                        <li><a href="#">Register</a></li>
-                        <li><a href="#">Login</a></li>
+                        <li><a href="{{route('reader.showRegisterForm')}}">Register</a></li>
+                        <li><a href="{{route('reader.showLoginForm')}}">Login</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
-                <div class="flex-item mt-2">
+               {{--  <div class="flex-item mt-2">
                     <div id="carouselExampleControls" class="topbarCarousel carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active aditems">
@@ -53,7 +54,7 @@
                       <!-- <div>
                         <span>Africa In Brief:</span><marquee class="css1">Lorem ipsum dolor sit amet cons</marquee>
                       </div> -->
-                </div>
+                </div> --}}
 
                 <div class="flex-item">
                     <ul class="icons mt-2">
@@ -72,7 +73,7 @@
                 <div class="col-md-6">
                     <div class="logo">
                         <a href="/">
-                            <img src="images/journal-africa-logo.png" alt="journal-africa-logo">
+                            <img src="{{asset('images/journal-africa-logo.png')}}" alt="journal-africa-logo">
                         </a>
                     </div>
                 </div>

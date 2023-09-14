@@ -657,3 +657,658 @@ html, body {
     margin-bottom: 10px;
     border-radius: 3px;
   }
+/* SIGN UP */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.navigation {
+  background-color: #eee;
+}
+.navbtn {
+  margin-left: 10px;
+  background-color: red !important;
+  color: #fff !important;
+  font-weight: bolder !important;
+}
+.bolded {
+  font-size: 12px;
+  color: red;
+}
+.topbarCarousel {
+  margin-top: 10px;
+  width: 50%;
+}
+.journalafricaslide {
+  color: hsl(0, 0%, 0%);
+  text-decoration: none;
+  font-size: 14px;
+}
+.journalafricaslide:hover {
+  color: #000;
+}
+.btn-nav {
+  margin-left: 10px;
+  background-color: red;
+  color: #fff;
+  font-weight: bolder;
+}
+.nav-item {
+  margin-left: 20px;
+  text-transform: uppercase;
+}
+.nav-item a {
+  color: #000;
+  font-size: small;
+  font-weight: bold;
+}
+.nav-item a:hover {
+  color: red;
+}
+.nav-item .active {
+  background-color: red;
+  color: #fff !important;
+}
+
+.top-bar {
+  background-color: #eee;
+}
+.links li{
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-left: 10px;
+}
+.links a {
+color: inherit;
+text-decoration: none;
+}
+.top-bar-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+.icons li {
+  list-style: none;
+  display: inline-block;
+  margin-left: 10px;
+}
+.img-wrap, .adwraped {
+  background-color: #000;
+}
+.img-style {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.centered {
+  text-transform: uppercase;
+  position: absolute;
+  top: 20%;
+  left: 72%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-weight: bolder;
+  font-size: 20px;
+}
+.nav-wrapper {
+    background-color: #eee;
+}
+.headers li{
+    list-style: none;
+    display: inline-block;
+    margin: 10px;
+}
+.news-slider, .icon-wrap {
+    margin: 10px;
+}
+.slide-show {
+    margin: 10px;
+}
+.slide-show li {
+    display: inline-block;
+}
+.ctr-btn {
+    height: 26px;
+    width: 27px;
+}
+.icon-wrap li{
+    list-style: none;
+    display: inline-block;
+}
+.icons {
+    margin-left: 10px;
+}
+.icons a {
+    color: inherit;
+}
+.journalafricaoverlay{
+  background: #000;
+  opacity: 0.6;
+  color: #fff;
+  height: 600px;
+  width: 100% vh;
+}
+.newsfacts {
+  padding-top: 100px;
+  line-height: 40px;
+}
+.newsfacts li {
+  font-weight: bold;
+  color: #fff;
+}
+
+.registerform input {
+  padding: 10px;
+}
+.imagebacked {
+  object-fit: cover;
+    background-image: url('https://source.unsplash.com/random/?bookstore');
+    background-size: auto 100%;
+    height: 100% vh;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+}
+.registerInfo {
+    margin-top: 50px;
+    line-height: 40px;
+}
+.journalafricanewsformed {
+  padding: 20px;
+  box-shadow: 0px 3px 9px rgba(113, 117, 123, 0.4);
+  margin-left: auto;
+  margin-right: auto;
+}
+.journalafricaterms {
+  color: red;
+  text-decoration: none;
+}
+.wrapped {
+  font-size: 13px;
+}
+.subtype {
+  color: red;
+  display: block;
+}
+.regsiter-btn {
+  background: red;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  color: #fff;
+}
+.LoggedIn {
+  text-align: center;
+  font-size: 13px;
+}
+.signedIn {
+  color: red;
+}
+footer {
+  background-color: #1f1f1f;
+  padding: 20px;
+}
+.footertext {
+  margin-left: 20px;
+}
+.journalafricasubfooterflex {
+  background-color: #000;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.initialflexed a{
+  color: red;
+}
+.spannedfooter {
+  color: #fff;
+}
+.bordered {
+  border-right: 1px solid #fff;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.footerdesc {
+  color: #fff;
+  margin-bottom: 0;
+  font-size: 13px;
+}
+.titlefooter {
+  margin-bottom: 0;
+}
+.journalafricafooterlogo {
+  object-fit: cover;
+}
+.journalafricafootertitle {
+  color: white;
+  text-transform: uppercase;
+  width: 50%;
+  padding: 5px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  border-color: #292929;
+}
+.thumbnail_style_footer {
+  height: 100px;
+  width: 100px;
+}
+.journalnewsleft {
+  float: left;
+  font-size: 12px;
+}
+.journalnewsright {
+  float: right;
+  font-size: 12px;
+}
+.titlewidth {
+  width: 100% !important;
+}
+.journalafricafooterlist {
+   padding-left: 0px;
+   line-height: 30px;
+}
+.journalafricafooterlist li{
+  list-style-type:circle;
+  color: grey;
+}
+.journalafricafooterlistexmt {
+  list-style: none;
+  color: grey;
+
+}
+.clocked {
+  background-color: unset;
+  font-size: 12px;
+}
+.listssocial {
+  list-style: none;
+  display: inline-block;
+  margin-left: 30px;
+}
+.twitsocial {
+  margin-left: 0px !important;
+}
+.listssocial a {
+  color: #fff;
+}
+.listssocial a:hover {
+  color: #fff;
+}
+.lists {
+  color: inherit;
+  text-decoration: none;
+}
+.lists:hover {
+  color: #fff;
+}
+.journalafricaapp{
+  object-fit: cover;
+  border: 1px solid #fff;
+  vertical-align: middle;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+.thumbnail_news {
+  display: flex;
+}
+.thumbnail_style {
+  height: 60px;
+  width: 60px;
+}
+/* .news_desription {
+  margin-left: 15px;
+} */
+.journalafrical_thumblink {
+  color: #000;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+.journalafrical_thumblink:hover{
+  color: red;
+}
+
+
+  #text,
+  #icon {
+    line-height: 50px;
+  }
+  #icon {
+    vertical-align: middle;
+    font-size: 30px;
+  }
+  .centere {
+    text-align: center;
+  }
+  .headings {
+    font-weight: bolder;
+    margin-top: 20px;
+  }
+
+/* SIGN IN */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.navigation {
+  background-color: #eee;
+}
+.navbtn {
+  margin-left: 10px;
+  background-color: red !important;
+  color: #fff !important;
+  font-weight: bolder !important;
+}
+.bolded {
+  font-size: 12px;
+  color: red;
+}
+.topbarCarousel {
+  margin-top: 10px;
+  width: 50%;
+}
+.journalafricaslide {
+  color: hsl(0, 0%, 0%);
+  text-decoration: none;
+  font-size: 14px;
+}
+.journalafricaslide:hover {
+  color: #000;
+}
+.btn-nav {
+  margin-left: 10px;
+  background-color: red !important;
+  color: #fff !important;
+  font-weight: bolder !important;
+}
+.nav-item {
+  margin-left: 20px;
+  text-transform: uppercase;
+}
+.nav-item a {
+  color: #000;
+  font-size: small;
+  font-weight: bold;
+}
+.nav-item a:hover {
+  color: red;
+}
+.nav-item .active {
+  background-color: red;
+  color: #fff !important;
+}
+
+.top-bar {
+  background-color: #eee;
+}
+.links li{
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-left: 10px;
+}
+.links a {
+color: inherit;
+text-decoration: none;
+}
+.top-bar-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+.icons li {
+  list-style: none;
+  display: inline-block;
+  margin-left: 10px;
+}
+.img-wrap, .adwraped {
+  background-color: #000;
+}
+.img-style {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.centered {
+  text-transform: uppercase;
+  position: absolute;
+  top: 20%;
+  left: 72%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-weight: bolder;
+  font-size: 20px;
+}
+.nav-wrapper {
+    background-color: #eee;
+}
+.headers li{
+    list-style: none;
+    display: inline-block;
+    margin: 10px;
+}
+.news-slider, .icon-wrap {
+    margin: 10px;
+}
+.slide-show {
+    margin: 10px;
+}
+.slide-show li {
+    display: inline-block;
+}
+.ctr-btn {
+    height: 26px;
+    width: 27px;
+}
+.icon-wrap li{
+    list-style: none;
+    display: inline-block;
+}
+.icons {
+    margin-left: 10px;
+}
+.icons a {
+    color: inherit;
+}
+.journalafricaoverlay{
+  background: #000;
+  opacity: 0.6;
+  color: #fff;
+  height: 308px;
+  width: 100% vh;
+}
+.realtimestories {
+  padding-top: 110px;
+}
+
+.registerform input {
+  padding: 10px;
+  font-weight: bolder;
+  color: #fff;
+}
+.imagebacked {
+  object-fit: cover;
+    background-image: url('https://source.unsplash.com/random/?information');
+    background-size: auto 100%;
+    height: 308px;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+}
+.journalafricanewsformed {
+  padding: 20px;
+  box-shadow: 0px 3px 9px rgba(113, 117, 123, 0.4);
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+::placeholder {
+    color: grey;
+    opacity: 1;
+    font-weight: 100;
+  }
+.journalafricaterms {
+  color: red;
+  text-decoration: none;
+}
+.wrapped {
+  font-size: 13px;
+}
+.regsiter-btn {
+  background: red;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  color: #fff;
+}
+.LoggedIn {
+  text-align: center;
+  font-size: 13px;
+}
+.signedIn {
+  color: red;
+}
+footer {
+  background-color: #1f1f1f;
+  padding: 20px;
+}
+.footertext {
+  margin-left: 20px;
+}
+.journalafricasubfooterflex {
+  background-color: #000;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.initialflexed a{
+  color: red;
+}
+.spannedfooter {
+  color: #fff;
+}
+.bordered {
+  border-right: 1px solid #fff;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.footerdesc {
+  color: #fff;
+  margin-bottom: 0;
+  font-size: 13px;
+}
+.titlefooter {
+  margin-bottom: 0;
+}
+.journalafricafooterlogo {
+  object-fit: cover;
+}
+.journalafricafootertitle {
+  color: white;
+  text-transform: uppercase;
+  width: 50%;
+  padding: 5px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  border-color: #292929;
+}
+.thumbnail_style_footer {
+  height: 100px;
+  width: 100px;
+}
+.journalnewsleft {
+  float: left;
+  font-size: 12px;
+}
+.journalnewsright {
+  float: right;
+  font-size: 12px;
+}
+.titlewidth {
+  width: 100% !important;
+}
+.journalafricafooterlist {
+   padding-left: 0px;
+   line-height: 30px;
+}
+.journalafricafooterlist li{
+  list-style-type:circle;
+  color: grey;
+}
+.journalafricafooterlistexmt {
+  list-style: none;
+  color: grey;
+
+}
+.clocked {
+  background-color: unset;
+  font-size: 12px;
+}
+.listssocial {
+  list-style: none;
+  display: inline-block;
+  margin-left: 30px;
+}
+.twitsocial {
+  margin-left: 0px !important;
+}
+.listssocial a {
+  color: #fff;
+}
+.listssocial a:hover {
+  color: #fff;
+}
+.lists {
+  color: inherit;
+  text-decoration: none;
+}
+.lists:hover {
+  color: #fff;
+}
+.journalafricaapp{
+  object-fit: cover;
+  border: 1px solid #fff;
+  vertical-align: middle;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+.thumbnail_news {
+  display: flex;
+}
+.thumbnail_style {
+  height: 60px;
+  width: 60px;
+}
+/* .news_desription {
+  margin-left: 15px;
+} */
+.journalafrical_thumblink {
+  color: #000;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+.journalafrical_thumblink:hover{
+  color: red;
+}
+
+  #text,
+  #icon {
+    line-height: 50px;
+  }
+  #icon {
+    vertical-align: middle;
+    font-size: 30px;
+  }
+  .centere {
+    text-align: center;
+  }
+  .headings {
+    font-weight: bolder;
+    margin-top: 20px;
+  }

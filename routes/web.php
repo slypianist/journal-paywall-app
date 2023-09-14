@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use App\Models\GeneralSetting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -7,14 +8,14 @@ use Artesaos\SEOTools\Facades\SEOTools;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\PodcastController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReadersController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GeneralSettingController;
-use App\Http\Controllers\PagesController;
-use App\Http\Controllers\PodcastController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,16 +61,20 @@ Route::get('/random-post', [PostController::class, 'randomArticle']);
 // Readers Routes
 
 
-Route::get('user/login', function(){
-    return view('news.register');
-});
+Route::get('reader/login', function(){
+    return view('news.login');
+})->name('reader.showLoginForm');
 
-Route::get('user/profile/view', function(){
+Route::get('reader/register',function(){
+    return view('news.register');
+})->name('reader.showRegisterForm');
+
+Route::get('reader/profile/view', function(){
     return view('');
 });
 
-    Route::post('user/register', [ReadersController::class, 'register'])->name('reader.register');
-    Route::post('user/login', [ReadersController::class, 'login'])->name('reader.login');
+    Route::post('reader/register', [ReadersController::class, 'register'])->name('reader.register');
+    Route::post('reader/login', [ReadersController::class, 'login'])->name('reader.login');
 
 
 /* Podcast Routes======================================= */
