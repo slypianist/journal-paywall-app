@@ -25,7 +25,7 @@ class PostController extends Controller
     public function index()
     {
         return view('pages.admin.posts', [
-            "posts" => Post::latest()->orderBy('id', 'desc')->filter(request(['search', 'category', 'author']))->paginate(3)->withQueryString(),
+            "posts" => Post::latest()->orderBy('id', 'desc')->filter(request(['search', 'category', 'author']))->paginate(10)->withQueryString(),
             "user" => Auth::user()
         ]);
     }

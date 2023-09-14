@@ -45,15 +45,15 @@
                           <input type="text" class="form-control" placeholder="Enter email">
                         </div>
                         <div class="mb-3">
-                          <label for="phone" class="form-label">Phone Number</label>
-                          <input type="text" class="form-control" placeholder="Enter phone number">
-                        </div>
-                        <div class="mb-3">
                           <label for="password" class="form-label">Password</label>
                           <input type="password" class="form-control" placeholder="*********">
                         </div>
                         <div class="mb-3">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label for="password-confirm" class="form-label">Confirm Password</label>
+                            <input type="password-confirm" class="form-control" placeholder="*********">
+                          </div>
+                        <div class="mb-3">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" required>
                           <label class="form-check-label" for="flexCheckChecked">
                             <p class="wrapped">I agree to the <a href="" class="journalafricaterms">Terms and Conditions and Privacy Policy</a> </p>
                           </label>
