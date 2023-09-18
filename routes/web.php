@@ -73,8 +73,10 @@ Route::get('reader/profile/view', function(){
     return view('');
 });
 
-    Route::post('reader/register', [ReadersController::class, 'register'])->name('reader.register');
-    Route::post('reader/login', [ReadersController::class, 'login'])->name('reader.login');
+Route::post('reader/register', [ReadersController::class, 'register'])->name('reader.register');
+Route::post('reader/login', [ReadersController::class, 'login'])->name('reader.login');
+
+Route::get('reader/dasboard', [ReadersController::class, 'dashboard'])->name('reader.dashboard');
 
 
 /* Podcast Routes======================================= */

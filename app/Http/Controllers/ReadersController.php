@@ -23,7 +23,7 @@ class ReadersController extends Controller
 
      //   $check = $this->create($data);
         Reader::create($data);
-        return redirect()->route('reader.showLoginForm')->with(['message'=>'Registration successful. Please login']);
+        return redirect()->route('reader.showLoginForm')->with('message','Registration successful. Please login');
     }
 
 
@@ -41,11 +41,11 @@ class ReadersController extends Controller
         if(Auth::guard('reader')->attempt($credentials)){
 
 
-            return redirect()->intended('user/dashboard')->with(['message'=>'You are logged in successfully']);
+            return redirect()->intended()->with(['message'=>'You are logged in successfully']);
 
         }
 
-        return "Not working";
+        return back()->with(['message'=>'invalid username or password']);
      }
 
     public function logout(){
@@ -57,7 +57,7 @@ class ReadersController extends Controller
 
     public function dashboard(){
         if(Auth::guard('reader')->check()){
-            return view('news.readerdash');
+            return view('');
         }
         return redirect()->route('reader.login');
 

@@ -125,9 +125,11 @@
             </nav>
         </div>
     </div>
+
 @yield('h-content')
+
 @include('includes.news.footer')
-@include('sweetalert::alert')
+
 
 </body>
 

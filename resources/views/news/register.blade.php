@@ -5,9 +5,6 @@
 @section('h-content')
 
 <div class="signup-forms">
-    <div class="centere">
-        <h2 class="headings mb-3">Create Account</h2>
-    </div>
     <div class="container mb-5">
         <div class="row">
             <div class="col-md-6">
