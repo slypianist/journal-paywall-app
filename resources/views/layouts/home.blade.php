@@ -117,7 +117,7 @@
                       </li>
                     </ul>
                     <div class="d-flex">
-                        <button class="btn btn-nav">Login</button>
+                        <a href="{{route('reader.showLoginForm')}}"><button class="btn btn-nav">Login</button></a>
                       <button class="btn btn-nav">Subscribe</button>
                     </div>
                   </div>
@@ -127,6 +127,7 @@
     </div>
 @yield('h-content')
 @include('includes.news.footer')
+@include('sweetalert::alert')
 
 </body>
 

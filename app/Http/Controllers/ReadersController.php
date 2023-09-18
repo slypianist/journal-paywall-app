@@ -15,7 +15,7 @@ class ReadersController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email:unique:readers',
-            'password' => 'required|same:confirm-password'
+            'password' => 'required|min:6|confirmed'
         ]);
 
        $data=  $request->all();
@@ -23,7 +23,7 @@ class ReadersController extends Controller
 
      //   $check = $this->create($data);
         Reader::create($data);
-        return redirect('user/dashboard')->with(['message'=>'You are welcome']);
+        return redirect()->route('reader.showLoginForm')->with(['message'=>'Registration successful. Please login']);
     }
 
 

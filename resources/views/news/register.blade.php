@@ -31,26 +31,41 @@
             <div class="col-md-6">
                 <div class="journalafricanewsformed">
                     <div>
-                      <form class="registerform">
+                      <form class="registerform" action="{{route('reader.register')}}" method="POST">
                         <div class="mb-3">
-                          <label for="firstname" class="form-label">First Name</label>
-                          <input type="text" class="form-control" placeholder="Enter first Name">
+                          <label for="first_name" class="form-label">First Name</label>
+                          <input type="text" class="form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}" placeholder="Enter first Name" name="first_name">
+                          @error('first_name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                         </div>
                         <div class="mb-3">
-                          <label for="lastname" class="form-label">Last Name</label>
-                          <input type="text" class="form-control" placeholder="Enter last name">
+                          <label for="last_name" class="form-label">Last Name</label>
+                          <input type="text" class="form-control @error('last_name') is-invalid @enderror" value="{{ old('last_name') }}" placeholder="Enter last name" name="last_name">
+                          @error('last_name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                         </div>
                         <div class="mb-3">
                           <label for="email" class="form-label">Email</label>
-                          <input type="text" class="form-control" placeholder="Enter email">
+                          <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Enter email" name="email">
+                          @error('email')
+                          <div class="invalid-feedback">{{ $message }}</div>
+                      @enderror
                         </div>
                         <div class="mb-3">
                           <label for="password" class="form-label">Password</label>
-                          <input type="password" class="form-control" placeholder="*********">
+                          <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="*********" name="password">
+                          @error('password')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                         </div>
                         <div class="mb-3">
                             <label for="password-confirm" class="form-label">Confirm Password</label>
-                            <input type="password-confirm" class="form-control" placeholder="*********">
+                            <input type="password" class="form-control" placeholder="*********" name="password_confirmation">
+                            @error('password_confirmation')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                           </div>
                         <div class="mb-3">
                           <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" required>
@@ -59,9 +74,11 @@
                           </label>
                         </div>
                         <button type="submit" class="regsiter-btn">Sign up</button>
+                        @csrf
                       </form>
+
                       <p class="LoggedIn">
-                        Already have an account? <a href="login.html" class="signedIn">Sign In</a>
+                        Already have an account? <a href="{{route('reader.showLoginForm')}}" class="signedIn">Sign In</a>
                       </p>
                     </div>
                   </div>
