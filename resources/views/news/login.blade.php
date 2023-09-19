@@ -6,7 +6,7 @@
 
 <div class="signup-forms">
     <div class="centere">
-        @include('includes.news.alert')
+        @include('includes.news.error-alert')
         <h2 class="headings mb-3">Sign In</h2>
     </div>
     <div class="container mb-5">

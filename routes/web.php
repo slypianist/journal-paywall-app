@@ -76,8 +76,9 @@ Route::get('reader/profile/view', function(){
 Route::post('reader/register', [ReadersController::class, 'register'])->name('reader.register');
 Route::post('reader/login', [ReadersController::class, 'login'])->name('reader.login');
 
-Route::get('reader/dasboard', [ReadersController::class, 'dashboard'])->name('reader.dashboard');
-
+/* Route::get('reader/dasboard', [ReadersController::class, 'dashboard'])->name('reader.dashboard');
+Route::post('reader/logout', [ReadersController::class, 'logout'])->name('reader.logout');
+ */
 
 /* Podcast Routes======================================= */
 Route::get('podcast', [PodcastController::class, 'index'])->name('podcasts.all');
@@ -96,7 +97,7 @@ Route::get('podcasts/{podcast}', [PodcastController::class, 'show'])->name('podc
 });
 
 /* Readers Autheticated Routes........................ */
-    Route::post('user/logout', [ReaderController::class, 'logout'])->name('reader.logout');
+    Route::post('user/logout', [ReadersController::class, 'logout'])->name('reader.logout');
     Route::get('user/dashboard', [ReadersController::class, 'dashboard'])->name('reader.dashboard');
     Route::post('user/profile', [ReaderController::class, 'createProfile'])->name('readerprofile.create');
     Route::patch('user/profile/update', [ReaderController::class, 'updateProfile'])->name('readerprofile.update');

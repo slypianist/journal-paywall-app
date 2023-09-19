@@ -41,7 +41,7 @@ class ReadersController extends Controller
         if(Auth::guard('reader')->attempt($credentials)){
 
 
-            return redirect()->intended()->with(['message'=>'You are logged in successfully']);
+            return redirect()->route('reader.dashboard')->with(['message'=>'You are logged in successfully']);
 
         }
 
@@ -51,13 +51,13 @@ class ReadersController extends Controller
     public function logout(){
         Session::flush();
         Auth::guard('reader')->logout();
-        return redirect('user/login');
+        return redirect()->route('reader.login');
 
     }
 
     public function dashboard(){
         if(Auth::guard('reader')->check()){
-            return view('');
+            return view('reader.dashboard');
         }
         return redirect()->route('reader.login');
 
@@ -68,7 +68,7 @@ class ReadersController extends Controller
 
     $reader = Reader::where('id', $id);
 
-    return view('', compact($reader));
+    return view('reader.profile', compact($reader));
 
     }
 
@@ -82,6 +82,10 @@ class ReadersController extends Controller
 
         $reader->update();
 
+    }
 
+    public function subscription(){
+        Auth::guard('reader')->id();
+        // Subcription implementation.
     }
 }
