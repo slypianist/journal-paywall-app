@@ -57,18 +57,22 @@ class ReadersController extends Controller
 
     public function dashboard(){
         if(Auth::guard('reader')->check()){
-            return view('reader.dashboard');
+            $fname = auth('reader')->user()->first_name;
+
+            return view('reader.dashboard', compact('fname'));
         }
         return redirect()->route('reader.login');
 
     }
 
-    public function editProfile(){
-    $id =    Auth::guard('reader')->id();
+    public function showProfile(){
+ //   $id =    Auth::guard('reader')->id();
 
-    $reader = Reader::where('id', $id);
+ //   $reader = Reader::where('id', $id);
 
-    return view('reader.profile', compact($reader));
+ $fname =  auth('reader')->user()->first_name;
+
+    return view('reader.profile', compact($fname));
 
     }
 
@@ -84,8 +88,10 @@ class ReadersController extends Controller
 
     }
 
-    public function subscription(){
-        Auth::guard('reader')->id();
+    public function showSub(){
+       $fname =  auth('reader')->user()->first_name;
+       // $reader = Reader::where('id', $id)->get();
+        return view('reader.subscription', compact('fname'));
         // Subcription implementation.
     }
 }

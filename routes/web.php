@@ -99,8 +99,10 @@ Route::get('podcasts/{podcast}', [PodcastController::class, 'show'])->name('podc
 /* Readers Autheticated Routes........................ */
     Route::post('user/logout', [ReadersController::class, 'logout'])->name('reader.logout');
     Route::get('user/dashboard', [ReadersController::class, 'dashboard'])->name('reader.dashboard');
-    Route::post('user/profile', [ReaderController::class, 'createProfile'])->name('readerprofile.create');
-    Route::patch('user/profile/update', [ReaderController::class, 'updateProfile'])->name('readerprofile.update');
+    Route::get('user/profile', [ReadersController::class, 'showProfile'])->name('readerProfile.show');
+    Route::get('user/subscription', [ReadersController::class, 'showSub'])->name('readerSub.show');
+    Route::post('user/profile', [ReadersController::class, 'createProfile'])->name('readerprofile.create');
+    Route::patch('user/profile/update', [ReadersController::class, 'updateProfile'])->name('readerprofile.update');
     Route::get('category', [TestController::class, 'index']);
     /* End of Readers' Autheticated Routes........................ */
 
