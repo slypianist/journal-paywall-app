@@ -66,13 +66,14 @@ class ReadersController extends Controller
     }
 
     public function showProfile(){
- //   $id =    Auth::guard('reader')->id();
+    $id =    Auth::guard('reader')->id();
 
- //   $reader = Reader::where('id', $id);
+    $reader = Reader::find($id);
+   // dd($reader);
 
- $fname =  auth('reader')->user()->first_name;
+    $fname =  auth('reader')->user()->first_name;
 
-    return view('reader.profile', compact('fname'));
+    return view('reader.profile', compact('fname', 'reader'));
 
     }
 
