@@ -72,7 +72,7 @@ class ReadersController extends Controller
 
  $fname =  auth('reader')->user()->first_name;
 
-    return view('reader.profile', compact($fname));
+    return view('reader.profile', compact('fname'));
 
     }
 
