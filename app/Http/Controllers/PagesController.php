@@ -44,4 +44,8 @@ class PagesController extends Controller
         return view('pages.privacy-policy');
     }
 
+    public function subscribe(){
+        return view('news.subscribe');
+    }
+
 }

@@ -24,7 +24,7 @@
                     <ul class="links mt-2">
                         <li><a href="{{route('reader.showRegisterForm')}}">Register</a></li>
                         <li><a href="{{route('reader.showLoginForm')}}">Login</a></li>
-                        <li><a href="#">Contact</a></li>
+
                     </ul>
                 </div>
                {{--  <div class="flex-item mt-2">
@@ -118,7 +118,8 @@
                     </ul>
                     <div class="d-flex">
                         <a href="{{route('reader.showLoginForm')}}"><button class="btn btn-nav">Login</button></a>
-                      <button class="btn btn-nav">Subscribe</button>
+                        <a href="{{route('news.subscribe')}}"><button class="btn btn-nav">Subscribe</button></a>
+
                     </div>
                   </div>
                 </div>

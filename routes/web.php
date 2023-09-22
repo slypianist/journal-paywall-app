@@ -39,22 +39,9 @@ use App\Http\Controllers\GeneralSettingController;
     Route::get('copyright', [PagesController::class, 'copyRight']);
     Route::get('write-for-journal', [PagesController::class, 'writeForJournal']);
     Route::get('privacy-policy', [PagesController::class, 'privacyPolicy']);
+    Route::get('subscribe', [PagesController::class, 'subscribe'])->name('news.subscribe');
 
     Route::get('/categories', [HomeController::class, 'allCategories'])->name('show-categories');
-   // Route::get('categories/{category}', [HomeController::class, 'showCategory']);
-
- //   Route::get('/categories', [HomeController::class, 'showCategories'])->name('show-categories');
-
-/* Route::get('/about', function () {
-
-    return view('pages.about');
-})->name('about'); */
-
-
-/* Route::get('/contact', function () {
-    return view('pages.contact');
-})->name('contact');
- */
 
 Route::get('/random-post', [PostController::class, 'randomArticle']);
 
@@ -72,9 +59,7 @@ Route::get('reader/register',function(){
 Route::post('reader/register', [ReadersController::class, 'register'])->name('reader.register');
 Route::post('reader/login', [ReadersController::class, 'login'])->name('reader.login');
 
-/* Route::get('reader/dasboard', [ReadersController::class, 'dashboard'])->name('reader.dashboard');
-Route::post('reader/logout', [ReadersController::class, 'logout'])->name('reader.logout');
- */
+
 
 /* Podcast Routes======================================= */
 Route::get('podcast', [PodcastController::class, 'index'])->name('podcasts.all');
