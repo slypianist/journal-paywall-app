@@ -69,10 +69,6 @@ Route::get('reader/register',function(){
     return view('news.register');
 })->name('reader.showRegisterForm');
 
-Route::get('reader/profile/view', function(){
-    return view('');
-});
-
 Route::post('reader/register', [ReadersController::class, 'register'])->name('reader.register');
 Route::post('reader/login', [ReadersController::class, 'login'])->name('reader.login');
 
@@ -97,20 +93,25 @@ Route::get('podcasts/{podcast}', [PodcastController::class, 'show'])->name('podc
 });
 
 /* Readers Autheticated Routes........................ */
+Route::middleware('reader.auth')->group(function (){
+
     Route::post('user/logout', [ReadersController::class, 'logout'])->name('reader.logout');
     Route::get('user/dashboard', [ReadersController::class, 'dashboard'])->name('reader.dashboard');
     Route::get('user/profile', [ReadersController::class, 'showProfile'])->name('readerProfile.show');
     Route::get('user/subscription', [ReadersController::class, 'showSub'])->name('readerSub.show');
-    Route::post('user/profile', [ReadersController::class, 'createProfile'])->name('readerprofile.create');
+   // Route::post('user/profile', [ReadersController::class, 'createProfile'])->name('readerprofile.create');
     Route::patch('user/profile/update', [ReadersController::class, 'updateProfile'])->name('readerprofile.update');
     Route::get('category', [TestController::class, 'index']);
+
+
+});
+
     /* End of Readers' Autheticated Routes........................ */
 
 Route::middleware('auth')->group(function(){
 
 
     // Podcast routes....
-
     Route::get('admin/podcasts/create', [PodcastController::class, 'create'])->name('podcasts.create');
     Route::post('podcast', [PodcastController::class, 'store'])->name('podcast.store');
     Route::get('podcast/{podcast}/edit', [PodcastController::class, 'edit'])->name('podcast.edit');

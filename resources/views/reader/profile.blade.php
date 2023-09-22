@@ -23,6 +23,7 @@
                 <div class="title">
                   <h2>Settings</h2>
                 </div>
+
               </div>
               <!-- end col -->
               <div class="col-md-6">
@@ -33,6 +34,8 @@
                         <a href="{{route('reader.dashboard')}}">Dashboard</a>
                       </li>
                       <li class="breadcrumb-item active" aria-current="page">
+                        @include('includes.news.alert')
+
                         Settings
                       </li>
                     </ol>
@@ -59,7 +62,10 @@
                     <div class="col-12">
                       <div class="input-style-1">
                         <label>First Name</label>
-                        <input type="text" placeholder="First Name" name="first_name" value="{{$reader->first_name}}" />
+                        <input type="text" placeholder="First Name" name="first_name" value="{{$reader->first_name}}" class="@error('first_name') is-invalid @enderror">
+                        @error('first_name')
+                          <div class="invalid-feedback">{{ $message }}</div>
+                      @enderror
                       </div>
                     </div>
                     <div class="col-12">
@@ -78,7 +84,10 @@
                     <div class="col-12">
                       <div class="input-style-1">
                         <label>Password</label>
-                        <input type="password" name="password"/>
+                        <input type="password" name="password" class="@error('password') is-invalid @enderror"/>
+                        @error('password')
+                          <div class="invalid-feedback">{{ $message }}</div>
+                      @enderror
                       </div>
                     </div>
                     <div class="col-xxl-4">

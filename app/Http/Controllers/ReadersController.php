@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class ReadersController extends Controller
 {
@@ -66,8 +67,8 @@ class ReadersController extends Controller
     }
 
     public function showProfile(){
-    $id =    Auth::guard('reader')->id();
 
+    $id =    Auth::guard('reader')->id();
     $reader = Reader::find($id);
    // dd($reader);
 
@@ -77,15 +78,38 @@ class ReadersController extends Controller
 
     }
 
-    public function updateProfile(Request $request, Reader $reader){
-        Auth::guard('reader')->id();
-        $reader->email = $request->email;
-        if($request->password == ""){
-            $reader->save();
-        }
-        $reader->password = $request->password;
+    public function updateProfile(Request $request){
 
-        $reader->update();
+        $rules = [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+
+        ];
+
+        if($request->filled('password')){
+            $rules['password'] =  'min:6|confirmed';
+        }
+            $validator = Validator::make($request->all(), $rules);
+
+            if($validator->fails()){
+                return back()->withErrors($validator)->withInput();
+            }
+
+            $data = $request->all();
+
+        $id =   Auth::guard('reader')->id();
+        $reader = Reader::findorFail($id);
+
+        if($request->has('password')){
+            $data['password'] = Hash::make($request->password);
+
+        }
+
+        $reader->update($data);
+
+        return back()->with('message', 'Your profile updated successfully');
+
 
     }
 
