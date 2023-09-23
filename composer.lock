@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad6e072afdbae4dc251a0223a9e877ee",
+    "content-hash": "2b3160a51613902bd831666cbb475ca3",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -353,6 +353,198 @@
                 "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/v3.0.2"
             },
             "time": "2022-10-27T11:44:00+00:00"
+        },
+        {
+            "name": "digikraaft/laravel-paystack-subscription",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/digikraaft/laravel-paystack-subscription.git",
+                "reference": "3a2afc924af84d5faa843b432643e54955c447f1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/digikraaft/laravel-paystack-subscription/zipball/3a2afc924af84d5faa843b432643e54955c447f1",
+                "reference": "3a2afc924af84d5faa843b432643e54955c447f1",
+                "shasum": ""
+            },
+            "require": {
+                "digikraaft/laravel-paystack-webhooks": "^2.1",
+                "digikraaft/paystack-php": "^2.2",
+                "laravel/framework": "^9.0|^10.0",
+                "php": "^8.0|^8.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^7.6",
+                "phpunit/phpunit": "^9.5",
+                "vimeo/psalm": "^4.24"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Digikraaft\\PaystackSubscription\\PaystackSubscriptionServiceProvider"
+                    ],
+                    "aliases": {
+                        "PaystackSubscription": "Digikraaft\\PaystackSubscription\\PaystackSubscriptionFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Digikraaft\\PaystackSubscription\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Oladoyinbo",
+                    "email": "hello@digikraaft.ng",
+                    "homepage": "https://digikraaft.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple interface to Paystack's subscription billing services. It takes the pain of implementing subscription management off you.",
+            "homepage": "https://github.com/digikraaft/laravel-paystack-subscription",
+            "keywords": [
+                "billing",
+                "digikraaft",
+                "laravel-paystack-subscription",
+                "payment",
+                "paystack",
+                "subscription"
+            ],
+            "support": {
+                "issues": "https://github.com/digikraaft/laravel-paystack-subscription/issues",
+                "source": "https://github.com/digikraaft/laravel-paystack-subscription/tree/v2.1.0"
+            },
+            "time": "2023-03-04T10:27:24+00:00"
+        },
+        {
+            "name": "digikraaft/laravel-paystack-webhooks",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/digikraaft/laravel-paystack-webhooks.git",
+                "reference": "6fcf30e778fdb4f0461b1e519d85f72e4145b7c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/digikraaft/laravel-paystack-webhooks/zipball/6fcf30e778fdb4f0461b1e519d85f72e4145b7c8",
+                "reference": "6fcf30e778fdb4f0461b1e519d85f72e4145b7c8",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.3",
+                "laravel/framework": "^9.0|^10.0",
+                "php": "^8.0|^8.1|^8.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^7.0",
+                "phpunit/phpunit": "^9.0",
+                "vimeo/psalm": "^4.20"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Digikraaft\\PaystackWebhooks\\PaystackWebhooksServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Digikraaft\\PaystackWebhooks\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Oladoyinbo",
+                    "email": "dev@digikraaft.ng",
+                    "homepage": "https://digikraaft.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Handle Paystack webhooks in a Laravel application",
+            "homepage": "https://github.com/digikraaft/laravel-paystack-webhooks",
+            "keywords": [
+                "billing",
+                "digikraaft",
+                "laravel-paystack-webhooks",
+                "payment",
+                "paystack",
+                "webhooks"
+            ],
+            "support": {
+                "issues": "https://github.com/digikraaft/laravel-paystack-webhooks/issues",
+                "source": "https://github.com/digikraaft/laravel-paystack-webhooks/tree/v2.1.0"
+            },
+            "time": "2023-03-04T01:26:33+00:00"
+        },
+        {
+            "name": "digikraaft/paystack-php",
+            "version": "v2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/digikraaft/paystack-php.git",
+                "reference": "a8599c2c28ac6a79884306c34acdef28be6db5e4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/digikraaft/paystack-php/zipball/a8599c2c28ac6a79884306c34acdef28be6db5e4",
+                "reference": "a8599c2c28ac6a79884306c34acdef28be6db5e4",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^7.2.0",
+                "php": "^8.0|^8.1|^8.2"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "mockery/mockery": "^1.4",
+                "php-coveralls/php-coveralls": "^2.2",
+                "phpunit/phpunit": "^9.0",
+                "scrutinizer/ocular": "^1.7",
+                "vimeo/psalm": "^3.11"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Digikraaft\\Paystack\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Oladoyinbo",
+                    "email": "hello@digikraaft.ng",
+                    "homepage": "https://digikraaft.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Implementation of Paystack API",
+            "homepage": "https://github.com/digikraaft/paystack-php",
+            "keywords": [
+                "digikraaft",
+                "paystack",
+                "paystack-php"
+            ],
+            "support": {
+                "issues": "https://github.com/digikraaft/paystack-php/issues",
+                "source": "https://github.com/digikraaft/paystack-php/tree/v2.2.0"
+            },
+            "time": "2023-03-04T02:13:53+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -8643,5 +8835,5 @@
         "php": "^8.0.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.6.0"
 }
