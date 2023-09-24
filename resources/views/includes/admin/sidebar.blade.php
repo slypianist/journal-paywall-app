@@ -4,7 +4,7 @@
     <div class="app-brand demo">
         <a href="{{ route('dashboard') }}" class="app-brand-link">
             <span class="avatar flex-shrink-0">
-                <img src="https://journal.deepoceanconsults.com/wp-content/uploads/2023/02/cropped-tv-journal-e1675898570563.png">
+                <img src="{{asset('images/journal-africa-logo.png')}}">
             </span>
             {{-- <span class="app-brand-text demo menu-text fw-bolder ms-2">Dashrz</span> --}}
         </a>
@@ -130,6 +130,34 @@
                 <li class="menu-item {{ request()->is('subscribers') ? 'active' : '' }}">
                     <a href="{{ route('profile.edit') }}" class="menu-link">
                         <div data-i18n="Account">All Subscribers</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Plans -->
+
+        <li class="menu-header small text-uppercase">
+            <i class='menu-icon tf-icons bx bxs-dollar-circle' style="color: #ff0000"></i>
+            <span class="menu-header-text">Subscription Plans</span>
+        </li>
+
+        <li
+            class="menu-item {{ request()->is('plans') ? 'active open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-chevrons-right" style="color: #000000"></i>
+                <div data-i18n="Settings">Plans</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->is('plans') ? 'active' : '' }}">
+                    <a href="{{ route('plan.index') }}" class="menu-link">
+                        <div data-i18n="Account">View Plans</div>
+                    </a>
+                </li>
+
+                <li class="menu-item {{ request()->is('plan/create') ? 'active' : '' }}">
+                    <a href="{{ route('plan.create') }}" class="menu-link">
+                        <div data-i18n="Account">Create Plan</div>
                     </a>
                 </li>
             </ul>

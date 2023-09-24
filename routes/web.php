@@ -4,7 +4,7 @@ use App\Models\Post;
 use App\Models\GeneralSetting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Artesaos\SEOTools\Facades\SEOTools;
+//use Artesaos\SEOTools\Facades\SEOTools;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestController;
@@ -16,6 +16,7 @@ use App\Http\Controllers\ReadersController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GeneralSettingController;
+use App\Http\Controllers\PlanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,7 +85,7 @@ Route::middleware('reader.auth')->group(function (){
     Route::get('user/dashboard', [ReadersController::class, 'dashboard'])->name('reader.dashboard');
     Route::get('user/profile', [ReadersController::class, 'showProfile'])->name('readerProfile.show');
     Route::get('user/subscription', [ReadersController::class, 'showSub'])->name('readerSub.show');
-   // Route::post('user/profile', [ReadersController::class, 'createProfile'])->name('readerprofile.create');
+    //Route::post('user/profile', [ReadersController::class, 'createProfile'])->name('readerprofile.create');
     Route::patch('user/profile/update', [ReadersController::class, 'updateProfile'])->name('readerprofile.update');
     Route::get('category', [TestController::class, 'index']);
 
@@ -107,7 +108,7 @@ Route::middleware('auth')->group(function(){
     Route::get('podcasts/{podcast}/episodes/create', [EpisodeController::class, 'create'])->name('episodes.create');
     Route::post('podcasts/{podcast}/episodes', [EpisodeController::class, 'store'])->name('episodes.store');
     Route::get('podcasts/{podcast}/episodes/{episode}/edit', [EpisodeController::class, 'edit'])->name('episodes.edit');
-    Route::put('podcasts/{podcast}/episodes/{episode}', [EpisodeController::class, 'update'])->name('episodes.update');
+    Route::patch('podcasts/{podcast}/episodes/{episode}', [EpisodeController::class, 'update'])->name('episodes.update');
     Route::delete('podcasts/{podcast}/episodes/{episode}', [EpisodeController::class, 'destroy'])->name('episodes.destroy');
 
     // Admin Profile Routes....
@@ -125,6 +126,16 @@ Route::middleware('auth')->group(function(){
     Route::get('pod/checkPodcastSlug', [PodcastController::class, 'checkPodcastSlug'])->name('checkPodcastSlug');
 
     Route::get('manage-sub', [])->name('manage.sub');
+
+    //Subscription Plans
+
+    Route::get('plans', [PlanController::class, 'index'])->name('plan.index');
+    Route::get('plan/create', [PlanController::class, 'create'])->name('plan.create');
+    Route::post('plan', [PlanController::class, 'store'])->name('plan.store');
+    Route::get('plan/{plan}/edit', [PlanController::class, 'edit'])->name('plan.edit');
+    Route::patch('plan/{plan}', [PlanController::class, 'update'])->name('plan.update');
+    Route::delete('plan/{plan}', [PlanController::class, 'delete'])->name('plan.delete');
+
 
     Route::resource('authors', AuthorController::class);
 });

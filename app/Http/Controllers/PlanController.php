@@ -4,12 +4,35 @@ namespace App\Http\Controllers;
 
 use App\Models\Plan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 
 class PlanController extends Controller
 {
-    public function create(Request $request){
+
+    public function index(){
+        $plans = DB::table('plans')
+                ->select('name')
+                ->select('planCode')
+                ->select('interval')
+                ->select('amount')
+                ->select('created_at')
+                ->get();
+
+                $user = Auth::user();
+
+        return view('pages.admin.plan', compact('plans', 'user'));
+
+    }
+
+    public function create(){
+        $user = Auth::user();
+        return view('pages.admin.create-plan', compact('user'));
+    }
+
+    public function store(Request $request){
 
         $request->validate([
             'name' => 'required',
