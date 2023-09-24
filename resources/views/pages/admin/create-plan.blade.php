@@ -22,7 +22,7 @@
                         </div>
 
                     @endif
-                        <form action="{{route('podcast.store')}}" method="POST" class="mb-5" enctype="multipart/form-data">
+                        <form action="{{route('plan.store')}}" method="POST" class="mb-5" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group mb-3">

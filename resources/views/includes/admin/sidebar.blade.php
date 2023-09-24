@@ -143,13 +143,13 @@
         </li>
 
         <li
-            class="menu-item {{ request()->is('plans') ? 'active open' : '' }}">
+            class="menu-item {{ request()->is('plan*') ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-chevrons-right" style="color: #000000"></i>
                 <div data-i18n="Settings">Plans</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item {{ request()->is('plans') ? 'active' : '' }}">
+                <li class="menu-item {{ request()->is('plan') ? 'active' : '' }}">
                     <a href="{{ route('plan.index') }}" class="menu-link">
                         <div data-i18n="Account">View Plans</div>
                     </a>

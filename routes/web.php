@@ -129,7 +129,7 @@ Route::middleware('auth')->group(function(){
 
     //Subscription Plans
 
-    Route::get('plans', [PlanController::class, 'index'])->name('plan.index');
+    Route::get('plan', [PlanController::class, 'index'])->name('plan.index');
     Route::get('plan/create', [PlanController::class, 'create'])->name('plan.create');
     Route::post('plan', [PlanController::class, 'store'])->name('plan.store');
     Route::get('plan/{plan}/edit', [PlanController::class, 'edit'])->name('plan.edit');

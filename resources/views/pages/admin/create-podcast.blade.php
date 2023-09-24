@@ -29,7 +29,7 @@
                                 <label for="name" class="form-label">Podcast Title</label>
                                 <input type="text" class="form-control @error('title') is-invalid @enderror"
                                     name="title" id="title" required placeholder="Podcast Title" autofocus
-                                    value="{{ old('title') }}">
+                                    value="{{ old('title') }}" required>
                                 @error('title')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -65,7 +65,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <button type="submit" class="btn btn-primary">Create Podcast</button>
+                                <button type="submit" class="btn btn-dark">Create Podcast</button>
                             </div>
                         </form>
 

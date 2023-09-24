@@ -15,16 +15,20 @@
                     </ul>
 
                     <div class="container">
+
+
                         <div class="row align-items-start">
+                            @foreach ($plans as $plan)
                             <div class="col">
                                 <div class="card" style="width: 18rem;">
 
                                     <div class="card-body">
-                                      <h5 class="card-title">Card title</h5>
-                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                      <h5 class="card-title text-danger">{{$plan->name}}</h5>
+                                      <p class="card-text">{{$plan->description}}</p>
+                                      <p class="card-text"><b>₦ {{$plan->amount}}</b></p>
                                         <div class="row">
                                             <div class="col-4">
-                                                <a href="#" class="btn btn-dark">Edit</a>
+                                                <a href="{{route('plan.edit', $plan->id)}}" class="btn btn-dark">Edit</a>
                                             </div>
                                             <div class="col-8">
                                                 <a href="#" class="btn btn-danger float-end">Delete</a>
@@ -34,48 +38,12 @@
                                     </div>
                                   </div>
                             </div>
+                            @endforeach
 
-                            <div class="col">
-                                <div class="card" style="width: 18rem;">
-
-                                    <div class="card-body">
-                                      <h5 class="card-title">Card title</h5>
-                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
-                                      <div class="row">
-                                        <div class="col-4">
-                                            <a href="#" class="btn btn-dark">Edit</a>
-                                        </div>
-                                        <div class="col-8">
-                                            <a href="#" class="btn btn-danger float-end">Delete</a>
-                                        </div>
-
-                                      </div>
-
-                                    </div>
-                                  </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="card" style="width: 18rem;">
-
-                                    <div class="card-body">
-                                      <h5 class="card-title">Card title</h5>
-                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                      <div class="row">
-                                        <div class="col-4">
-                                            <a href="#" class="btn btn-dark">Edit</a>
-                                        </div>
-                                        <div class="col-8">
-                                            <a href="#" class="btn btn-danger float-end">Delete</a>
-                                        </div>
-
-                                      </div>
-
-                                    </div>
-                                  </div>
-                            </div>
                         </div>
+
+
+
                     </div>
 
             </div>
