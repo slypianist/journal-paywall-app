@@ -18,6 +18,8 @@
 
 
                         <div class="row align-items-start">
+                            @if ($plans==NULL)
+
                             @foreach ($plans as $plan)
                             <div class="col">
                                 <div class="card" style="width: 18rem;">
@@ -39,6 +41,13 @@
                                   </div>
                             </div>
                             @endforeach
+
+                            @else
+
+                            <p>No plan  has been created.</p>
+
+                            @endif
+
 
                         </div>
 

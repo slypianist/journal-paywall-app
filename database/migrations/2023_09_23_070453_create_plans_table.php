@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('planCode');
-            $table->decimal('amount', 10,2);
+            $table->string('amount', 10);
             $table->string('currency')->default('NGN');
             $table->enum('interval',['daily', 'weekly','monthly','quarterly','biannually','annually']);
             $table->text('description');

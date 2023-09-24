@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
 {
@@ -45,7 +46,9 @@ class PagesController extends Controller
     }
 
     public function subscribe(){
-        return view('news.subscribe');
+        $plans = DB::table('plans')
+                    ->select('name', 'planCode', 'amount', 'interval', 'description')->get();
+        return view('news.subscribe', compact('plans'));
     }
 
 }
