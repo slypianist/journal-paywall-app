@@ -16,7 +16,9 @@ use App\Http\Controllers\ReadersController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GeneralSettingController;
+use App\Http\Controllers\PaystackWebhookController;
 use App\Http\Controllers\PlanController;
+use App\Http\Controllers\SubscriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,6 +90,7 @@ Route::middleware('reader.auth')->group(function (){
     //Route::post('user/profile', [ReadersController::class, 'createProfile'])->name('readerprofile.create');
     Route::patch('user/profile/update', [ReadersController::class, 'updateProfile'])->name('readerprofile.update');
     Route::get('category', [TestController::class, 'index']);
+    Route::get('test/sub', [SubscriptionController::class, 'newSubscription']);
 
 
 });
@@ -104,7 +107,7 @@ Route::middleware('auth')->group(function(){
     Route::patch('podcast/{podcast}', [PodcastController::class, 'update'])->name('podcast.update');
     Route::delete('podcast/{podcast}', [PodcastController::class, 'destroy'])->name('podcast.destroy');
 
-    // EPisodes Routes....
+    // Episodes Routes....
     Route::get('podcasts/{podcast}/episodes/create', [EpisodeController::class, 'create'])->name('episodes.create');
     Route::post('podcasts/{podcast}/episodes', [EpisodeController::class, 'store'])->name('episodes.store');
     Route::get('podcasts/{podcast}/episodes/{episode}/edit', [EpisodeController::class, 'edit'])->name('episodes.edit');
@@ -135,6 +138,11 @@ Route::middleware('auth')->group(function(){
     Route::get('plan/{plan}/edit', [PlanController::class, 'edit'])->name('plan.edit');
     Route::patch('plan/{plan}', [PlanController::class, 'update'])->name('plan.update');
     Route::delete('plan/{plan}', [PlanController::class, 'delete'])->name('plan.delete');
+
+    // Paystack Webhook
+
+    Route::post('paystack/webhook', [PaystackWebhookController::class, 'handleWebhook'])->name('paystack.webhook');
+
 
 
     Route::resource('authors', AuthorController::class);

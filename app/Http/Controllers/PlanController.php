@@ -72,7 +72,7 @@ class PlanController extends Controller
                 'name' => $result['data']['name'],
                 'planCode' => $result['data']['plan_code'],
                 'interval' => $result['data']['interval'],
-                'amount' => $result['data']['amount'],
+                'amount' => $result['data']['amount']/100,
                 'currency' => $result['data']['currency'],
                 'description' => $result['data']['description'],
 
