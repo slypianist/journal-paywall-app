@@ -13,15 +13,33 @@ class PlanController extends Controller
 {
 
     public function index(){
-        $plans = DB::table('plans')
-                ->select('id','name', 'planCode','amount','created_at', 'description')
-                ->get();
+            $user = Auth::user();
 
-                $user = Auth::user();
+                $url = env('PAYSTACK_PAYMENT_URL').'/plan?status=active';
 
-        return view('pages.admin.plan', compact('plans', 'user'));
+                try {
+                    $response = Http::withHeaders([
+                        'Authorization' => 'Bearer ' . env('PAYSTACK_SECRET_KEY'),
+                        'Cache-Control' => 'no-cache',
+                    ])->get($url);
+
+                    if ($response->successful()) {
+                        $plans = $response->json();
+                        // Pass the $plans data to your view
+                        return view('pages.admin.plan', compact('plans', 'user'));
+                    } else {
+                        return response('Failed to fetch plans from Paystack', 500);
+                    }
+                } catch (\Exception $e) {
+                    return response('An error occurred: ' . $e->getMessage(), 500);
+                }
+
+
+
+      //
 
     }
+
 
     public function create(){
         $user = Auth::user();
@@ -67,8 +85,8 @@ class PlanController extends Controller
 
             $result = $response->json();
 
-        if(isset($result['status'])&& $result['status']=='success'){
-            Plan::create([
+        if(isset($result['status']) && $result['status']=='success'){
+            /* Plan::create([
                 'name' => $result['data']['name'],
                 'planCode' => $result['data']['plan_code'],
                 'interval' => $result['data']['interval'],
@@ -76,8 +94,7 @@ class PlanController extends Controller
                 'currency' => $result['data']['currency'],
                 'description' => $result['data']['description'],
 
-            ]);
-
+            ]); */
             return redirect()->route('plan.index')->with(['success'=> 'Plan created successfully.']);
 
         }
@@ -88,7 +105,7 @@ class PlanController extends Controller
         }
 
         }else{
-            return back()->with('info', 'Request not sccussful');
+            return back()->with('info', 'Request not successful');
         }
 
 
@@ -96,30 +113,49 @@ class PlanController extends Controller
     }
 
     public function edit(Request $request, Plan $plan){
+        $id = 947661;
+       // dd($id);
+
         $user = Auth::user();
-        return view('pages.admin.edit-plan', compact('plan', 'user'));
+
+        $url = env('PAYSTACK_PAYMENT_URL').'/plan/'.$id;
+
+        try {
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . env('PAYSTACK_SECRET_KEY'),
+                'Cache-Control' => 'no-cache',
+            ])->get($url);
+
+            if ($response->successful()) {
+                $plan = $response->json();
+             //   dd($plans);
+                // Pass the $plans data to your view
+                return view('pages.admin.edit-plan', compact('plan', 'user'));
+            } else {
+                return response('Failed to fetch plans from Paystack', 500);
+            }
+        } catch (\Exception $e) {
+            return response('An error occurred: ' . $e->getMessage(), 500);
+        }
 
     }
 
-    public function update( Request $request, Plan $plan){
+    public function update( Request $request){
         $request->validate([
             'name' => 'required',
             'interval' => 'required|string',
             'amount' => 'required|numeric',
             'description' => 'nullable|string'
-
         ]);
 
-
-       /*  $url = config('paystack.api_url');
-
-      dd($url); */
-
+        //Get parameters
+        $id = $request->input('id');
         $name = $request->name;
         $interval = $request->interval;
-        $amount = $request->amount*100;
+        $amount = $request->amount;
         $description = $request->description;
 
+        //Query fields
         $fields = [
             'name' => $name,
             'interval' => $interval,
@@ -127,34 +163,28 @@ class PlanController extends Controller
             'description' => $description,
         ];
 
-        $url = env('PAYSTACK_PAYMENT_URL').'/plan';
-
+        $url = env('PAYSTACK_PAYMENT_URL').'/plan/'.$id;
 
 
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . env('PAYSTACK_SECRET_KEY'),
             'Cache-Control' => 'no-cache',
-        ])->patch($url, $fields);
+        ])->put($url, $fields);
 
         $result = $response->json();
-        $result;
 
-        $plan->update([
-            'name' => $result['data']['name'],
-            'planCode' => $result['data']['plan_code'],
-            'interval' => $result['data']['interval'],
-            'amount' => $result['data']['amount'],
-            'currency' => $result['data']['currency'],
-            'description' => $result['data']['description'],
+        if(isset($result['status']) && $result['status']=='success'){
 
-        ]);
+            return redirect()->route('plan.index')->with(['success'=> 'Plan updated successfully.']);
 
-        return response()->json(['message'=> 'Plan edited successfully.', 'plan'=> $plan]);
+        }
+
+        else{
+
+            return back()->with('error','An error occurred.');
+        }
 
     }
 
-    public function delete(){
-        // Delete
-    }
 
 }

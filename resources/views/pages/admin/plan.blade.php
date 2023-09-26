@@ -18,23 +18,21 @@
 
 
                         <div class="row align-items-start">
-                            @if ($plans==NULL)
+                            @if ($plans['data']!==NULL)
 
-                            @foreach ($plans as $plan)
+                            @foreach ($plans['data'] as $plan)
                             <div class="col">
                                 <div class="card" style="width: 18rem;">
 
                                     <div class="card-body">
-                                      <h5 class="card-title text-danger">{{$plan->name}}</h5>
-                                      <p class="card-text">{{$plan->description}}</p>
-                                      <p class="card-text"><b>₦ {{$plan->amount}}</b></p>
+                                      <h5 class="card-title text-danger">{{$plan['name']}}</h5>
+                                      <p class="card-text">{{$plan['description']}}</p>
+                                      <p class="card-text"><b>₦ {{$plan['amount']}}</b></p>
                                         <div class="row">
-                                            <div class="col-4">
-                                                <a href="{{route('plan.edit', $plan->id)}}" class="btn btn-dark">Edit</a>
+                                            <div class="col-6 float-center">
+                                                <a href="{{route('plan.edit', $plan['id'])}}" class="btn btn-dark">Edit</a>
                                             </div>
-                                            <div class="col-8">
-                                                <a href="#" class="btn btn-danger float-end">Delete</a>
-                                            </div>
+
 
                                       </div>
                                     </div>
@@ -44,7 +42,7 @@
 
                             @else
 
-                            <p>No plan  has been created.</p>
+                            <p>No plan has bee created.</p>
 
                             @endif
 

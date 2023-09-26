@@ -90,7 +90,7 @@ Route::middleware('reader.auth')->group(function (){
     //Route::post('user/profile', [ReadersController::class, 'createProfile'])->name('readerprofile.create');
     Route::patch('user/profile/update', [ReadersController::class, 'updateProfile'])->name('readerprofile.update');
     Route::get('category', [TestController::class, 'index']);
-    Route::get('test/sub', [SubscriptionController::class, 'newSubscription']);
+    Route::post('subscribe', [SubscriptionController::class, 'newSubscription'])->name('subscribe');
 
 
 });
@@ -135,9 +135,8 @@ Route::middleware('auth')->group(function(){
     Route::get('plan', [PlanController::class, 'index'])->name('plan.index');
     Route::get('plan/create', [PlanController::class, 'create'])->name('plan.create');
     Route::post('plan', [PlanController::class, 'store'])->name('plan.store');
-    Route::get('plan/{plan}/edit', [PlanController::class, 'edit'])->name('plan.edit');
-    Route::patch('plan/{plan}', [PlanController::class, 'update'])->name('plan.update');
-    Route::delete('plan/{plan}', [PlanController::class, 'delete'])->name('plan.delete');
+    Route::get('plan/edit', [PlanController::class, 'edit'])->name('plan.edit');
+    Route::put('plan/{id}', [PlanController::class, 'update'])->name('plan.update');
 
     // Paystack Webhook
 

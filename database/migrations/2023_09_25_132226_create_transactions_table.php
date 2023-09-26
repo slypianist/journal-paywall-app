@@ -15,9 +15,19 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->string('amount');
+            $table->string('reference');
+            $table->string('email');
+            $table->string('authCode');
+            $table->string('cardDetails');
+            $table->string('cardType');
+            $table->string('bankName');
             $table->timestamps();
         });
     }
+
+
+
 
     /**
      * Reverse the migrations.

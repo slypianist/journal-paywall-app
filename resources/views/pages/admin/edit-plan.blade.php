@@ -22,14 +22,14 @@
                         </div>
 
                     @endif
-                        <form action="{{route('podcast.store')}}" method="POST" class="mb-5" enctype="multipart/form-data">
+                        <form action="{{route('plan.update', [$plan['data']['id']])}}" method="POST" class="mb-5" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group mb-3">
                                 <label for="name" class="form-label">Plan Name</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"
                                     name="name" id="name" required placeholder="Plan Title" autofocus
-                                    value="{{ $plan->name }}">
+                                    value="{{ $plan['data']['name'] }}">
                                 @error('name')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -38,7 +38,7 @@
                             <div class="form-group mb-3">
                                 <label for="amount" class="form-label">Amount</label>
                                 <input type="text" class="form-control @error('amount') is-invalid @enderror"
-                                    name="amount" id="amount" required value="{{ $plan->amount }}" placeholder=" eg. 20000">
+                                    name="amount" id="amount" required value="{{ $plan['data']['amount'] }}" placeholder=" eg. 20000">
                                 @error('amount')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -46,11 +46,11 @@
 
                             <div class="form-group mb-3">
                                 <label for="interval" class="form-label">Duration</label>
-                                <select name="interval" id="interval" class="form-control @error('interval') is-invalid @enderror" required>
-                                    <option value="" selected> Plan Interval</option>
-                                    <option value="monthly">Monthly</option>
-                                    <option value="quarterly">Quarterly</option>
-                                    <option value="annually">Annually</option>
+                                <select name="interval" id="interval" class="form-control">
+                                    <option value="weekly" @if ($plan['data']['interval'] === 'weekly') selected @endif>Weekly</option>
+                                    <option value="monthly" @if ($plan['data']['interval'] === 'monthly') selected @endif>Monthly</option>
+                                    <option value="quarterly" @if ($plan['data']['interval'] === 'quarterly') selected @endif>Quarterly</option>
+                                    <option value="annually" @if ($plan['data']['interval'] === 'annually') selected @endif>Annually</option>
                                 </select>
                                 @error('interval')
                                     <div class="text-danger">{{ $message }}</div>
@@ -59,15 +59,19 @@
 
                             <div class="form-group mb-3">
                                 <label for="body" class="form-label">Description</label>
-                                <textarea name="description" id="body" class="form-control" rows="5" cols="40">{{$plan->description}}</textarea>
+                                <textarea name="description" id="body" class="form-control" rows="5" cols="40">{{$plan['data']['description']}}</textarea>
                                 @error('description')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
 
+                            <input type="hidden" name="id" value="{{ $plan['data']['id'] }}">
+
                             <div class="form-group mb-3">
                                 <button type="submit" class="btn btn-dark">Update Plan</button>
                             </div>
+                            @csrf
+                            @method('PUT')
                         </form>
 
                     </div>

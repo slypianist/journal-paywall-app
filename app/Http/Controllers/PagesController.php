@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class PagesController extends Controller
 {
@@ -46,9 +47,23 @@ class PagesController extends Controller
     }
 
     public function subscribe(){
-        $plans = DB::table('plans')
-                    ->select('name', 'planCode', 'amount', 'interval', 'description')->get();
+       /*  $plans = DB::table('plans')
+                    ->select('name', 'planCode', 'amount', 'interval', 'description')->get(); */
+                    $url = env('PAYSTACK_PAYMENT_URL').'/plan?status=active';
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . env('PAYSTACK_SECRET_KEY'),
+            'Cache-Control' => 'no-cache',
+        ])->get($url);
+
+        if($response->successful()){
+
+            $plans = $response->json();
+
+
         return view('news.subscribe', compact('plans'));
     }
+
+}
 
 }
