@@ -25,4 +25,8 @@ class SubscriptionController extends Controller
     return redirect()->away($transactionResponse['data']['authorization_url']);
 
     }
+
+    public function cancelSubscription(){
+
+    }
 }
