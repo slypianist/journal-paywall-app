@@ -11,8 +11,9 @@ class SubscriptionController extends Controller
 {
     public function newSubscription(Request $request){
         $url = env('PAYSTACK_PAYMENT_URL').'/transaction/initialize';
-        $
+
     $email = Auth::guard('reader')->user()->email;
+
     $planCode = $request->plan;
     $amount = $request->amount;
 
