@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reader;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -116,7 +117,25 @@ class ReadersController extends Controller
     public function showSub(){
        $fname =  auth('reader')->user()->first_name;
        // $reader = Reader::where('id', $id)->get();
-        return view('reader.subscription', compact('fname'));
-        // Subcription implementation.
+      //  return view('reader.subscription', compact('fname'));
+        // Subcription implementation. */
+
+        $user = Auth::guard('reader')->user();
+    //   $subscriptions = Subscription::where('customerEmail', $user->email)->get();
+
+     $subscriptions = [];
+
+
+
+     return view('reader.subscription', compact('fname', 'subscriptions'));
+    }
+
+    public function transactions(){
+        $fname =  auth('reader')->user()->first_name;
+
+        $transactions = [];
+
+        return view('reader.transactions', compact('fname', 'transactions'));
+
     }
 }

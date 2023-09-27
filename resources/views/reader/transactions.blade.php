@@ -8,11 +8,11 @@
             <div class="row align-items-center">
               <div class="col-md-6">
                 <div class="title">
-                  <h2>Subscription Details</h2>
+                  <h2>Transaction Details</h2>
 
-                  @if ($subscriptions==NULL)
+                  @if ($transactions==NULL)
 
-                  <p>You don't have an active subscription.</p> <a href="{{route('news.subscribe')}}">Buy a subscription plan to subscribe</a>
+                  <p>You don't have any transaction at the moment.</p>
 
                   @else
 
@@ -42,7 +42,7 @@
                         <a href="{{route('reader.dashboard')}}">Dashboard</a>
                       </li>
                       <li class="breadcrumb-item active" aria-current="page">
-                        Subscription
+                        Transactions
                       </li>
                     </ol>
                   </nav>

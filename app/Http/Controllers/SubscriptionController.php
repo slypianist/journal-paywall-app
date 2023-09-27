@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -27,6 +28,17 @@ class SubscriptionController extends Controller
     }
 
     public function cancelSubscription(){
+
+    }
+
+    public function fetchSubscription(){
+       $user = Auth::guard('reader')->user();
+       $subscriptions = Subscription::where('status', 'active')
+                           ->where('customerEmail', $user->email)
+                           ->get();
+
+       return view('reader.subscription', compact('subscriptions'));
+
 
     }
 }

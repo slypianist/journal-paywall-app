@@ -70,7 +70,7 @@
                 <a href="{{route('readerSub.show')}}"> Manage subscriptions </a>
               </li>
               <li>
-                <a href="blank-page.html"> Payment history </a>
+                <a href="{{route('reader.transaction')}}"> Payment history </a>
               </li>
             </ul>
           </li>
@@ -207,6 +207,7 @@
       <!-- ========== header end ========== -->
       @yield('dashboard-page')
     </main>
+    @include('sweetalert::alert')
     @include('includes.reader.dashboard-footer')
   </body>
 </html>

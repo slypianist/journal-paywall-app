@@ -91,6 +91,7 @@ Route::middleware('reader.auth')->group(function (){
     Route::patch('user/profile/update', [ReadersController::class, 'updateProfile'])->name('readerprofile.update');
     Route::get('category', [TestController::class, 'index']);
     Route::post('subscribe', [SubscriptionController::class, 'newSubscription'])->name('subscribe');
+    Route::get('user/transaction', [ReadersController::class, 'transactions'])->name('reader.transaction');
 
 
 });
@@ -128,7 +129,7 @@ Route::middleware('auth')->group(function(){
     Route::get('categories/checkCategorySlug', [CategoryController::class, 'checkCategorySlug'])->name('checkCategorySlug');
     Route::get('pod/checkPodcastSlug', [PodcastController::class, 'checkPodcastSlug'])->name('checkPodcastSlug');
 
-    Route::get('manage-sub', [])->name('manage.sub');
+    Route::get('manage-sub', [TestController::class, 'index'])->name('manage.sub');
 
     //Subscription Plans
 

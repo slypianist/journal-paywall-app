@@ -15,15 +15,16 @@ return new class extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('reader_id');
-            $table->string('name');
-            $table->string('paystack_id')->unique();
-            $table->string('paystack_status');
-            $table->string('paystack_plan')->nullable();
-            $table->integer('quantity')->nullable();
-            $table->string('email_token')->nullable();
-            $table->string('authorization')->nullable();
+          //  $table->unsignedBigInteger('reader_id');
+            $table->integer('amount');
+            $table->string('status');
+            $table->string('interval');
+            $table->string('planName')->nullable();
+            $table->integer('planCode')->nullable();
+            $table->string('CustomerEmail')->nullable();
+            $table->string('subscriptionCode')->nullable();
             $table->timestamp('ends_at')->nullable();
+            $table->string('authCode');
             $table->timestamps();
         });
     }

@@ -26,16 +26,7 @@ class AuthorController extends Controller
         $user =  Auth::user();
         $authors = User::all();
 
-        // General Setting of the website
-       /*  $general_setting = GeneralSetting::first();
-
-        SEOTools::setTitle("Authors | Dashboard");
-        SEOTools::setDescription("$general_setting->site_meta_description");
-        SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'webiste');
- */
         return view('pages.admin.authors', [
-            /* "general_settings" => GeneralSetting::first(), */
             "authors" => $authors,
             "user" => $user
         ]);
@@ -56,15 +47,7 @@ class AuthorController extends Controller
         $post = Post::findOrFail($id);
         $user = $user->findOrFail($id);
 
-        /* SEOTools::setTitle("Edit Author $user->name | Dashboard");
-        SEOTools::setDescription("$general_setting->site_meta_description");
-        SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'webiste');
- */
         return view('pages.admin.edit-authors')->with([
-            /* 'site_title' => $general_setting->site_title,
-            "logo_image" => $general_setting->logo_image,
-            "footer_copyright" => $general_setting->footer_copyright, */
             "post" => $post,
             "categories" => Category::all(),
             "author" => $user,
