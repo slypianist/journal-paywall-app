@@ -17,7 +17,7 @@ class SubscriptionController extends Controller
     $planCode = $request->plan;
     $amount = $request->amount;
 
-    dd($planCode);
+   // dd($planCode);
 
     // Initialize a payment transaction with Paystack
     $transactionResponse = Http::withHeaders([
