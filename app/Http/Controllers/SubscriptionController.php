@@ -11,12 +11,16 @@ class SubscriptionController extends Controller
 {
     public function newSubscription(Request $request){
         $url = env('PAYSTACK_PAYMENT_URL').'/transaction/initialize';
+        $
     $email = Auth::guard('reader')->user()->email;
     $planCode = $request->plan;
     $amount = $request->amount;
 
     // Initialize a payment transaction with Paystack
-    $transactionResponse = Http::post($url, [
+    $transactionResponse = Http::withHeaders([
+        'Authorization' => 'Bearer ' . env('PAYSTACK_SECRET_KEY'),
+        'Cache-Control' => 'no-cache',
+    ])->post($url, [
         'email' => $email,
         'amount' => $amount, // Get plan amount based on the selected plan
         'plan' => $planCode,
