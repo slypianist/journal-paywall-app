@@ -33,11 +33,6 @@ class PlanController extends Controller
                 } catch (\Exception $e) {
                     return response('An error occurred: ' . $e->getMessage(), 500);
                 }
-
-
-
-      //
-
     }
 
 

@@ -47,9 +47,8 @@ class PagesController extends Controller
     }
 
     public function subscribe(){
-       /*  $plans = DB::table('plans')
-                    ->select('name', 'planCode', 'amount', 'interval', 'description')->get(); */
-                    $url = env('PAYSTACK_PAYMENT_URL').'/plan?status=active';
+
+        $url = env('PAYSTACK_PAYMENT_URL').'/plan?status=active';
 
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . env('PAYSTACK_SECRET_KEY'),
@@ -59,6 +58,8 @@ class PagesController extends Controller
         if($response->successful()){
 
             $plans = $response->json();
+
+          //  dd($plans);
 
 
         return view('news.subscribe', compact('plans'));

@@ -21,7 +21,7 @@
                 </p>
                 <h4 class="priced">	&#8358;{{$plan['amount']}}</h4>
                 <form action="{{route('subscribe')}}" method="POST">
-                <input type="hidden" name="plan" value="{{$plan['name']}}">
+                <input type="hidden" name="plan" value="{{$plan['plan_code']}}">
             <input type="hidden" name="description" value="{{$plan['description']}}">
             <input type="hidden" name="amount" value="{{$plan['amount']}}">
 

@@ -17,6 +17,8 @@ class SubscriptionController extends Controller
     $planCode = $request->plan;
     $amount = $request->amount;
 
+    dd($planCode);
+
     // Initialize a payment transaction with Paystack
     $transactionResponse = Http::withHeaders([
         'Authorization' => 'Bearer ' . env('PAYSTACK_SECRET_KEY'),
@@ -26,6 +28,8 @@ class SubscriptionController extends Controller
         'amount' => $amount, // Get plan amount based on the selected plan
         'plan' => $planCode,
     ])->json();
+
+    dd($transactionResponse);
 
     // Redirect the user to the Paystack payment gateway
     return redirect()->away($transactionResponse['data']['authorization_url']);
