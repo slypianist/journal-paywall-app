@@ -29,7 +29,7 @@ class SubscriptionController extends Controller
         'plan' => $planCode,
     ])->json();
 
-    dd($transactionResponse);
+   // dd($transactionResponse);
 
     // Redirect the user to the Paystack payment gateway
     return redirect()->away($transactionResponse['data']['authorization_url']);
