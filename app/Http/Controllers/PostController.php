@@ -54,7 +54,7 @@ class PostController extends Controller
     {
         $data = $request->all();
 
-        dd($data);
+     //   dd($data);
 
         // Save user_id from the logged in user id
         $data['user_id'] = auth()->user()->id;
