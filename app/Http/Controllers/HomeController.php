@@ -22,6 +22,7 @@ class HomeController extends Controller
 
        //Get random post
        $post = Post::all();
+       dd($post);
         $random_id = $post->random()->id;
         $randomPost = Post::where('id', $random_id)->first();
      // dd($randomPost);

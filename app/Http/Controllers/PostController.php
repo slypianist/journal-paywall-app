@@ -54,7 +54,7 @@ class PostController extends Controller
     {
         $data = $request->all();
 
-       // dd($data);
+        dd($data);
 
         // Save user_id from the logged in user id
         $data['user_id'] = auth()->user()->id;
@@ -95,6 +95,8 @@ class PostController extends Controller
       $categoryID = $post->category->id;
     //  $related = Category::with('posts')->where('name', $category)->get();
     $related = Post::where('category_id', $categoryID)->limit(3)->get();
+
+   //  dd($post);
 
 
     $newPost = Post::all();

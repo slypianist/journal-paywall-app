@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="wrapper">
-                    <img src="{{asset('images/singled.jpg')}}" alt="singleNews picture" class="singleImg">
+                    <img src="{{asset('storage/'.$post->image)}}" alt="singleNews picture" class="singleImg">
                     <h3 class="singleTitle">
                         <a href="#">
 
@@ -23,7 +23,7 @@
                             </span>
                         </p>
                         <div class="journalafrica-sub">
-                            <a href="../subscription/index.html" class="journalafrica_subscribebtn">Subscribe</a>
+                            <a href="{{route('news.subscribe')}}" class="journalafrica_subscribebtn">Subscribe</a>
                         </div>
                     </div>
                 </div>
