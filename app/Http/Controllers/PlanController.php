@@ -107,9 +107,7 @@ class PlanController extends Controller
 
     }
 
-    public function edit(Request $request, Plan $plan){
-        $id = 947661;
-       // dd($id);
+    public function edit(Request $request, $id){
 
         $user = Auth::user();
 
@@ -127,7 +125,7 @@ class PlanController extends Controller
                 // Pass the $plans data to your view
                 return view('pages.admin.edit-plan', compact('plan', 'user'));
             } else {
-                return response('Failed to fetch plans from Paystack', 500);
+                return back()->with(['error'=> 'Invalid Plan ID.']);
             }
         } catch (\Exception $e) {
             return response('An error occurred: ' . $e->getMessage(), 500);

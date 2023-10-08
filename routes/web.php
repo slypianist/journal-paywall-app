@@ -15,7 +15,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReadersController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\GeneralSettingController;
 use App\Http\Controllers\PaystackWebhookController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\SubscriptionController;
@@ -43,6 +42,9 @@ use App\Http\Controllers\SubscriptionController;
     Route::get('write-for-journal', [PagesController::class, 'writeForJournal']);
     Route::get('privacy-policy', [PagesController::class, 'privacyPolicy']);
     Route::get('subscribe', [PagesController::class, 'subscribe'])->name('news.subscribe');
+    Route::get('subscribe/gift', [PagesController::class, 'subGift'])->name('subscribe.gift');
+    Route::get('subscribe/group', [PagesController::class, 'subGroup'])->name('subscribe.group');
+    Route::get('news/subscribe', [PagesController::class, 'newsSub'])->name('news.sub');
 
     Route::get('/categories', [HomeController::class, 'allCategories'])->name('show-categories');
 
@@ -136,7 +138,7 @@ Route::middleware('auth')->group(function(){
     Route::get('plan', [PlanController::class, 'index'])->name('plan.index');
     Route::get('plan/create', [PlanController::class, 'create'])->name('plan.create');
     Route::post('plan', [PlanController::class, 'store'])->name('plan.store');
-    Route::get('plan/edit', [PlanController::class, 'edit'])->name('plan.edit');
+    Route::get('plan/{id}/edit', [PlanController::class, 'edit'])->name('plan.edit');
     Route::put('plan/{id}', [PlanController::class, 'update'])->name('plan.update');
 
     // Paystack Webhook

@@ -63,8 +63,21 @@ class PagesController extends Controller
 
 
         return view('news.subscribe', compact('plans'));
+        }
+
     }
 
-}
+    public function subGift(){
+        return view('news.giftsub');
+    }
+
+    public function subGroup(){
+        return view('news.groupsub');
+    }
+
+    public function newsSub(){
+        return view('news.sub');
+    }
+
 
 }
