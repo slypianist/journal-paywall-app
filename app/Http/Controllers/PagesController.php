@@ -61,8 +61,7 @@ class PagesController extends Controller
 
           //  dd($plans);
 
-
-        return view('news.subscribe', compact('plans'));
+        return view('news.sub', compact('plans'));
         }
 
     }
@@ -75,9 +74,9 @@ class PagesController extends Controller
         return view('news.groupsub');
     }
 
-    public function newsSub(){
+   /*  public function newsSub(){
         return view('news.sub');
-    }
+    } */
 
 
 }

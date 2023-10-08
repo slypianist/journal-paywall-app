@@ -4,6 +4,8 @@
 @endpush
 @section('h-content')
 
+<p class="card-text">
+
         <div class="container mt-5" id="susbscriptions">
             <div>
                 <h2 class="text-center mb-2">
@@ -14,24 +16,33 @@
                 </p>
                 <p class="text-center">
                     Pay from Nigeria/Pay from Outside Nigeria <br>
-                    <span class="cursored">NGN</span> <span class="cursored">/ USD</span>
+                    <span class="cursored">{{ $plans['data'][0]['currency'] }}</span> <span class="cursored">/ USD</span>
                 </p>
             </div>
             <div class="subscription-wrapper">
                 <div class="sub-type">
                     <div class="card text-center wrap" style="width: 18rem;">
-                        <span class="sub-option">Premium Monthly</span>
-                        <h4 class="priced">	&#8358;4000/$10</h4>
+                        <span class="sub-option">{{ $plans['data'][0]['name'] }}</span>
+                        <h4 class="priced"><b>	&#8358;{{ $plans['data'][0]['amount'] / 100 }}</b></h4>
                         <p>You can cancel anytime</p>
                         <b>What You Get</b>
                         <ul>
-                            <li class="journalafricasub">One month unlimited access to the journal africa website and app</li>
-                            <li class="journalafricasub">Access to Daily and Weekly Newsletters</li>
-                            <li class="journalafricasub">Daily update of Africa in Brief</li>
-                            <li class="journalafricasub">Unlimited access to our digital archive</li>
-                            <li class="journalafricasub">Access to Journal Africa events at discounted rates</li>
+                            <li class="journalafricasub">One {{ $plans['data'][0]['interval'] }} unlimited access to the journal africa website and app</li>
+                            <li class="journalafricasub">Access to Daily and Weekly Newsletters.</li>
+                            <li class="journalafricasub">Daily update of Africa in Brief.</li>
+                            <li class="journalafricasub">Unlimited access to our digital archive.</li>
+                            <li class="journalafricasub">Access to Journal Africa events at discounted rates.</li>
                         </ul>
-                        <a class="btn-style" href="{{route('subscribe')}}">Subscribe now</a>
+                      {{--   <a class="btn-style" href="{{route('subscribe')}}">Subscribe now</a> --}}
+
+                        <form action="{{route('subscribe')}}" method="POST">
+                            <input type="hidden" name="plan" value="{{$plans['data'][0]['plan_code']}}">
+                        <input type="hidden" name="description" value="{{$plans['data'][0]['description']}}">
+                        <input type="hidden" name="amount" value="{{$plans['data'][0]['amount']}}">
+
+                            <button type="submit" class="btn-style">Subscribe</button>
+                            @csrf
+                        </form>
                     </div>
                 </div>
                 <div class="sub-type">
@@ -49,22 +60,41 @@
                         <a class="btn-style regbtn" href="{{route('reader.register')}}">Register now</a>
                     </div>
                 </div>
+
+
+                @foreach ($plans['data'] as $index => $plan)
+                @if ($index > 0) <!-- Skip the first plan -->
+
                 <div class="sub-type">
                     <div class="card text-center wrap" style="width: 18rem;">
-                        <span class="sub-option">Premium Yearly</span>
-                        <h4 class="priced">	&#8358;20,000/$40</h4>
+                        <span class="sub-option">{{$plan['name']}}</span>
+                        <h4 class="priced"><b>	&#8358;{{$plan['amount']}}</b></h4>
                         <p>You can cancel anytime</p>
                         <b>What You Get</b>
                         <ul>
-                            <li class="journalafricasub">One month unlimited access to the journal africa website and app</li>
-                            <li class="journalafricasub">Access to Daily and Weekly Newsletters</li>
-                            <li class="journalafricasub">Daily update of Africa in Brief</li>
-                            <li class="journalafricasub">Unlimited access to our digital archive</li>
-                            <li class="journalafricasub">Access to Journal Africa events at discounted rates</li>
+                            <li class="journalafricasub">One {{$plan['interval']}} unlimited access to the journal africa website and app.</li>
+                            <li class="journalafricasub">Access to Daily and Weekly Newsletters.</li>
+                            <li class="journalafricasub">Daily update of Africa in Brief.</li>
+                            <li class="journalafricasub">Unlimited access to our digital archive.</li>
+                            <li class="journalafricasub">Access to Journal Africa events at discounted rates.</li>
                         </ul>
-                        <a class="btn-style" href="{{route('subscribe')}}">Subscribe now</a>
+                       {{--  <a class="btn-style" href="{{route('subscribe')}}">Subscribe now</a> --}}
+                        <form action="{{route('subscribe')}}" method="POST">
+                            <input type="hidden" name="plan" value="{{$plan['plan_code']}}">
+                        <input type="hidden" name="description" value="{{$plan['description']}}">
+                        <input type="hidden" name="amount" value="{{$plan['amount']}}">
+
+                            <button type="submit" class="btn-style">Subscribe</button>
+                            @csrf
+                        </form>
                     </div>
                 </div>
+
+                @endif
+
+                @endforeach
+
+
             </div>
             <div class="groupgiftwrapper">
                 <div class="container">
