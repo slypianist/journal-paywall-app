@@ -77,9 +77,9 @@
                                 <div class="col-md-4">
                                     <div class="card">
                                         <div class="card-img">
-                                            <img src="" class="img-fluid newsimgstyle">
+                                            <img src="{{asset('storage/'.$related[0]['image'])}}" class="img-fluid newsimgstyle">
                                         </div>
-                                        <a href="{{asset('storage/'.$related[0]['image'])}}" class="cardtext">
+                                        <a href="{{route('post.list', $related[0]['slug'])}}" class="cardtext">
                                             <p>
                                                 {{$related[0]['title']}}
                                             </p>
@@ -96,7 +96,7 @@
                                         <div class="card-img">
                                             <img src="{{asset('storage/'.$related->image)}}" class="img-fluid newsimgstyle">
                                         </div>
-                                        <a href="#" class="cardtext">
+                                        <a href="{{route('post.list', $related->slug)}}" class="cardtext">
                                             <p>
                                                 {{$related->title}}
                                             </p>
