@@ -89,20 +89,15 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-      // dd($post->author->name);
-      $posts = Post::with(['category'])->orderBy('posts.created_at', 'desc')->get();
-      //dd($post);
-      $categoryID = $post->category->id;
-    //  $related = Category::with('posts')->where('name', $category)->get();
-    $related = Post::where('category_id', $categoryID)->limit(3)->get();
-
-   //  dd($post);
-
-
-    $newPost = Post::all();
+        $posts = Post::with(['category'])->orderBy('posts.created_at', 'desc')->get();
+        $categoryID = $post->category->id;
+        $related = Post::where('category_id', $categoryID)->get();
+        $truncatedBody = Str::limit($post->body, 1000);
+    
+        $newPost = Post::all();
         $random_id = $newPost->random()->id;
         $randomPost = Post::where('id', $random_id)->first();
-        return view('news.show', compact('post', 'newPost', 'related', 'randomPost'));
+        return view('news.show', compact('post', 'newPost', 'related', 'randomPost', 'truncatedBody'));
     }
 
     /**
