@@ -12,7 +12,7 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
 class PodcastController extends Controller
 {
     public function index(){
-        $podcasts = Podcast::withCount('episodes')->orderByDesc('created_at')->get();
+        $podcasts =  Podcast::withCount('episodes')->orderByDesc('created_at')->get();
        // return response()->json(['podcast'=> $podcasts]);
         return view('podcasts.index', compact('podcasts'));
 

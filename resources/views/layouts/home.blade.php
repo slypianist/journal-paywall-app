@@ -115,6 +115,9 @@
                       <li class="nav-item">
                         <a class="nav-link" href="{{route('category-post', 'category=opinion')}}">opinion</a>
                       </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{route('podcasts.all')}}">Podcast</a>
+                      </li>
                     </ul>
                     <div class="d-flex">
                         <a href="{{route('reader.showLoginForm')}}"><button class="btn btn-nav">Login</button></a>

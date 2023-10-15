@@ -10,6 +10,8 @@
         <h4 class="podcast-title">Journal Africa podcast</h4>
         <div class="wrapper">
             <ul class="podcasts">
+                @if (!empty($podcasts))
+
                 @foreach ($podcasts as $podcast )
 
                 <li class="podlists">
@@ -32,6 +34,15 @@
                 </li>
 
                 @endforeach
+
+                @else
+
+                <p><b>No podcast at the moment. Check back later.</b></p>
+
+
+
+                @endif
+
 
             </ul>
         </div>
