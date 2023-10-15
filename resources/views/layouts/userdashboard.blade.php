@@ -168,7 +168,7 @@
                         </div>
                         <div>
                           <h6 class="fw-500">{{$fname}}</h6>
-                          <p>Admin</p>
+                          <p>Reader</p>
                         </div>
                       </div>
                     </div>

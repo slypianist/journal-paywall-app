@@ -98,22 +98,22 @@
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                       <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">Business & finance</a>
+                        <a class="nav-link" href="{{route('category-post', 'category=business')}}">Business & finance</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">politics & government</a>
+                        <a class="nav-link" href="{{route('category-post', 'category=politics-and-government')}}">politics & government</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">Economy</a>
+                        <a class="nav-link" href="{{route('category-post', 'category=economy')}}">Economy</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">food</a>
+                        <a class="nav-link" href="{{route('category-post', 'category=technology')}}">technology</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">opinion</a>
+                        <a class="nav-link" href="{{route('category-post', 'category=opinion')}}">opinion</a>
                       </li>
                     </ul>
                     <div class="d-flex">

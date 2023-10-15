@@ -47,6 +47,7 @@ use App\Http\Controllers\SubscriptionController;
     Route::get('news/subscribe', [PagesController::class, 'newsSub'])->name('news.sub');
 
     Route::get('/categories', [HomeController::class, 'allCategories'])->name('show-categories');
+    Route::get('news/', [CategoryController::class, 'showCategoryPost'])->name('category-post');
 
 Route::get('/random-post', [PostController::class, 'randomArticle']);
 

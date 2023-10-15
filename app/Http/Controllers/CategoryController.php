@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use App\Models\GeneralSetting;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Artesaos\SEOTools\Facades\SEOTools;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
-use App\Models\Category;
-use App\Models\GeneralSetting;
-use App\Models\Post;
-use Artesaos\SEOTools\Facades\SEOTools;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage as FacadesStorage;
 
 class CategoryController extends Controller
@@ -172,5 +173,25 @@ class CategoryController extends Controller
         $slug = SlugService::createSlug(Category::class, 'slug', $request->name);
 
         return response()->json(['slug' => $slug]);
+    }
+
+    public function showCategoryPost(Request $request){
+        $posts = Post::latest()->with('category')->filter(request(['search', 'category', 'author']))->paginate(8)->withQueryString();
+        $title =$request->query('category');
+        $category = Category::where('slug', $title)->first();
+
+        $briefs = DB::table('categories')
+                            ->where('categories.name',
+                            'Africa in Brief')
+                            ->join('posts', 'categories.id', '=', 'posts.category_id')
+                            ->join('users', 'posts.user_id', '=', 'users.id')
+                            ->select('categories.name', 'posts.title', 'posts.image', 'posts.created_at', 'users.name AS writer',
+                            'posts.excerpt', 'posts.slug')
+                            ->orderBy('posts.created_at', 'desc')
+                            ->get();
+
+
+        return view('news.category-post', compact('posts', 'briefs', 'title', 'category'));
+
     }
 }
