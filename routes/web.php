@@ -70,9 +70,9 @@ Route::post('reader/login', [ReadersController::class, 'login'])->name('reader.l
 /* Podcast Routes======================================= */
 Route::get('podcast', [PodcastController::class, 'index'])->name('podcasts.all');
 Route::get('admin/podcasts', [PodcastController::class, 'adminIndex'])->name('podcasts.admin');
-Route::get('/podcasts/{podcast}/episodes/{episode}', [EpisodeController::class, 'show'])->name('episodes.show');
+Route::get('podcasts/{podcast}/episodes/{episode}', [EpisodeController::class, 'show'])->name('episodes.show');
 
-Route::get('podcasts/{podcast}', [PodcastController::class, 'show'])->name('podcasts.show');
+Route::get('podcasts/{podcast:slug}', [PodcastController::class, 'show'])->name('podcasts.show');
 
 
 /* End of Non Autheticated Routes........................ */
