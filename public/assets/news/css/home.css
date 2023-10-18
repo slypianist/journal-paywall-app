@@ -1,0 +1,659 @@
+html, body {
+  font-family: 'Lato', sans-serif;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* .topbarCarousel {
+  width: 50%;
+} */
+ul {
+  margin-bottom: unset;
+}
+.top-bar {
+    background-color: #eee;
+}
+.links li{
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-left: 10px;
+}
+.links a {
+  color: inherit;
+  text-decoration: none;
+}
+.top-bar-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+.icons li {
+    list-style: none;
+    display: inline-block;
+    margin-left: 10px;
+}
+.img-wrap, .adwraped {
+    background-color: #000;
+}
+.img-style {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    opacity: 0.5;
+    cursor: pointer;
+}
+.centered {
+    text-transform: uppercase;
+    position: absolute;
+    top: 20%;
+    left: 72%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-weight: bolder;
+    font-size: 20px;
+}
+.newsDetail {
+  text-decoration: none;
+  color: inherit;
+}
+.newsDetail:hover{
+  color: inherit;
+}
+.adwraped {
+  position: relative;
+}
+.centered-new {
+  position: absolute;
+  right: 16%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-weight: bolder;
+  font-size: 20px;
+}
+.navigation {
+    background-color: #eee;
+}
+.nav-item {
+    margin-left: 20px;
+    text-transform: uppercase;
+}
+.nav-item a {
+    color: #000;
+    font-size: small;
+    font-weight: bold;
+}
+.nav-item a:hover {
+    color: red;
+}
+.nav-item .active {
+    background-color: red;
+    color: #fff !important;
+}
+.btn-nav {
+    margin-left: 10px;
+    background-color: red;
+    color: #fff;
+    font-weight: bolder;
+}
+.containered {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.newsimg-wrap {
+    background-color: #000;
+}
+.banner {
+    height: 350px;
+    background-size: 100% auto;
+    object-fit: cover;
+    width: 100%;
+    opacity: 0.6;
+}
+.bottom-left {
+    position: absolute;
+    bottom: 80px;
+    left: 25px;
+    color: #fff;
+  }
+  .fa-clock {
+    background-color: #fff;
+  }
+  .journalafricafooterpodcast {
+    padding: 20px;
+    background-color: #000;
+    color: #fff;
+  }
+  .conatined {
+    overflow: hidden;
+  }
+  .ellips {
+    display: -webkit-box;
+   -webkit-line-clamp: 4;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   font-size: 13px;
+  }
+  .ellipsis {
+    display: -webkit-box;
+   -webkit-line-clamp: 2;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   font-size: 13px;
+   margin-left: 10px;
+  }
+/* .podcastlistfooter li {
+  display: inline-block;
+  width: 25%;
+  margin-left: 10px;
+} */
+.journalafriclpodTitle {
+  text-align: center;
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
+.journalafricanewsletter {
+  background-color: red;
+  padding: 20px;
+  text-align: center;
+}
+.journalafricanewsletter p {
+  color: #fff;
+  font-size: 20px;
+}
+.journalafricanews {
+  margin-left: auto;
+  margin-right:auto;
+  width: 50%;
+}
+footer {
+  background-color: #1f1f1f;
+  padding: 20px;
+}
+.footertext {
+  margin-left: 20px;
+}
+.newsimage_footer {
+  width: 300px;
+  height: 200px;
+  margin-left: 10px;
+}
+.relatived {
+  position: relative;
+}
+.played {
+  position: absolute;
+  top: 30%;
+  left: 38%;
+  background-color: #000;
+  opacity: 0.8;
+  border-radius: 50%;
+  padding: 10px 14px 11px 14px;
+  cursor: pointer;
+  font-size: 25px;
+}
+.played:hover {
+  background-color: unset;
+}
+.journalafricasubfooterflex {
+  background-color: #000;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px 10px 10px;
+}
+.subfooter p {
+  margin-bottom: 0;
+}
+.initialflexed a{
+  color: red;
+}
+.spannedfooter {
+  color: #fff;
+}
+.bordered {
+  border-right: 1px solid #fff;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.footerdesc {
+  color: #fff;
+  margin-bottom: 0;
+  font-size: 13px;
+}
+.titlefooter {
+  margin-bottom: 0;
+}
+.journalafricafooterlogo {
+  object-fit: cover;
+  width: 150px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+.journalafricafootertitle {
+  color: white;
+  text-transform: uppercase;
+  width: 50%;
+  padding: 5px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  border-color: #292929;
+}
+.thumbnail_style_footer {
+  height: 100px;
+  width: 100px;
+}
+.journalnewsleft {
+  float: left;
+  font-size: 12px;
+}
+.journalnewsright {
+  float: right;
+  font-size: 12px;
+}
+.titlewidth {
+  width: 100% !important;
+}
+.journalafricafooterlist {
+   padding-left: 0px;
+   line-height: 30px;
+}
+.journalafricafooterlist li{
+  list-style-type:circle;
+  color: grey;
+}
+.journalafricafooterlistexmt {
+  list-style: none;
+  color: grey;
+
+}
+.clocked {
+  background-color: unset;
+  font-size: 12px;
+}
+.listssocial {
+  list-style: none;
+  display: inline-block;
+  margin-left: 30px;
+}
+.twitsocial {
+  margin-left: 0px !important;
+}
+.listssocial a {
+  color: #fff;
+}
+.listssocial a:hover {
+  color: #fff;
+}
+.lists {
+  color: inherit;
+  text-decoration: none;
+}
+.lists:hover {
+  color: #fff;
+}
+.journalafricaapp{
+  object-fit: cover;
+  border: 1px solid #fff;
+  vertical-align: middle;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+div.carousel-nav-icon > svg {
+  height: 48px;
+  width: 48px;
+}
+
+html[data-bs-theme=dark] div.carousel-nav-icon > svg {
+  fill: #FFF !important;
+}
+
+@media (max-width: 767px) {
+  .carousel-inner .carousel-item > div {
+    display: none;
+  }
+
+  .carousel-inner .carousel-item > div:first-child {
+    display: block;
+  }
+}
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+  display: flex;
+}
+
+/* medium and up screens */
+@media (min-width: 768px) {
+  .carousel-inner .carousel-item-end.active,
+.carousel-inner .carousel-item-next {
+    transform: translateX(33%);
+  }
+
+  .carousel-inner .carousel-item-start.active,
+.carousel-inner .carousel-item-prev {
+    transform: translateX(-33%);
+  }
+}
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start {
+  transform: translateX(0);
+}
+.card-img {
+  background-color: #000;
+  width: 100%;
+}
+.newsbox{
+  font-size: 13px;
+  font-weight: bolder;
+}
+.news-img {
+    background-size:cover;
+    width: 100%;
+    object-fit: cover;
+    height: 250px;
+    position: relative;
+    opacity: 0.5;
+}
+.wrapped {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.category {
+  border-bottom: 1px solid grey;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+.wrappedMorenews {
+  text-decoration: none;
+  color: black;
+}
+.wrappedMorenews:hover{
+  color: #000;
+}
+.category-img {
+  width: 250px;
+  height: 200px;
+}
+.titled {
+  color: black;
+}
+#dated {
+  color: red;
+  font-size: 12px;
+}
+.dateflex {
+  display: flex;
+  justify-content: space-between;
+}
+.dated {
+  font-size: 13px;
+}
+.fa-greater-than {
+  font-size: 14px;
+}
+.postby {
+  color: red;
+}
+.postbyy {
+  color: red;
+}
+.postInfor {
+  font-size: 13px;
+}
+.postInformation {
+  font-size: 14px;
+}
+.iconwrap {
+  border-radius: 50%;
+  background-color: red;
+  text-align: center;
+  padding: 5px;
+  height: 30px;
+  width: 30px;
+}
+.spacing {
+  margin-left: 20px;
+}
+.flexed-item a {
+  text-decoration: none;
+}
+.news-detail {
+  line-height: 27px;
+  font-size: 15px;
+  margin-bottom: 0;
+}
+.read-more-btn {
+  padding: 6px;
+  color: #000;
+  font-size: 12px;
+  font-weight: bolder;
+  color: red;
+  cursor: pointer;
+}
+.read-more-btn:hover {
+  color: #000;
+}
+.news-list li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 1px solid #eee;
+  border-right: none;
+  padding: 5px;
+    /* height: 20px; */
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+.searchTerm:focus{
+  color: black;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid grey;
+  background: red;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+  border: none;
+}
+.briefed {
+  border-bottom: 1px solid grey;
+}
+.briefdeatil {
+  background-color: #eee;
+  padding: 10px;
+}
+.brief-list li {
+  list-style: none;
+  border-bottom: 1px solid black;
+}
+.hred {
+  margin-top: 3px;
+}
+.texted {
+  font-size: 15px;
+}
+.ctned {
+  color: inherit;
+  text-decoration: none;
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
+}
+.newsimage {
+  width: 300px;
+  height: 200px;
+}
+.headers {
+  color: #fff;
+}
+figcaption a {
+  text-decoration: none;
+}
+.headings {
+  border-bottom: 2px solid #eee;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.ctned:hover{
+  color: red;
+}
+.photostyle {
+  width: 400px;
+  height: 235px;
+  object-fit: cover;
+}
+.newsheaders {
+  color: #000;
+}
+.newsheaders:hover {
+  color: red;
+}
+.newslists {
+  width: 200px;
+  height: 195px;
+}
+.morenews h5 {
+  font-weight: bold;
+}
+.morenews li {
+  display: inline-block;
+  margin-left: 10px;
+}
+.morenewsheadings {
+  font-size: 15px;
+  margin-top: 10px;
+  color: #000;
+}
+.textOwl {
+  font-size: 15px;
+  line-height: 25px;
+}
+.card-img-overlay {
+  margin-top: 30px;
+}
+.news-carousel-wrap {
+  /* margin-left: 90px; */
+  margin-top: 5px;
+}
+.card-img-overlay {
+  margin-top: 20px;
+}
+.carouselHeadings {
+  text-transform: uppercase;
+  font-size: 13px;
+}
+.headerss {
+  border-bottom: 1px solid grey;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.tiledanchor {
+  text-decoration: none;
+}
+.borderr {
+  border-bottom: 1px solid grey;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+.tiltedHeading {
+  color: #000;
+  font-size: 17px;
+}
+.tiltedHeading:hover {
+  color: red;
+}
+.imgstyledd {
+  height: 300px;
+  object-fit: cover;
+}
+.styleinfo {
+  font-size: 15px;
+}
+.smalled {
+  font-size: 12px;
+}
+.mored {
+  color: red;
+  font-size: 13px;
+  font-weight: bolder;
+}
+.bolded {
+  color: red;
+}
+.heighgted {
+  width: unset;
+  font-size: 15px;
+}
+.adbanner {
+  background-color: #000;
+  position: relative;
+}
+.adbanner img {
+  height: 150px;
+  opacity: 0.6;
+  background-size: cover;
+  width: 100%;
+  object-fit: cover;
+}
+.adsInfo {
+  position: absolute;
+  left: 40%;
+  top: 50%;
+  color: #fff;
+  font-weight: bolder;
+  font-size: 30px;
+}
+.thumbnail_news {
+  display: flex;
+}
+.thumbnail_style {
+  height: 60px;
+  width: 60px;
+}
+/* .news_desription {
+  margin-left: 15px;
+} */
+.journalafrical_thumblink {
+  color: #000;
+  margin-bottom: 10px;
+}
+.journalafricathumbs {
+  color: #000;
+  text-decoration: none;
+}
+.journalafricathumbs:hover{
+  color: red;
+}
+.appstyle {
+  object-fit: cover;
+  border: 1px solid #fff;
+  margin-bottom: 10px;
+  border-radius: 3px;
+}
