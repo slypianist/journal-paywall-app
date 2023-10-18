@@ -256,9 +256,9 @@
                             <img src="storage/{{$life->image}}" alt="newspfoto" class="imgstyledd" style="width:100%">
                             <figcaption>
                                 <small class="smalled"><i class="fa-regular fa-clock-nine"></i>{{$life->created_at}}</small>
-                                <p class="styleinfo">
+                                {{-- <p class="styleinfo">
                                     {{$life->excerpt}} <a href="{{route('post.list', [$life->slug])}}" class="mored"><i>Read More</i></a>
-                                </p>
+                                </p> --}}
                             </figcaption>
                         </figure>
                     </div>
@@ -273,7 +273,7 @@
                                 <p class="news_desription ">
                                     <span class="ellipsis">
                                         <a href="{{route('post.list', [$lifes->slug])}}" class="journalafricathumbs">
-                                            {{$lifes->excerpt}}
+                                            {{$lifes->title}}
                                         </a>
                                     </span>
                                 </p>
@@ -293,9 +293,9 @@
                             <img src="storage/{{$social->image}}" alt="newspfoto" style="width:100%" class="imgstyledd">
                             <figcaption>
                                 <small class="smalled"><i class="fa-regular fa-clock-nine"></i>{{$social->created_at}}</small>
-                                <p class="styleinfo">
+                                {{-- <p class="styleinfo">
                                    {{$social->excerpt}} <a href="{{route('post.list', [$social->slug])}}" class="mored"><i>Read More</i></a>
-                                </p>
+                                </p> --}}
                             </figcaption>
                         </figure>
                     </div>
@@ -310,7 +310,7 @@
                                 <p class="news_desription ">
                                     <span class="ellipsis">
                                         <a href="{{route('post.list', [$socials->slug])}}" class="journalafricathumbs">
-                                            {{$socials->excerpt}}
+                                            {{$socials->title}}
                                         </a>
                                     </span>
                                 </p>
@@ -330,9 +330,9 @@
                             <img src="storage/{{$opinion->image}}" alt="newspfoto" style="width:100%" class="imgstyledd">
                             <figcaption>
                                 <small class="smalled"><i class="fa-regular fa-clock-nine"></i>{{$opinion->created_at}}</small>
-                                <p class="styleinfo">
+                                {{-- <p class="styleinfo">
                                     {{$opinion->excerpt}} <a href="" class="mored"><i>Read More</i></a>
-                                </p>
+                                </p> --}}
                             </figcaption>
                         </figure>
                     </div>
@@ -346,7 +346,7 @@
                                 <p class="news_desription ">
                                     <span class="ellipsis">
                                         <a href="{{route('post.list', [$opinions->slug])}}" class="journalafricathumbs">
-                                            {{$opinions->excerpt}}
+                                            {{$opinions->title}}
                                         </a>
                                     </span>
                                 </p>

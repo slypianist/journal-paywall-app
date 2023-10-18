@@ -36,7 +36,12 @@ class SubscriptionController extends Controller
 
     }
 
+    public function handlePaymentCallback(){
+
+    }
+
     public function cancelSubscription(){
+
 
     }
 
@@ -47,7 +52,6 @@ class SubscriptionController extends Controller
                            ->get();
 
        return view('reader.subscription', compact('subscriptions'));
-
 
     }
 }
