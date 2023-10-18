@@ -262,8 +262,9 @@
                             </figcaption>
                         </figure>
                     </div>
+                    @foreach ($business as $lifes)
                     <div class="journalafrical_thumblink">
-                        @foreach ($business as $lifes)
+
                         <div class="thumbnail_news">
 
                             <div class="thumbed">
@@ -280,8 +281,8 @@
                             </div>
 
                         </div>
-                        @endforeach
                     </div>
+                    @endforeach
                 </div>
                 <div class="col-md-4">
                     <h5 class="borderr">Social Issues</h5>
@@ -300,8 +301,9 @@
                         </figure>
                     </div>
 
+                    @foreach ($socialsRelated as $socials)
                     <div class="journalafrical_thumblink">
-                        @foreach ($socialsRelated as $socials)
+
                         <div class="thumbnail_news">
                             <div class="thumbed">
                                 <img src="storage/{{$socials->image}}" alt="news graphics" class="thumbnail_style">
@@ -315,8 +317,9 @@
                                     </span>
                                 </p>
                             </div>
-                            @endforeach
+
                         </div>
+                        @endforeach
                     </div>
 
                 </div>
@@ -336,8 +339,9 @@
                             </figcaption>
                         </figure>
                     </div>
+                    @foreach ($opinionsRelated as $opinions)
                     <div class="journalafrical_thumblink">
-                        @foreach ($opinionsRelated as $opinions)
+
                         <div class="thumbnail_news">
                             <div class="thumbed">
                                 <img src="storage/{{$opinions->image}}" alt="news graphics" class="thumbnail_style">
@@ -352,9 +356,9 @@
                                 </p>
                             </div>
                         </div>
-                        @endforeach
-                    </div>
 
+                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
