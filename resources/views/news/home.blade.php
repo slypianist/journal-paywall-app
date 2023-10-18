@@ -223,16 +223,16 @@
                         @foreach ($ecoPosts as $eco)
                         <div class="col-md-4">
                             <figure>
-                                <a href="" class="wrappedMorenews">
+                                <a href="{{route('post.list', [$eco->slug])}}" class="wrappedMorenews">
                                     <img src="storage/{{$eco->image}}" alt="newsphoto" class="newslists">
                                     <figcaption>
-                                        <h5 class="morenewsheadings">{{$eco->title}}</h5>
+                                        <h5 class="morenewsheadings">{{$eco->title}}</h5></a>
                                         <p class="newsbox">
                                            {{$eco->excerpt}}
                                         </p>
                                         <p class="postInformation">By <b class="postbyy">{{$eco->writer}}  </b> <br> {{date('F-d-Y', strtotime($economy->created_at))}}</p>
                                     </figcaption>
-                                </a>
+
                             </figure>
                         </div>
 
