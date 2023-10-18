@@ -182,7 +182,7 @@
                                 <p class="postInfor">By <b class="postby">{{$biz->writer}}</b> 13/02/2021</p>
                                 <p>
                                     {{$biz->excerpt}}...
-                                    <a href="" class="ctned"><i>Read More</i></a>
+                                    <a href="{{route('post.list', [$post->slug])}}" class="ctned"><i>Read More</i></a>
                                 </p>
                             </figcaption>
                         </figure>
@@ -211,7 +211,7 @@
                                     </a>
                                     <p class="postInfor">By <b class="postby">{{$economy->writer}} </b> {{date('F-d-Y', strtotime($economy->created_at))}}</p>
                                     <p>
-                                        {{$economy->excerpt}}...<a href="" class="mored"><i>Read More</i></a>
+                                        {{$economy->excerpt}}...<a href="{{route('post.list', [$post->slug])}}" class="mored"><i>Read More</i></a>
                                     </p>
                                 </figcaption>
                             </figure>
