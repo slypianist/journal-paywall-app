@@ -319,8 +319,9 @@
                             </div>
 
                         </div>
-                        @endforeach
                     </div>
+                        @endforeach
+
 
                 </div>
                 <div class="col-md-4">
