@@ -59,10 +59,10 @@
                                     <td><span class="badge bg-label-success me-1">Published</span></td>
                                     <td>
 
-                                        <a href="{{ route('podcast.edit', [$podcast->id]) }}"><button class="btn btn-success mx-2">Add Episode</button></a>
+                                        <a href="{{route('episodes.create', [$podcast->slug])}}"><button class="btn btn-success mx-2">Add Episode</button></a>
 
 
-                                                <a href="{{ route('podcast.edit', [$podcast->id]) }}"><button class="btn btn-success mx-2"><i
+                                                <a href="{{ route('podcast.edit', [$podcast->slug]) }}"><button class="btn btn-success mx-2"><i
                                                         class="bx bxs-edit me-1"></i></button></a>
 
 
