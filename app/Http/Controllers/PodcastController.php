@@ -65,11 +65,13 @@ class PodcastController extends Controller
     }
 
     public function show(Podcast $podcast){
-        $podcast = Podcast::with(['episodes'])->orderBy('created_at', 'desc')->get();
-        //$episode = Episode::where('id', $podcast->id);
+       // $podcast = Podcast::orderBy('created_at', 'desc')->get();
+        $episodes = Episode::where('podcast_id', $podcast->id)->get();
        // return response()->json(['podcast'=>$podcast]);
 
-        return view('podcasts.show', compact('podcast'));
+      // dd($episode);
+
+        return view('podcasts.show', compact('podcast', 'episodes'));
 
     }
 

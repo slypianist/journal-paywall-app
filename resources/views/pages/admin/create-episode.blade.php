@@ -8,7 +8,7 @@
             <!-- Form controls -->
             <div class="col-md-12">
                 <div class="card mb-4">
-                    <h5 class="card-header">Create Podcast</h5>
+                    <h5 class="card-header">Add Episode</h5>
                     <div class="card-body">
                         @if ($errors->any())
                         <div class="alert alert-danger">
