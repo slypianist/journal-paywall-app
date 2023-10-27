@@ -70,7 +70,7 @@ Route::post('reader/login', [ReadersController::class, 'login'])->name('reader.l
 
 /* Podcast Routes======================================= */
 Route::get('podcast', [PodcastController::class, 'index'])->name('podcasts.all');
-Route::get('admin/podcasts', [PodcastController::class, 'adminIndex'])->name('podcasts.admin');
+
 Route::get('podcasts/{podcast}/episodes/{episode}', [EpisodeController::class, 'show'])->name('episodes.show');
 
 Route::get('podcasts/{podcast:slug}', [PodcastController::class, 'show'])->name('podcasts.show');
@@ -106,7 +106,9 @@ Route::middleware('auth')->group(function(){
 
 
     // Podcast routes....
+    Route::get('admin/podcasts', [PodcastController::class, 'adminIndex'])->name('podcasts.admin');
     Route::get('admin/podcasts/create', [PodcastController::class, 'create'])->name('podcasts.create');
+    Route::get('admin/podcasts/{podcast:slug}/view', [PodcastController::class, 'adminPodcastView'])->name('podcasts.admin.view');
     Route::post('podcast', [PodcastController::class, 'store'])->name('podcast.store');
     Route::get('podcast/{podcast:slug}/edit', [PodcastController::class, 'edit'])->name('podcast.edit');
     Route::patch('podcast/{podcast}', [PodcastController::class, 'update'])->name('podcast.update');
@@ -115,8 +117,8 @@ Route::middleware('auth')->group(function(){
     // Episodes Routes....
     Route::get('pod/{podcast:slug}/episodes/create', [EpisodeController::class, 'create'])->name('episodes.create');
     Route::post('pod/{podcast}/episodes', [EpisodeController::class, 'store'])->name('episodes.store');
-    Route::get('pod/{podcast:slug}/episodes/{episode}/edit', [EpisodeController::class, 'edit'])->name('episodes.edit');
-    Route::patch('pod/{podcast}/episodes/{episode}', [EpisodeController::class, 'update'])->name('episodes.update');
+    Route::get('pod/{podcast:slug}/episodes/{episode:slug}/edit', [EpisodeController::class, 'edit'])->name('episodes.edit');
+    Route::patch('admin/pod/{podcast:slug}/episodes/{episode:slug}', [EpisodeController::class, 'update'])->name('episodes.update');
     Route::delete('pod/{podcast}/episodes/{episode}', [EpisodeController::class, 'destroy'])->name('episodes.destroy');
 
     // Admin Profile Routes....

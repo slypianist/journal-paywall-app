@@ -8,6 +8,7 @@
 
         <div class="podcast mt-5">
             <div class="container">
+                @forelse ($episodes as $episode)
                 <div class="row">
                     <div class="col-md-3">
                         <div>
@@ -16,7 +17,6 @@
                             <img src="{{asset('podcasts/'.$podcast->cover_image)}}" alt="singlepodcastImg" class="singlepodcastImg">
                         </div>
                     </div>
-                    @forelse ($episodes as $episode)
 
                     <div class="col-md-9 newsafricasinglepodcast">
                         <span class="podTitle">{{$episode->title}}</span>
@@ -134,5 +134,4 @@
             </div>
         </div>
     </section>
-@include('includes.news.foot')
 @endsection

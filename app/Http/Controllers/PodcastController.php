@@ -25,6 +25,14 @@ class PodcastController extends Controller
 
     }
 
+    public function adminPodcastView(Podcast $podcast){
+        $user = Auth::user();
+        $episodes = Episode::where('podcast_id', $podcast->id)->paginate(10);
+
+        return view('pages.admin.view-podcast', compact('podcast', 'episodes', 'user'));
+
+    }
+
     public function create(){
 
         return view('pages.admin.create-podcast', [
@@ -65,11 +73,8 @@ class PodcastController extends Controller
     }
 
     public function show(Podcast $podcast){
-       // $podcast = Podcast::orderBy('created_at', 'desc')->get();
-        $episodes = Episode::where('podcast_id', $podcast->id)->get();
-       // return response()->json(['podcast'=>$podcast]);
 
-      // dd($episode);
+        $episodes = Episode::where('podcast_id', $podcast->id)->get();
 
         return view('podcasts.show', compact('podcast', 'episodes'));
 

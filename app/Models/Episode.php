@@ -23,5 +23,6 @@ class Episode extends Model
         'description',
         'audio_file',
         'published_at',
+        'slug'
     ];
 }

@@ -45,19 +45,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="image" class="form-label">Episode Thumbnail</label>
-                                <img class="img-preview img-fluid mb-3 col-sm-5">
-                                <input class="form-control @error('cover_image') is-invalid @enderror" type="file"
-                                    id="image" name="image" onchange="previewImage()" value="{{old('cover_image')}}">
-                                @error('image')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label for="slug" class="form-label">file upload</label>
+                                <label for="slug" class="form-label">audio file upload</label>
                                 <input type="file" class="form-control @error('audio_file') is-invalid @enderror"
                                     name="audio_file" id="audio_file" required value="{{ old('audio_file') }}">
                                 @error('audio_file')
@@ -107,7 +95,7 @@
                 .then(data => slug.value = data.slug);
         });
 
-        function previewImage() {
+        /* function previewImage() {
             const image = document.querySelector('#image');
             const imgPreview = document.querySelector('.img-preview');
             imgPreview.style.display = 'block';
@@ -116,7 +104,7 @@
             oFReader.onload = function(oFREvent) {
                 imgPreview.src = oFREvent.target.result;
             }
-        };
+        }; */
     </script>
 
 <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>

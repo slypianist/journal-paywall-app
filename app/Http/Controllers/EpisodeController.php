@@ -21,15 +21,16 @@ class EpisodeController extends Controller
          $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'audio_file' => 'required|mimes:mp3,mp4',
+            'audio_file' => 'required|mimes:mp3,mp4,wav',
             'published_at' => 'nullable|date',
         ]);
-//dd($request->all());
+
         $episode = new Episode([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'published_at' => $request->input('published_at'),
             'slug' => $request->input('slug'),
+
 
         ]);
 
@@ -56,36 +57,53 @@ class EpisodeController extends Controller
 
 
 
-    public function editEpisode(Request $request, Episode $episode, Podcast $podcast){
+    public function edit(Podcast $podcast, Episode $episode){
+        $user = Auth::user();
 
     $episode = $podcast->episodes()->findOrFail($episode->id);
 
-    return view('episodes.edit', compact('podcast', 'episode'));
+    return view('episodes.edit', compact('podcast', 'episode', 'user'));
 }
 
 
 
-    public function update(Request $request, Podcast $podcast, Episode $episode){
-        $episode = $podcast->episodes;
+public function update(Request $request, Podcast $podcast, Episode $episode) {
+    // Get the old audio path before updating
+    $oldAudioPath = 'podcasts/episodes/'. $episode->audio_file;
 
-        $episode->title = $request->title;
+   // dd($oldAudioPath);
 
-        if($request->hasFile('audion_file')){
-            $fileNameExtension = $request->file('audion_file')->getClientOriginalName();
-            $fileExtension = $request->file('audion_file')->getClientOriginalExtension();
-            $fileName = pathinfo($fileNameExtension, PATHINFO_FILENAME);
-            $filename = $fileName.'_'.now().'.'.$fileExtension;
-            $request->file('audion_file')->move(public_path('podcasts/episodes'), $filename);
+    // Update the episode title
+    $episode->title = $request->title;
+
+    if ($request->hasFile('audio_file')) {
+        // Upload the new audio file
+        $fileNameExtension = $request->file('audio_file')->getClientOriginalName();
+        $fileExtension = $request->file('audio_file')->getClientOriginalExtension();
+        $fileName = pathinfo($fileNameExtension, PATHINFO_FILENAME);
+        $filename = $fileName . '_' . time() . '.' . $fileExtension;
+     //   dd($filename);
+        $request->file('audio_file')->move(public_path('podcasts/episodes'), $filename);
+
+        // Update the audio path for the episode
+        $episode->audio_file = $filename;
+
+        // Delete the old audio file if it exists
+        if ($oldAudioPath && file_exists(public_path($oldAudioPath))) {
+            unlink(public_path($oldAudioPath));
         }
-        $episode->save();
-
-        return redirect()->route('podcast.show', [$podcast->id, $episode->id]);
     }
+
+    $episode->update();
+
+    return redirect()->route('podcasts.admin.view', [$podcast->slug, $episode->slug])->with('success', 'Episode updated.');
+}
+
 
     public function destroy(Podcast $podcast, Episode $episode){
         $episode = $podcast->episodes()->findOrFail($episode->id);
         $episode->delete();
-        return redirect()->route('podcast.show')->with(['message'=>'Episode deleted successfully']);
+        return redirect()->route('podcast.show')->with('success','Episode deleted successfully');
 
     }
 

@@ -7,25 +7,23 @@
         <div class="container-xxl flex-grow-1 container-p-y">
             <!-- Bootstrap Table with Header - Light -->
             <div class="card">
-                <h5 class="card-header">All Published Podcasts</h5>
+                <h5 class="card-header">{{$podcast->title}}: Episodes</h5>
                 <div class="table-responsive text-nowrap">
                     <table class="table">
                         <thead class="table-light">
                             <tr>
                                 <th>#</th>
                                 <th>Title</th>
-                                 <th>Episodes</th>
-                                <th>Author</th>
+                                <th>Audio file</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        @forelse ($podcasts as $podcast)
+                        @forelse ($episodes as $episode)
                             <tbody class="table-border-bottom-0">
                                 <tr>
-                                    <td>{{ $podcast->id }}</td>
-                                    <td><strong><a href="{{route('podcasts.admin.view', $podcast->slug)}}">{{ $podcast->title }}</a>
-                                        </strong></td>
+                                    <td>{{ $episode->id }}</td>
+                                    <td><strong>{{ $episode->title }}</strong></td>
                                    {{--  <td>
                                         @if ($post->image)
                                             <img style="width: 290px;max-height:181px"
@@ -37,7 +35,7 @@
                                                 class="img-fluid" loading="lazy">
                                         @endif
                                     </td> --}}
-                                    <td>{{$podcast->episodes_count}}</td>
+                                   {{--  <td>{{$episode->description}}</td> --}}
 
                                     <td>
                                         <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
@@ -53,21 +51,21 @@
                                                {{--   @endif --}}
 
                                             </li>
-                                            <strong>{{ $podcast->author->name }}</strong>
+                                            <audio controls>
+                                                <source src=" {{asset('podcasts/episodes/'.$episode->audio_file)}}" type="audio/mpeg">
+                                                Your browser does not support the audio element.
+                                            </audio>
                                         </ul>
                                     </td>
 
                                     <td><span class="badge bg-label-success me-1">Published</span></td>
                                     <td>
 
-                                        <a href="{{route('episodes.create', [$podcast->slug])}}"><button class="btn btn-success mx-2">Add Episode</button></a>
-
-
-                                                <a href="{{ route('podcast.edit', [$podcast->slug]) }}"><button class="btn btn-success mx-2"><i
+                                                <a href="{{ route('episodes.edit', [$podcast->slug, $episode->slug]) }}"><button class="btn btn-success mx-2"><i
                                                         class="bx bxs-edit me-1"></i></button></a>
 
 
-                                                <form action="{{ route('podcast.destroy', $podcast->id) }}" method="POST"
+                                                <form action="{{ route('episodes.destroy', [$podcast->slug, $episode->slug]) }}" method="POST"
                                                     class="d-inline">
                                                     @csrf
 
@@ -85,7 +83,7 @@
                         @empty
                             <tr>
                                 <td colspan="6" class="text-center p5">
-                                    No Podcast Added.
+                                    No Episode in this podcast.
                                 </td>
                             </tr>
                         @endforelse
@@ -99,7 +97,7 @@
 
         {{-- Pagination --}}
         <div class="container d-flex justify-content-center">
-            {{ $podcasts->links() }}
+            {{ $episodes->links() }}
         </div>
 
         @include('includes.admin.footer')
