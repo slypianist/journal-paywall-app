@@ -36,8 +36,8 @@ class SubscriptionController extends Controller
 
     }
 
-    public function handlePaymentCallback($data){
-        dd($data);
+    public function handlePaymentCallback(){
+
 
 
     }
