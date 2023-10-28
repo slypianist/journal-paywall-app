@@ -376,12 +376,14 @@
                     <div>
                         <figure class="relatived">
                             <img src="{{asset('podcasts/'.$podcast->cover_image)}}" alt="image" class="newsimage_footer">
-                            <i class="fa-sharp fa-solid fa-play played"></i>
+                            <a href="{{route('podcasts.show', $podcast->slug)}}">
+                                <i class="fa-sharp fa-solid fa-play played"></i>
+                            </a>
                             <figcaption class="mt-3">
                                 <a href="{{route('podcasts.show', $podcast->slug)}}">
                                     <h5 class="headers">{{$podcast->title}}</h5>
                                 </a>
-                                <p class="postInfor">By <b class="postby">{{$podcast->author->name}}</b> {{$podcast->created_at}}</p>
+                                <p class="postInfor">By <b class="postby">{{$podcast->author->name}}</b>  {{date('jS-M-Y', strtotime($podcast->created_at))}} </p>
                             </figcaption>
                         </figure>
                     </div>
