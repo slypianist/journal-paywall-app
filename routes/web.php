@@ -85,6 +85,10 @@ Route::get('podcasts/{podcast:slug}', [PodcastController::class, 'show'])->name(
     Route::get('/logout', [DashboardController::class, 'logout']);
 });
 
+Route::post('paystack/webhook', [PaystackWebhookController::class, 'handleWebhook'])->name('paystack.webhook');
+Route::post('payment/callback', [SubscriptionController::class, 'handlePaymentCallback'])->name('payment.callback');
+
+
 /* Readers Autheticated Routes........................ */
 Route::middleware('reader.auth')->group(function (){
 
@@ -148,8 +152,6 @@ Route::middleware('auth')->group(function(){
 
     // Paystack Webhook
 
-    Route::post('paystack/webhook', [PaystackWebhookController::class, 'handleWebhook'])->name('paystack.webhook');
-    Route::post('payment/callback', [SubscriptionController::class, 'handlePaymentCallback'])->name('payment.callback');
 
 
 
