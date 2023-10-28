@@ -112,7 +112,7 @@ class PodcastController extends Controller
 
     public function destroy(Podcast $podcast){
         $podcast->delete();
-        return redirect()->route('podcasts.admin')->with('message', 'Podcast deleted successfully.');
+        return redirect()->route('podcasts.admin')->with('success', 'Podcast deleted successfully.');
     }
 
     public function checkPodcastSlug(Request $request)

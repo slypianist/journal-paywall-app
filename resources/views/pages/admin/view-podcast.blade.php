@@ -70,7 +70,7 @@
                                                     @csrf
 
                                                     @method('delete')
-                                                    <button class="btn btn-danger">
+                                                    <button class="btn btn-danger delete-episode">
                                                         <i class="bx bx-trash me-1"></i></button>
                                                 </form>
 

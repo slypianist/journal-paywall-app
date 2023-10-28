@@ -119,7 +119,7 @@ Route::middleware('auth')->group(function(){
     Route::post('pod/{podcast}/episodes', [EpisodeController::class, 'store'])->name('episodes.store');
     Route::get('pod/{podcast:slug}/episodes/{episode:slug}/edit', [EpisodeController::class, 'edit'])->name('episodes.edit');
     Route::patch('admin/pod/{podcast:slug}/episodes/{episode:slug}', [EpisodeController::class, 'update'])->name('episodes.update');
-    Route::delete('pod/{podcast}/episodes/{episode}', [EpisodeController::class, 'destroy'])->name('episodes.destroy');
+    Route::delete('pod/{podcast:slug}/episodes/{episode:slug}', [EpisodeController::class, 'destroy'])->name('episodes.destroy');
 
     // Admin Profile Routes....
     Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');

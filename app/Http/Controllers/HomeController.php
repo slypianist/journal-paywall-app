@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Podcast;
 use App\Models\Category;
 use App\Models\GeneralSetting;
 use Illuminate\Support\Facades\DB;
@@ -93,7 +94,6 @@ class HomeController extends Controller
                             ->limit(3)
                             ->get();
 
-
          $social = DB::table('categories')
                             ->where('categories.name',
                             'Social issues')
@@ -115,7 +115,6 @@ class HomeController extends Controller
                             ->limit(3)
                             ->get();
 
-
         $life = DB::table('categories')
                             ->where('categories.name',
                             'Life & Culture')
@@ -135,7 +134,6 @@ class HomeController extends Controller
                             'posts.excerpt', 'posts.slug')
                             ->orderBy('posts.created_at', 'desc')
                             ->limit(3);
-
 
          $tech = DB::table('categories')
                             ->where('categories.name',
@@ -178,8 +176,6 @@ class HomeController extends Controller
                             ->orderBy('posts.created_at', 'desc')
                             ->first();
 
-                          //  dd($africaID);
-
         $briefs = DB::table('categories')
                             ->where('categories.name',
                             'Africa in Brief')
@@ -200,14 +196,11 @@ class HomeController extends Controller
                             ->orderBy('posts.created_at', 'desc')
                             ->get(); */
 
-
-
+        $podcasts = Podcast::OrderBy('id', 'DESC')->get();
 
         return view('news.home', compact('posts', 'business','politicsPost', 'energy',
         'energyPosts', 'africaID', 'briefs','opinion', 'tech', 'life', 'social', 'economy', 'ecoPosts', 'randomPost', 'lifesRelated',
-         'socialsRelated', 'opinionsRelated'                                                                      )
-            //'posts' => Post::latest()->filter(request(['search', 'category', 'author']))->paginate(8)->withQueryString()
-        );
+         'socialsRelated', 'opinionsRelated', 'podcasts'));
     }
 
     public function allCategories()

@@ -96,14 +96,18 @@ public function update(Request $request, Podcast $podcast, Episode $episode) {
 
     $episode->update();
 
-    return redirect()->route('podcasts.admin.view', [$podcast->slug, $episode->slug])->with('success', 'Episode updated.');
+    return redirect()->route('podcasts.admin.view', [$podcast->slug, $episode->slug])->with('success', 'Episode updated successfully.');
 }
 
 
     public function destroy(Podcast $podcast, Episode $episode){
         $episode = $podcast->episodes()->findOrFail($episode->id);
+        $path = 'podcasts/episodes/'. $episode->audio_file;
         $episode->delete();
-        return redirect()->route('podcast.show')->with('success','Episode deleted successfully');
+        if ($path && file_exists(public_path($path))) {
+            unlink(public_path($path));
+        }
+        return back()->with('success','Episode deleted successfully');
 
     }
 

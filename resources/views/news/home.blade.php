@@ -364,52 +364,37 @@
             </div>
         </div>
     </div>
+
+@if (!empty($podcasts))
     <div class="journalafricafooterpodcast mt-5">
         <h2 class="journalafriclpodTitle">Podcast</h2>
         <div class="container">
             <div class="row">
+                @foreach ($podcasts as $podcast )
+
                 <div class="col-md-4">
                     <div>
                         <figure class="relatived">
-                            <img src="https://source.unsplash.com/random/?information" alt="image" class="newsimage_footer">
+                            <img src="{{asset('podcasts/'.$podcast->cover_image)}}" alt="image" class="newsimage_footer">
                             <i class="fa-sharp fa-solid fa-play played"></i>
                             <figcaption class="mt-3">
-                                <a href="#">
-                                    <h5 class="headers">Credible Elections</h5>
+                                <a href="{{route('podcasts.show', $podcast->slug)}}">
+                                    <h5 class="headers">{{$podcast->title}}</h5>
                                 </a>
-                                <p class="postInfor">By <b class="postby">super admin</b> Oct 6, 2016</p>
+                                <p class="postInfor">By <b class="postby">{{$podcast->author->name}}</b> {{$podcast->created_at}}</p>
                             </figcaption>
                         </figure>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <figure class="relatived">
-                        <img src="https://source.unsplash.com/random/?education" alt="image" class="newsimage_footer">
-                        <i class="fa-sharp fa-solid fa-play played"></i>
-                        <figcaption class="mt-3">
-                            <a href="#">
-                                <h5 class="headers">Podcast Title</h5>
-                            </a>
-                            <p class="postInfor">By <b class="postby">super admin</b> Sept 12, 2016</p>
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="col-md-4">
-                    <figure class="relatived">
-                        <img src="https://source.unsplash.com/random/?event" alt="image" class="newsimage_footer">
-                        <i class="fa-sharp fa-solid fa-play played"></i>
-                        <figcaption class="mt-3">
-                            <a href="#">
-                                <h5 class="headers">Podcast Title</h5>
-                            </a>
-                            <p class="postInfor">By <b class="postby">super admin</b> Oct 6, 2018</p>
-                        </figcaption>
-                    </figure>
-                </div>
 
+                @endforeach
             </div>
         </div>
     </div>
+
+                @endif
+
+
     <div class="container mt-5">
         <div class="adbanner">
             <img src="https://source.unsplash.com/random/?digital" alt="adverts image">

@@ -58,7 +58,7 @@
 
                             <div class="form-group mb-3">
                                 <label for="body" class="form-label">Description</label>
-                                <textarea name="description" id="body"></textarea>
+                                <textarea name="description" id="body">{{old('description')}}</textarea>
                                 @error('description')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
