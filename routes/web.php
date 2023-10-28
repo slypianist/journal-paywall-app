@@ -19,6 +19,7 @@ use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\PaystackWebhookController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\SubscriptionController;
+use App\Models\Subscription;
 
 /*
 |--------------------------------------------------------------------------
@@ -148,6 +149,7 @@ Route::middleware('auth')->group(function(){
     // Paystack Webhook
 
     Route::post('paystack/webhook', [PaystackWebhookController::class, 'handleWebhook'])->name('paystack.webhook');
+    Route::post('payment/callback', [Subscription::class, 'handlePaymentCallback'])->name('payment.callback');
 
 
 
