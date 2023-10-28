@@ -149,7 +149,7 @@ Route::middleware('auth')->group(function(){
     // Paystack Webhook
 
     Route::post('paystack/webhook', [PaystackWebhookController::class, 'handleWebhook'])->name('paystack.webhook');
-    Route::post('payment/callback', [Subscription::class, 'handlePaymentCallback'])->name('payment.callback');
+    Route::post('payment/callback', [SubscriptionController::class, 'handlePaymentCallback'])->name('payment.callback');
 
 
 
