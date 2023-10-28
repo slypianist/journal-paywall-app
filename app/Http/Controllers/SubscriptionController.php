@@ -36,7 +36,8 @@ class SubscriptionController extends Controller
 
     }
 
-    public function handlePaymentCallback(){
+    public function handlePaymentCallback(Request $request){
+        dd($request->all());
 
 
 
