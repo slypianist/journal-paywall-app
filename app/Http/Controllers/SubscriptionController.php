@@ -38,6 +38,7 @@ class SubscriptionController extends Controller
 
     public function handlePaymentCallback(){
 
+
     }
 
     public function cancelSubscription(){
