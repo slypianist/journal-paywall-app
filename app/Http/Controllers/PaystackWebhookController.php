@@ -85,9 +85,9 @@ class PaystackWebhookController extends Controller
         // Extract Subscription Details.
         $amount = $payload['data']['amount'] / 100; // To convert amount to the appropriate currency format
         $subCode = $payload['data']['subscription_code'];
-      //  $paymentReference = $payload['data']['reference'];
         $customerEmail = $payload['data']['customer']['email'];
         $status = $payload['data']['status'];
+        $nextPayment = $payload['data']['next_payment_date'];
 
         // Extract authorization-related data
         $authorizationCode = $payload['data']['authorization']['authorization_code'];
@@ -103,23 +103,25 @@ class PaystackWebhookController extends Controller
         // Create a new subscription and save it to the database
         $subscription = new Subscription();
 
-        $subscription->subCode = $subCode;
+        $subscription->subscriptionCode = $subCode;
         $subscription->authCode = $authorizationCode;
         $subscription->amount = $amount;
         $subscription->status = $status;
-        $subscription->nextPaymentDate = null; // Set a valid date here
+        $subscription->ends_at= $nextPayment; // Set a valid date here
         $subscription->planName = $subPlan;
         $subscription->planCode = $subPlanCode;
         $subscription->interval = $subPlanInterval;
-        $subscription->customerEmail = $customerEmail;
+        $subscription->CustomerEmail = $customerEmail;
 
         $subscription->save();
     }
 
     private function handleSubscriptionCancellation($payload)
     {
-        Log::warning('Subscription is cancelled', ['event' => 'Cancelled']);
+        Log::info('Subscription is cancelled', ['event' => 'Cancelled']);
     }
+
+    // Handle subscription auto-renewal event
 
     private function handleInvoiceUpdate($payload)
     {
@@ -127,10 +129,11 @@ class PaystackWebhookController extends Controller
         // Handle subscription auto-renewal event
     }
 
+    // Webhook validation logic
+
     private function verifyWebhookSignature(Request $request)
     {
-        // Implement webhook validation logic here
-        // You can compare the secret key in the request header with your Paystack secret key
+        // Compare the secret key in the request header with your Paystack secret key
         $paystackSecretKey = env('PAYSTACK_SECRET_KEY');
         $paystackSignature = $request->header('x-paystack-signature');
         $expectedSignature = hash_hmac('sha512', $request->getContent(), $paystackSecretKey);
