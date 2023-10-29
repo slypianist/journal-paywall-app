@@ -13,7 +13,7 @@ class PaystackWebhookController extends Controller
     {
         // Verify the webhook signature to ensure authenticity
         if ($this->verifyWebhookSignature($request)) {
-            $payload = $request->json();
+            $payload = $request->all();
             $event = $payload['event']; // Extract the event type
 
             // Route the processing logic based on the event type
