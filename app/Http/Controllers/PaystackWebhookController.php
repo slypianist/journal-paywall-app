@@ -77,7 +77,7 @@ class PaystackWebhookController extends Controller
 
     private function handleNewInvoice($payload)
     {
-        // Handle new invoice event
+        Log::info('An invoice has been created for a subscription on your account.');
     }
 
     private function handleSubscriptionSuccess($payload)
@@ -85,7 +85,7 @@ class PaystackWebhookController extends Controller
         // Extract Subscription Details.
         $amount = $payload['data']['amount'] / 100; // To convert amount to the appropriate currency format
         $subCode = $payload['data']['subscription_code'];
-        $paymentReference = $payload['data']['reference'];
+      //  $paymentReference = $payload['data']['reference'];
         $customerEmail = $payload['data']['customer']['email'];
         $status = $payload['data']['status'];
 
@@ -123,6 +123,7 @@ class PaystackWebhookController extends Controller
 
     private function handleInvoiceUpdate($payload)
     {
+        Log::info('An invoice has been updated.');
         // Handle subscription auto-renewal event
     }
 
