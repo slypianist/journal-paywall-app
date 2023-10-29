@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Subscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
@@ -52,6 +53,7 @@ class SubscriptionController extends Controller
         dd($verificationData);
 
         if ($verificationResponse->successful()) {
+            Log::warning('Payment verification successful.', ['message' => $verificationData['message']]);
             // Verification successful; $verificationData contains payment details
             // Update your records and perform additional processing as needed
             // ...
