@@ -37,7 +37,31 @@ class SubscriptionController extends Controller
     }
 
     public function handlePaymentCallback(Request $request){
-        dd($request->all());
+
+        $paymentReference = $request->input('reference');
+       // $paymentReference = "w7616uiupv"; // Replace with the actual payment reference
+        $paystackSecretKey = env('PAYSTACK_SECRET_KEY'); // Replace with your Paystack secret key
+
+        $verificationResponse = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $paystackSecretKey,
+            'Cache-Control' => 'no-cache',
+        ])->get("https://api.paystack.co/transaction/verify/{$paymentReference}");
+
+        $verificationData = $verificationResponse->json();
+
+        dd($verificationData);
+
+        if ($verificationResponse->successful()) {
+            // Verification successful; $verificationData contains payment details
+            // Update your records and perform additional processing as needed
+            // ...
+        } else {
+            // Verification failed; handle the error
+            $error = $verificationData['message'] ?? 'Payment verification failed';
+            // Handle the error, log it, and respond accordingly
+            // ...
+}
+
 
 
 
