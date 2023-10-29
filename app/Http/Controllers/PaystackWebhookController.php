@@ -47,6 +47,7 @@ class PaystackWebhookController extends Controller
 
     private function handlePaymentSuccess($payload)
     {
+
         // Extract relevant data from the $payload
         $amount = $payload['data']['amount'] / 100; // Convert amount to the appropriate currency format
         $paymentReference = $payload['data']['reference'];
@@ -82,12 +83,16 @@ class PaystackWebhookController extends Controller
 
     private function handleSubscriptionSuccess($payload)
     {
+
         // Extract Subscription Details.
         $amount = $payload['data']['amount'] / 100; // To convert amount to the appropriate currency format
         $subCode = $payload['data']['subscription_code'];
         $customerEmail = $payload['data']['customer']['email'];
         $status = $payload['data']['status'];
         $nextPayment = $payload['data']['next_payment_date'];
+
+        $dateTime = new \DateTime($nextPayment);
+        $ends_at = $dateTime->format('Y-m-d H:i:s');
 
         // Extract authorization-related data
         $authorizationCode = $payload['data']['authorization']['authorization_code'];
@@ -107,7 +112,7 @@ class PaystackWebhookController extends Controller
         $subscription->authCode = $authorizationCode;
         $subscription->amount = $amount;
         $subscription->status = $status;
-        $subscription->ends_at= $nextPayment; // Set a valid date here
+        $subscription->ends_at= $ends_at; // Set a valid date here
         $subscription->planName = $subPlan;
         $subscription->planCode = $subPlanCode;
         $subscription->interval = $subPlanInterval;
