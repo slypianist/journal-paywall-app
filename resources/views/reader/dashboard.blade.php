@@ -61,7 +61,7 @@
                 </div>
                 <div class="content">
                   <h6 class="mb-10"><b>Subscription Status</b></h6>
-                  @if ($subDetails)
+                  @if ($subDetail)
                   <h3 class="text-bold mb-10">{{Str::ucfirst($subDetail->status)}}</h3>
                   <p class="text-sm text-success">
 
