@@ -45,7 +45,7 @@
                 </div>
                 <div class="content">
                   <h5 class="mb-10"><b>Total Active Subscriptions</b></h5>
-                  <h3 class="text-bold mb-10">{{subTotal}}</h3>
+                  <h3 class="text-bold mb-10">{{$subTotal}}</h3>
                   <p class="text-sm text-success">
 
                   </p>
