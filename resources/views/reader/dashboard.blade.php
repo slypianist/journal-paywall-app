@@ -61,8 +61,14 @@
                 </div>
                 <div class="content">
                   <h6 class="mb-10"><b>Subscription Status</b></h6>
+                  @if (!empty($subDetails))
                   <h3 class="text-bold mb-10">{{Str::ucfirst($subDetail->status)}}</h3>
                   <p class="text-sm text-success">
+
+                  @else
+                  <h3 class="text-bold mb-10">None</h3>
+                  <p class="text-sm text-success">
+                  @endif
                   </p>
                 </div>
               </div>
@@ -76,8 +82,13 @@
                 </div>
                 <div class="content">
                   <h6 class="mb-10">Current Subscribed Plan</h6>
+                  @if (!empty($subDetail))
                   <h3 class="text-bold mb-10">{{$subDetail->planName}}</h3>
                   <p class="text-sm text-danger">
+                    @else
+                    <h3 class="text-bold mb-10"> None</h3>
+                    <p class="text-sm text-danger">
+                  @endif
                     {{-- <i class="lni lni-arrow-down"></i> -2.00%
                     <span class="text-gray">Expense</span> --}}
                   </p>
