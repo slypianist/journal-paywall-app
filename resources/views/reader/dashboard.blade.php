@@ -61,7 +61,7 @@
                 </div>
                 <div class="content">
                   <h6 class="mb-10"><b>Subscription Status</b></h6>
-                  @if (!empty($subDetails))
+                  @if ($subDetails)
                   <h3 class="text-bold mb-10">{{Str::ucfirst($subDetail->status)}}</h3>
                   <p class="text-sm text-success">
 
@@ -82,7 +82,7 @@
                 </div>
                 <div class="content">
                   <h6 class="mb-10">Current Subscribed Plan</h6>
-                  @if (!empty($subDetail))
+                  @if ($subDetail)
                   <h3 class="text-bold mb-10">{{$subDetail->planName}}</h3>
                   <p class="text-sm text-danger">
                     @else
