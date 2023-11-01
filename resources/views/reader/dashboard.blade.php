@@ -44,7 +44,7 @@
                   <i class="lni lni-cart-full"></i>
                 </div>
                 <div class="content">
-                  <h5 class="mb-10"><b>Total Active Subscriptions</b></h5>
+                  <h5 class="mb-10"><b>Total Active Subscriptions:</b></h5>
                   <h3 class="text-bold mb-10">{{$subTotal}}</h3>
                   <p class="text-sm text-success">
 
@@ -60,7 +60,7 @@
                   <i class="lni lni-dollar"></i>
                 </div>
                 <div class="content">
-                  <h6 class="mb-10"><b>Subscription Status</b></h6>
+                  <h6 class="mb-10"><b>Subscription Status:</b></h6>
                   @if ($subDetail)
                   <h3 class="text-bold mb-10">{{Str::ucfirst($subDetail->status)}}</h3>
                   <p class="text-sm text-success">
@@ -81,7 +81,7 @@
                   <i class="lni lni-credit-cards"></i>
                 </div>
                 <div class="content">
-                  <h6 class="mb-10">Current Subscribed Plan</h6>
+                  <h6 class="mb-10">Current Subscribed Plan:</h6>
                   @if ($subDetail)
                   <h3 class="text-bold mb-10">{{$subDetail->planName}}</h3>
                   <p class="text-sm text-danger">
