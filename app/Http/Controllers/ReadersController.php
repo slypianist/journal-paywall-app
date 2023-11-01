@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reader;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -25,7 +26,7 @@ class ReadersController extends Controller
 
      //   $check = $this->create($data);
         Reader::create($data);
-        return redirect()->route('reader.showLoginForm')->with('message','Registration successful. Please login');
+        return redirect()->route('reader.showLoginForm')->with('message','Registration successful.');
     }
 
 
@@ -41,13 +42,11 @@ class ReadersController extends Controller
 //dd($data);
 
         if(Auth::guard('reader')->attempt($credentials)){
-
-
             return redirect()->route('reader.dashboard')->with(['message'=>'You are logged in successfully']);
 
         }
 
-        return back()->with(['message'=>'invalid username or password']);
+        return back()->with(['message'=>'Invalid username or password']);
      }
 
     public function logout(){
@@ -60,8 +59,28 @@ class ReadersController extends Controller
     public function dashboard(){
         if(Auth::guard('reader')->check()){
             $fname = auth('reader')->user()->first_name;
+            $customerEmail = auth('reader')->user()->email;
+            $subs = DB::table('subscriptions')
+                        ->where('CustomerEmail', $customerEmail)
+                        ->where('status', 'active')
+                        ->orderByDesc('id')
+                        ->get();
 
-            return view('reader.dashboard', compact('fname'));
+            $subTotal = DB::table('subscriptions')
+                        ->where('CustomerEmail', $customerEmail)
+                        ->where('status', 'active')
+                        ->orderByDesc('id')
+                        ->count();
+
+            $subDetail = DB::table('subscriptions')
+                        ->where('CustomerEmail', $customerEmail)
+                        ->where('recipientID', $customerEmail)
+                        ->where('status', 'active')
+                        ->orderByDesc('id')
+                        ->first();
+
+
+            return view('reader.dashboard', compact('fname', 'subs', 'subTotal', 'subDetail'));
         }
         return redirect()->route('reader.login');
 

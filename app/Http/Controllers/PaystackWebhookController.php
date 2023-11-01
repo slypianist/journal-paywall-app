@@ -117,6 +117,7 @@ class PaystackWebhookController extends Controller
         $subscription->planCode = $subPlanCode;
         $subscription->interval = $subPlanInterval;
         $subscription->CustomerEmail = $customerEmail;
+        $subscription->recipientID = $customerEmail;
 
         $subscription->save();
     }
