@@ -66,7 +66,7 @@
                   <p class="text-sm text-success">
 
                   @else
-                  <h3 class="text-bold mb-10">None</h3>
+                  <h3 class="text-bold mb-10">NIL</h3>
                   <p class="text-sm text-success">
                   @endif
                   </p>
@@ -86,7 +86,7 @@
                   <h3 class="text-bold mb-10">{{$subDetail->planName}}</h3>
                   <p class="text-sm text-danger">
                     @else
-                    <h3 class="text-bold mb-10"> None</h3>
+                    <h3 class="text-bold mb-10"> NIL</h3>
                     <p class="text-sm text-danger">
                   @endif
                     {{-- <i class="lni lni-arrow-down"></i> -2.00%

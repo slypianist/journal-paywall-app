@@ -135,19 +135,14 @@ class ReadersController extends Controller
 
     public function showSub(){
        $fname =  auth('reader')->user()->first_name;
-       // $reader = Reader::where('id', $id)->get();
-      //  return view('reader.subscription', compact('fname'));
-        // Subcription implementation. */
 
         $user = Auth::guard('reader')->user();
-    //   $subscriptions = Subscription::where('customerEmail', $user->email)->get();
+       $subs = Subscription::where('customerEmail', $user->email)->get();
 
-     $subscriptions = [];
-
-
-
-     return view('reader.subscription', compact('fname', 'subscriptions'));
+     return view('reader.subscription', compact('fname', 'subs'));
     }
+
+
 
     public function transactions(){
         $fname =  auth('reader')->user()->first_name;
