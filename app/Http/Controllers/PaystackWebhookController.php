@@ -50,6 +50,7 @@ class PaystackWebhookController extends Controller
 
         // Extract relevant data from the $payload
         $amount = $payload['data']['amount'] / 100; // Convert amount to the appropriate currency format
+        $currency = $payload['data']['currency'];
         $paymentReference = $payload['data']['reference'];
         $customerEmail = $payload['data']['customer']['email'];
 
@@ -69,6 +70,7 @@ class PaystackWebhookController extends Controller
         $transaction->cardDetails = $cardLast4Digits;
         $transaction->cardType = $cardType;
         $transaction->bankName = $bankName;
+        $transaction->currency = $currency;
 
         $transaction->save();
 
@@ -125,6 +127,8 @@ class PaystackWebhookController extends Controller
     private function handleSubscriptionCancellation($payload)
     {
         Log::info('Subscription is cancelled', ['event' => 'Cancelled']);
+
+
     }
 
     // Handle subscription auto-renewal event

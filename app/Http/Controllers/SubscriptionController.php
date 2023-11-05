@@ -18,19 +18,15 @@ class SubscriptionController extends Controller
     $planCode = $request->plan;
     $amount = $request->amount;
 
-   // dd($planCode);
-
     // Initialize a payment transaction with Paystack
     $transactionResponse = Http::withHeaders([
         'Authorization' => 'Bearer ' . env('PAYSTACK_SECRET_KEY'),
         'Cache-Control' => 'no-cache',
     ])->post($url, [
         'email' => $email,
-        'amount' => $amount, // Get plan amount based on the selected plan
+        'amount' => $amount,
         'plan' => $planCode,
     ])->json();
-
-   // dd($transactionResponse);
 
     // Redirect the user to the Paystack payment gateway
     return redirect()->away($transactionResponse['data']['authorization_url']);
@@ -40,8 +36,7 @@ class SubscriptionController extends Controller
     public function handlePaymentCallback(Request $request){
 
         $paymentReference = $request->input('reference');
-       // $paymentReference = "w7616uiupv"; // Replace with the actual payment reference
-        $paystackSecretKey = env('PAYSTACK_SECRET_KEY'); // Replace with your Paystack secret key
+        $paystackSecretKey = env('PAYSTACK_SECRET_KEY');
 
         $verificationResponse = Http::withHeaders([
             'Authorization' => 'Bearer ' . $paystackSecretKey,
@@ -52,22 +47,33 @@ class SubscriptionController extends Controller
 
         if ($verificationResponse->successful()) {
             Log::warning('Payment verification successful.', ['message' => $verificationData['message']]);
-            // Verification successful; $verificationData contains payment details
-            // Update your records and perform additional processing as needed
+            // Update your records and perform additional processing as needed.
+
             return redirect()->route('home')->with('success', 'Payment successful');
         } else {
             // Verification failed; handle the error
             $error = $verificationData['message'] ?? 'Payment verification failed';
+
             // Handle the error, log it, and respond accordingly
-            // ...
+
 }
-
-
-
 
     }
 
-    public function cancelSubscription(){
+    public function cancelSubscription($subscriptionCode){
+        $url = env('PAYSTACK_PAYMENT_URL').'/subscription/'.$subscriptionCode;
+        $paystackSecretKey = env('PAYSTACK_SECRET_KEY');
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer '.$paystackSecretKey,
+            'Cache-Control' => 'no-cache'
+        ])->get($url);
+
+        $data = $response->json();
+
+        dd($data);
+
+      $token = $data['data']['email_token'];
+
 
 
     }

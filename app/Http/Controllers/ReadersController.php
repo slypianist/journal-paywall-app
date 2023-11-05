@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reader;
+use App\Models\Transaction;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -139,6 +140,7 @@ class ReadersController extends Controller
         $user = Auth::guard('reader')->user();
        $subs = Subscription::where('customerEmail', $user->email)->get();
 
+
      return view('reader.subscription', compact('fname', 'subs'));
     }
 
@@ -146,8 +148,11 @@ class ReadersController extends Controller
 
     public function transactions(){
         $fname =  auth('reader')->user()->first_name;
+        $email = auth('reader')->user()->email;
 
-        $transactions = [];
+        $transactions = Transaction::where('email', $email)->get();
+
+     //   dd($transactions);
 
         return view('reader.transactions', compact('fname', 'transactions'));
 

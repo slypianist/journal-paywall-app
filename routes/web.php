@@ -51,30 +51,29 @@ use App\Models\Subscription;
     Route::get('/categories', [HomeController::class, 'allCategories'])->name('show-categories');
     Route::get('news/', [CategoryController::class, 'showCategoryPost'])->name('category-post');
 
-Route::get('/random-post', [PostController::class, 'randomArticle']);
+    Route::get('/random-post', [PostController::class, 'randomArticle']);
 
 // Readers Routes
 
 
-Route::get('reader/login', function(){
-    return view('news.login');
-})->name('reader.showLoginForm');
+    Route::get('reader/login', function(){
+        return view('news.login');
+    })->name('reader.showLoginForm');
 
-Route::get('reader/register',function(){
-    return view('news.register');
-})->name('reader.showRegisterForm');
+    Route::get('reader/register',function(){
+        return view('news.register');
+    })->name('reader.showRegisterForm');
 
-Route::post('reader/register', [ReadersController::class, 'register'])->name('reader.register');
-Route::post('reader/login', [ReadersController::class, 'login'])->name('reader.login');
-
+    Route::post('reader/register', [ReadersController::class, 'register'])->name('reader.register');
+    Route::post('reader/login', [ReadersController::class, 'login'])->name('reader.login');
 
 
 /* Podcast Routes======================================= */
-Route::get('podcast', [PodcastController::class, 'index'])->name('podcasts.all');
+    Route::get('podcast', [PodcastController::class, 'index'])->name('podcasts.all');
 
-Route::get('podcasts/{podcast}/episodes/{episode}', [EpisodeController::class, 'show'])->name('episodes.show');
+    Route::get('podcasts/{podcast}/episodes/{episode}', [EpisodeController::class, 'show'])->name('episodes.show');
 
-Route::get('podcasts/{podcast:slug}', [PodcastController::class, 'show'])->name('podcasts.show');
+    Route::get('podcasts/{podcast:slug}', [PodcastController::class, 'show'])->name('podcasts.show');
 
 
 /* End of Non Autheticated Routes........................ */
@@ -85,8 +84,8 @@ Route::get('podcasts/{podcast:slug}', [PodcastController::class, 'show'])->name(
     Route::get('/logout', [DashboardController::class, 'logout']);
 });
 
-Route::post('paystack/webhook', [PaystackWebhookController::class, 'handleWebhook'])->name('paystack.webhook');
-Route::post('payment/callback', [SubscriptionController::class, 'handlePaymentCallback'])->name('payment.callback');
+    Route::post('paystack/webhook', [PaystackWebhookController::class, 'handleWebhook'])->name('paystack.webhook');
+    Route::post('payment/callback', [SubscriptionController::class, 'handlePaymentCallback'])->name('payment.callback');
 
 
 /* Readers Autheticated Routes........................ */
@@ -101,6 +100,7 @@ Route::middleware('reader.auth')->group(function (){
     Route::get('category', [TestController::class, 'index']);
     Route::post('subscribe', [SubscriptionController::class, 'newSubscription'])->name('subscribe');
     Route::get('user/transaction', [ReadersController::class, 'transactions'])->name('reader.transaction');
+    Route::get('subscription/cancel/{subscriptionCode}', [SubscriptionController::class, 'cancelSubscription'])->name('subscription.cancel');
 
 
 });
