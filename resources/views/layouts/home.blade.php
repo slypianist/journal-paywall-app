@@ -22,8 +22,30 @@
             <div class="top-bar-wrap">
                 <div class="flex-item">
                     <ul class="links mt-2">
-                        <li><a href="{{route('reader.showRegisterForm')}}">Register</a></li>
+                        @guest('reader')
                         <li><a href="{{route('reader.showLoginForm')}}">Login</a></li>
+                        @endguest
+
+                        @guest('reader')
+                        <li><a href="{{route('reader.showRegisterForm')}}">Register</a></li>
+                        @endguest
+
+                        @auth('reader')
+                        <li><a href="{{route('reader.logout')}}"
+                            onclick="event.preventDefault();
+                     document.getElementById('logout-form').submit()";>Logout</a>
+                            <form id="logout-form" action="{{ route('reader.logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+                        @endauth
+
+                        {{-- @auth('reader')
+
+                            Welcome User!
+
+                        @endauth --}}
+
 
                     </ul>
                 </div>
@@ -120,7 +142,22 @@
                       </li>
                     </ul>
                     <div class="d-flex">
+
+                        @guest('reader')
                         <a href="{{route('reader.showLoginForm')}}"><button class="btn btn-nav">Login</button></a>
+                        @endguest
+
+                        @auth('reader')
+                        <a href="{{route('reader.logout')}}"
+                        onclick="event.preventDefault();
+                     document.getElementById('logout-form').submit();"><button class="btn btn-nav">Logout</button>
+                            <form id="logout-form" action="{{ route('reader.logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+
+                        </a>
+                        @endauth
+
                         <a href="{{route('news.subscribe')}}"><button class="btn btn-nav">Subscribe</button></a>
 
                     </div>
