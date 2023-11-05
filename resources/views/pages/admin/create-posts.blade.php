@@ -54,6 +54,15 @@
                             </div>
 
                             <div class="form-group mb-3">
+                                <label for="type" class="form-label">Type</label>
+                                <select class="form-select" name="type">
+                                    <option value="" disabled>Post type</option>
+                                    <option value="FREE">FREE</option>
+                                    <option value="PREMIUM">PREMIUM</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group mb-3">
                                 <label for="image" class="form-label">Thumbnail / Feature Image</label>
                                 <img class="img-preview img-fluid mb-3 col-sm-5">
                                 <input class="form-control @error('image') is-invalid @enderror" type="file"

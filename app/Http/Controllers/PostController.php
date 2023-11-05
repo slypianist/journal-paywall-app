@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Http\Requests\StorePostRequest;
-use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use \Cviebrock\EloquentSluggable\Services\SlugService;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage as FacadesStorage;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Support\Facades\Redirect;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Storage as FacadesStorage;
 
 class PostController extends Controller
 {
@@ -89,15 +90,22 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        $isSubscribed = false;
+        if (auth('reader')->check() && $post->isPremium()) {
+            $user = auth('reader')->user();
+
+            $isSubscribed = Subscription::where('CustomerEmail', $user->email)
+                            ->where('status', 'active')
+                            ->exists();
+        }
+
         $posts = Post::with(['category'])->orderBy('posts.created_at', 'desc')->get();
         $categoryID = $post->category->id;
         $related = Post::where('category_id', $categoryID)->get();
-        $truncatedBody = Str::limit($post->body, 1000);
-    
-        $newPost = Post::all();
-        $random_id = $newPost->random()->id;
-        $randomPost = Post::where('id', $random_id)->first();
-        return view('news.show', compact('post', 'newPost', 'related', 'randomPost', 'truncatedBody'));
+        $truncatedBody = Str::limit($post->body, 500);
+
+
+        return view('news.show', compact('post', 'related', 'truncatedBody', 'isSubscribed'));
     }
 
     /**

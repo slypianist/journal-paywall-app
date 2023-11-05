@@ -1,5 +1,10 @@
-@extends('layouts.details')
-@section('s-content')
+@extends('layouts.home')
+@push('styles')
+
+<link rel="stylesheet" href="{{asset('assets/news/css/single.css')}}">
+
+@endpush
+@section('h-content')
 {{-- Header --}}
 
 
@@ -16,19 +21,52 @@
                     </h3>
                     <p class="dated">By <small class="author">{{$post->author->name}}</small> -- <span>5th-Mar-2023</span></p>
                     <div>
+
+                    @auth('reader')
+                        @if ($post->isPremium())
+                            @if ($isSubscribed)
+                            <article>
+
+                                {!! $post->body!!}
+
+                              </article>
+                            @else
+                            <p class="newsdetail">
+                                <article>
+
+                                   {!! $truncatedBody!!}
+
+                                 </article>
+
+                                 <div id="paywall-wrapper">
+                                    <h4>Journal Africa News</h4>
+                                    <p>This story is only available to Premium Subscribers. You have no active subscription. <br><strong>Click Subscribe to choose a subscription plan</strong> to read.</p>
+                                    <a class="btn btn-danger" href="{{route('news.subscribe')}}">Subscribe</a>
+                                 </div>
+                            </p>
+                            @endif
+                        @endif
+                    @endauth
+
+                    @guest('reader')
+                        @if ($post->isPremium())
                         <p class="newsdetail">
                             <article>
 
                                {!! $truncatedBody!!}
-                                
+
                              </article>
-                    
+
                              <div id="paywall-wrapper">
                                 <h4>Journal Africa News</h4>
-                                <p>This story is free to read. <strong>Kindly login</strong> to read.</p>
-                                <a class="btn btn-danger" href="">Login</a>
+                                <p>This story is a premium content and only available to premium subscribers. <br>To continue reading, <strong>subscribe</strong> or <strong>sign in.</strong></p>
+                                <a class="btn btn-danger wall-button" href="{{route('reader.showLoginForm')}}">Sign in</a>
+                                <a class="btn btn-dark wall-button" href="{{route('news.subscribe')}}">Subscribe</a>
                              </div>
                         </p>
+                        @endif
+                    @endguest
+
                     </div>
                 </div>
             </div>
@@ -104,12 +142,12 @@
                                     </div>
                                 </div>
                             </div>
-                                
+
                             @endif
-                                
+
                             @endforeach
-                            
-                            
+
+
 
                         </div>
                     </div>
