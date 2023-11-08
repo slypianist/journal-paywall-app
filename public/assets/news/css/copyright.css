@@ -1,0 +1,30 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+p{
+    font-size: 15px;
+}
+.wrapper {
+    margin: 20px;
+}
+.dividers {
+    border:none;
+    height: 20px;
+	height: 50px;
+	margin-top: 0;
+	border-bottom: 1px solid #1f1209;
+	box-shadow: 0 20px 20px -20px #333;
+    /* margin: -50px auto 10px;  */
+}
+.titled {
+    text-transform: uppercase;
+    text-align: center;
+}
+.jounalTitl {
+    text-transform: capitalize;
+}
+
+.journalAfrica-content li{
+    line-height: 35px;
+}

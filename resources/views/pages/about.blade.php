@@ -6,10 +6,10 @@
                     <div class="col-md-6">
                         <div class="text-white p-4 p-md-5">
                             <h2 class="fw-bold text-white mb-3">Dashr</h2>
-                            <p class="mb-4">Dashr is CMS for blogging made with laravel php frameworks</p>
+                            <p class="mb-4">Journal Africa is CMS for Paywall App made with laravel php frameworks</p>
                             <div class="my-3">
                                 <a class="btn btn-primary btn-lg me-2" role="button"
-                                    href="https://github.com/MiguelEmmara-ai/dashr" target="_blank">GitHub Repo</a>
+                                    href="https://github.com/" target="_blank">GitHub Repo</a>
                             </div>
                         </div>
                     </div>
