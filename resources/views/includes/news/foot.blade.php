@@ -28,7 +28,7 @@
                 <ul class="journalafricafooterlist">
                     <li><a href="" class="lists">Contact Us</a></li>
                     <li><a href="" class="lists">Write for us</a></li>
-                    <li><a href="{{route('news.sub')}}" class="lists">Subscription plan</a></li>
+                    <li><a href="{{route('news.subscribe')}}" class="lists">Subscription plan</a></li>
                     <li><a href="" class="lists">Newsletter</a></li>
                     {{-- <li><a href="" class="lists">Site map</a></li> --}}
                 </ul>
