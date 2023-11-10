@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AuthorStatusRequest;
-use App\Models\Category;
-use App\Models\GeneralSetting;
 use App\Models\Post;
 use App\Models\User;
-use Artesaos\SEOTools\Facades\SEOTools;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use App\Models\GeneralSetting;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\AuthorStatusRequest;
 
 class AuthorController extends Controller
 {
@@ -30,6 +32,35 @@ class AuthorController extends Controller
             "authors" => $authors,
             "user" => $user
         ]);
+    }
+
+    public function create(){
+        $user = Auth::user();
+        return view('pages.admin.authors-create', compact('user'));
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'username' => 'required',
+            'email' => 'required|email',
+            'email_verified_at' => now(),
+            'password' => 'required',
+
+        ]);
+
+        $data = $request->all();
+        $data['email_verified_at'] = now();
+        $data['default_avatar'] = "storage/default_avatar-1.jpg";
+        $data['password'] = Hash::make($request->password);
+        $data['have_avatar'] = false;
+
+        $admin =  User::create($data);
+
+        return back()->with('success', 'Author created');
+
+
+
     }
 
     /**
@@ -70,7 +101,7 @@ class AuthorController extends Controller
 
         $item->update($data);
 
-        return Redirect::route('authors.index')->with('success', "Success Update User [$item->name]");
+        return Redirect::route('authors.index')->with('success', " Author updated. [$item->name]");
     }
 
     /**
@@ -87,6 +118,6 @@ class AuthorController extends Controller
         // Delete Author
         $user->destroy($id);
 
-        return Redirect::route('authors.index')->with('success', 'Success Delete Author');
+        return Redirect::route('authors.index')->with('success', 'Author deleted.');
     }
 }

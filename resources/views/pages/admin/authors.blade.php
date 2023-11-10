@@ -10,7 +10,7 @@
                 <h5 class="card-header">All Authors</h5>
                 <ul class="flex-column flex-md-row mb-3">
                         <li class="" style="list-style: none">
-                      <a href="{{ route('profile.edit') }}"><button class="btn btn-info">Add Author</button></a>
+                      <a href="{{ route('authors.create') }}"><button class="btn btn-dark">Add Author</button></a>
                         </li>
                     </ul>
                 <div class="table-responsive text-nowrap">
@@ -19,6 +19,9 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -27,6 +30,9 @@
                                 <tr>
                                     <td>{{ $author->id }}</td>
                                     <td><strong>{{ $author->name }}</strong></td>
+                                    <td><strong>{{$author->email}}</strong></td>
+                                    <td><strong>{{$author->user_types}}</strong></td>
+                                    <td><strong>{{$author->user_status}}</strong></td>
                                     <td>
                                         <div class="dropdown">
                                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

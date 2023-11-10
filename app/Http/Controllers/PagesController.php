@@ -74,9 +74,9 @@ class PagesController extends Controller
         return view('news.groupsub');
     }
 
-   /*  public function newsSub(){
-        return view('news.sub');
-    } */
+   public function contactUs(){
+    return view('pages.contact');
+   }
 
 
 }

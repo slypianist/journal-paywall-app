@@ -8,7 +8,7 @@
             <!-- Form controls -->
             <div class="col-md-12">
                 <div class="card mb-4">
-                    <h5 class="card-header">Edit Author {{ $user->name }}</h5>
+                    <h5 class="card-header">Edit Author: {{ $author->name }}</h5>
                     <div class="card-body">
 
                         <div class="form-group mb-3">

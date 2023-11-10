@@ -44,6 +44,7 @@ use App\Models\Subscription;
     Route::get('write-for-journal', [PagesController::class, 'writeForJournal'])->name('write-for-journal');
     Route::get('privacy-policy', [PagesController::class, 'privacyPolicy'])->name('policy');
     Route::get('subscribe', [PagesController::class, 'subscribe'])->name('news.subscribe');
+    Route::get('contact', [PagesController::class, 'contactUs'])->name('contact');
     Route::get('subscribe/gift', [PagesController::class, 'subGift'])->name('subscribe.gift');
     Route::get('subscribe/group', [PagesController::class, 'subGroup'])->name('subscribe.group');
     Route::get('news/subscribe', [PagesController::class, 'newsSub'])->name('news.sub');
@@ -130,6 +131,7 @@ Route::middleware('auth')->group(function(){
     Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+   // Route::get('admin/create', [AuthorController::class, 'create'])->name('author.create');
 
     Route::get('posts/checkSlug', [PostController::class, 'checkSlug'])->name('checkSlug');
     Route::get('posts/authorpost/{id}', [PostController::class, 'authorPost'])->name('authorPost');
