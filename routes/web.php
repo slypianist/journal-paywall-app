@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Models\Post;
 use App\Models\GeneralSetting;
 use Illuminate\Support\Facades\Auth;
@@ -151,7 +152,8 @@ Route::middleware('auth')->group(function(){
     Route::post('plan', [PlanController::class, 'store'])->name('plan.store');
     Route::get('plan/{id}/edit', [PlanController::class, 'edit'])->name('plan.edit');
     Route::put('plan/{id}', [PlanController::class, 'update'])->name('plan.update');
-
+    Route::get('admin/subscriptions', [AdminController::class, 'getSubscriptions'])->name('admin.subscriptions');
+    Route::get('admin/readers', [AdminController::class, 'getReaders'])->name('admin.readers');
     // Paystack Webhook
 
 

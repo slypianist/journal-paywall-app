@@ -33,7 +33,7 @@
           </div>
           <!-- ========== title-wrapper end ========== -->
 
-                        @if ($subs)
+                        @if (!$subs->isEmpty())
 
          <div class="row">
              <div class="col-lg-12">
@@ -72,7 +72,6 @@
                   <!-- end table row-->
                 </thead>
                 <tbody>
-
                         @foreach ($subs as $sub)
                         <tr>
                             <td>
@@ -106,7 +105,7 @@
 
                         @else
 
-                            <p>You don't have an active subscription.</p> <a href="{{route('news.subscribe')}}">Buy a subscription plan to subscribe</a>
+                            <p>You don't have an active subscription.</p> <a href="{{route('news.subscribe')}}">Buy a plan to subscribe</a>
 
 
                         @endif

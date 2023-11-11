@@ -29,10 +29,10 @@
                             <tbody class="table-border-bottom-0">
                                 <tr>
                                     <td>{{ $author->id }}</td>
-                                    <td><strong>{{ $author->name }}</strong></td>
-                                    <td><strong>{{$author->email}}</strong></td>
-                                    <td><strong>{{$author->user_types}}</strong></td>
-                                    <td><strong>{{$author->user_status}}</strong></td>
+                                    <td>{{ $author->name }}</td>
+                                    <td>{{$author->email}}</td>
+                                    <td>{{$author->user_types}}</td>
+                                    <td>{{$author->user_status}}</td>
                                     <td>
                                         <div class="dropdown">
                                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

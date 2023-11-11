@@ -92,7 +92,7 @@
 
         <!-- Podcast List -->
         <li
-            class="menu-item {{ request()->is('podcasts') ? 'active' : '' }}">
+            class="menu-item {{ request()->is('admin/podcasts*') ? 'active' : '' }}">
             <a href="{{ route('podcasts.admin') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-chevrons-right" style="color: #000000"></i>
                 <div data-i18n="Basic">All Podcasts</div>
@@ -115,20 +115,20 @@
         </li>
 
         <li
-            class="menu-item {{ request()->is('manage-sub') ? 'active open' : '' }}">
+            class="menu-item {{ request()->is('admin/subscriptions') ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-chevrons-right" style="color: #000000"></i>
                 <div data-i18n="Settings">Subscriptions</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item {{ request()->is('manage-sub') ? 'active' : '' }}">
-                    <a href="{{ route('manage.sub') }}" class="menu-link">
+                <li class="menu-item {{ request()->is('admin/subscriptions') ? 'active' : '' }}">
+                    <a href="{{ route('admin.subscriptions') }}" class="menu-link">
                         <div data-i18n="Account">View Subscriptions</div>
                     </a>
                 </li>
 
-                <li class="menu-item {{ request()->is('subscribers') ? 'active' : '' }}">
-                    <a href="{{ route('profile.edit') }}" class="menu-link">
+                <li class="menu-item {{ request()->is('admin/readers') ? 'active' : '' }}">
+                    <a href="{{ route('admin.readers') }}" class="menu-link">
                         <div data-i18n="Account">All Subscribers</div>
                     </a>
                 </li>
