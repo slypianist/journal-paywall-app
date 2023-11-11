@@ -15,7 +15,7 @@
                     </ul>
                 <div class="table-responsive text-nowrap">
                     <table class="table">
-                        <thead class="table-light">
+                        <thead class="table-dark">
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>

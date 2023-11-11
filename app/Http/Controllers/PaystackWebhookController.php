@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reader;
 use App\Models\Transaction;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
@@ -120,8 +121,11 @@ class PaystackWebhookController extends Controller
         $subscription->interval = $subPlanInterval;
         $subscription->CustomerEmail = $customerEmail;
         $subscription->recipientID = $customerEmail;
-
         $subscription->save();
+
+        //Update reader subscription status.
+
+
     }
 
     private function handleSubscriptionCancellation($payload)

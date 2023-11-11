@@ -135,11 +135,25 @@
             </ul>
         </li>
 
+        <!-- Transactions -->
+
+        <li class="menu-header small text-uppercase">
+            <i class="menu-icon tf-icons bx bxs-user-account" style="color:#ff0000"></i>
+            <span class="menu-header-text">Transaction</span></li>
+
+        <!-- Transaction List -->
+        <li class="menu-item {{ request()->is('transactions*') ? 'active' : '' }}">
+            <a href="{{ route('admin.transaction') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-chevrons-right" style="color: #000000"></i>
+                <div data-i18n="Basic">All transactions</div>
+            </a>
+        </li>
+
         <!-- Plans -->
 
         <li class="menu-header small text-uppercase">
             <i class='menu-icon tf-icons bx bxs-dollar-circle' style="color: #ff0000"></i>
-            <span class="menu-header-text">Subscription Plans</span>
+            <span class="menu-header-text">Plans</span>
         </li>
 
         <li

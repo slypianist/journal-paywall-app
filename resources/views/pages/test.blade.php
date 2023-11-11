@@ -1,5 +1,10 @@
-@extends('layouts.custom')
-@section('content')
+@extends('layouts.home')
+@push('styles')
+
+<link rel="stylesheet" href="{{asset('assets/news/css/home.css')}}">
+
+@endpush
+@section('h-content')
 
 <div class="container">
     <b>This is working</b>
@@ -21,5 +26,5 @@
 
 </div>
 
-
+@include('includes.news.foot')
 @endsection

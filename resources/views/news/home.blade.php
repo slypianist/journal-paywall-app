@@ -146,7 +146,7 @@
                                 <li>
                                     <p class="texted">
                                         {{$brief->excerpt}} <br>
-                                        <a href="{{route('post.list', [$brief->slug])}}" class="ctned">Continue reading</a>
+                                      {{--   <a href="{{route('post.list', [$brief->slug])}}" class="ctned">Continue reading</a> --}}
                                     </p>
                                 </li>
                                 <hr class="hred">

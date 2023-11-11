@@ -49,6 +49,7 @@ use App\Models\Subscription;
     Route::get('subscribe/gift', [PagesController::class, 'subGift'])->name('subscribe.gift');
     Route::get('subscribe/group', [PagesController::class, 'subGroup'])->name('subscribe.group');
     Route::get('news/subscribe', [PagesController::class, 'newsSub'])->name('news.sub');
+    //Route::get('manage-sub', [TestController::class, 'index'])->name('manage.sub');
 
     Route::get('/categories', [HomeController::class, 'allCategories'])->name('show-categories');
     Route::get('news/', [CategoryController::class, 'showCategoryPost'])->name('category-post');
@@ -76,6 +77,7 @@ use App\Models\Subscription;
     Route::get('podcasts/{podcast}/episodes/{episode}', [EpisodeController::class, 'show'])->name('episodes.show');
 
     Route::get('podcasts/{podcast:slug}', [PodcastController::class, 'show'])->name('podcasts.show');
+    Route::get('manage-sub', [TestController::class, 'index'])->name('manage.sub');
 
 
 /* End of Non Autheticated Routes........................ */
@@ -103,6 +105,7 @@ Route::middleware('reader.auth')->group(function (){
     Route::post('subscribe', [SubscriptionController::class, 'newSubscription'])->name('subscribe');
     Route::get('user/transaction', [ReadersController::class, 'transactions'])->name('reader.transaction');
     Route::get('subscription/cancel/{subscriptionCode}', [SubscriptionController::class, 'cancelSubscription'])->name('subscription.cancel');
+
 
 
 });
@@ -143,7 +146,7 @@ Route::middleware('auth')->group(function(){
     Route::get('categories/checkCategorySlug', [CategoryController::class, 'checkCategorySlug'])->name('checkCategorySlug');
     Route::get('pod/checkPodcastSlug', [PodcastController::class, 'checkPodcastSlug'])->name('checkPodcastSlug');
 
-    Route::get('manage-sub', [TestController::class, 'index'])->name('manage.sub');
+   // Route::get('manage-sub', [TestController::class, 'index'])->name('manage.sub');
 
     //Subscription Plans
 
@@ -154,10 +157,8 @@ Route::middleware('auth')->group(function(){
     Route::put('plan/{id}', [PlanController::class, 'update'])->name('plan.update');
     Route::get('admin/subscriptions', [AdminController::class, 'getSubscriptions'])->name('admin.subscriptions');
     Route::get('admin/readers', [AdminController::class, 'getReaders'])->name('admin.readers');
+    Route::get('admin/transactions', [AdminController::class, 'transactions'])->name('admin.transaction');
     // Paystack Webhook
-
-
-
 
     Route::resource('authors', AuthorController::class);
 });

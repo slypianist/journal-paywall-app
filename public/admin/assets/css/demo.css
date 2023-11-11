@@ -143,3 +143,7 @@
     max-width: 80%;
     margin: 20px auto;
 }
+
+.table:not(.table-dark) th {
+	color: #f6f7f8;
+}

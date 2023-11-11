@@ -10,11 +10,11 @@
                 <h5 class="card-header">All Categories</h5>
                 <div class="table-responsive text-nowrap">
                     <table class="table">
-                        <thead class="table-light">
+                        <thead class="table-dark">
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                                <th>Actionss</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         @forelse ($categories as $category)

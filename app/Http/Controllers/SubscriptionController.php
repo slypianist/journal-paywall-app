@@ -73,9 +73,6 @@ class SubscriptionController extends Controller
         dd($data);
 
       $token = $data['data']['email_token'];
-
-
-
     }
 
     public function fetchSubscription(){

@@ -10,29 +10,31 @@
             <h5 class="card-header">SUBSCRIPTIONS</h5>
 
             <div class="table-responsive text-nowrap">
-                <table class="table table-hover">
+                <table class="table table-striped">
                     <thead class="table-dark">
                         <tr>
-                            <th>Sub Code</th>
+                            <th>Id</th>
                             <th>Email</th>
                             <th>Amount</th>
-                            <th>Plan</th>
-                            <th>Interval</th>
-                            <th>Status</th>
-                            <th>Validity</th>
+                            <th>Currency</th>
+                            <th>Payment ref</th>
+                            <th>Card type</th>
+                            <th>Bank</th>
+                            <th>Date</th>
                             {{-- <th>Actions</th> --}}
                         </tr>
                     </thead>
-                    @foreach ($subscriptions as $subscription)
+                    @foreach ($transactions as $transaction)
                         <tbody class="table-border-bottom-0">
                             <tr>
-                                <td>{{ $subscription->subscriptionCode }}</td>
-                                <td>{{ $subscription->CustomerEmail }}</td>
-                                <td>{{$subscription->amount}}</td>
-                                <td>{{$subscription->planName}}</td>
-                                <td>{{Str::ucfirst($subscription->interval)}}</td>
-                                <td>{{Str::ucfirst($subscription->status)}}</td>
-                                <td>{{Date('jS-M-Y', strtotime($subscription->ends_at))}}</td>
+                                <td>{{ $transaction->id }}</td>
+                                <td>{{ $transaction->email }}</td>
+                                <td>{{$transaction->amount}}</td>
+                                <td>{{$transaction->currency}}</td>
+                                <td>{{$transaction->reference}}</td>
+                                <td>{{$transaction->cardType}}</td>
+                                <td>{{$transaction->bankName}}</td>
+                                <td>{{Date('jS-M-Y', strtotime($transaction->created_at))}}</td>
                                 {{-- <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -71,12 +73,10 @@
         <!-- Bootstrap Table with Header - Light -->
     </div>
     <!-- / Content -->
-
-    {{-- Pagination --}}
-    <div class="container d-flex justify-content-center">
-        {{ $subscriptions->links() }}
-    </div>
-
+{{-- Pagination --}}
+        <div class="container d-flex justify-content-center">
+            {{ $transactions->links() }}
+        </div>
     @include('includes.admin.footer')
 
     <div class="content-backdrop fade"></div>
@@ -92,4 +92,3 @@
 <!-- / Layout wrapper -->
 
 @endsection
-

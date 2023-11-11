@@ -10,7 +10,7 @@
                 <h5 class="card-header">All Published Podcasts</h5>
                 <div class="table-responsive text-nowrap">
                     <table class="table">
-                        <thead class="table-light">
+                        <thead class="table-dark">
                             <tr>
                                 <th>#</th>
                                 <th>Title</th>
@@ -60,7 +60,7 @@
                                     <td><span class="badge bg-label-success me-1">Published</span></td>
                                     <td>
 
-                                        <a href="{{route('episodes.create', [$podcast->slug])}}"><button class="btn btn-success mx-2">Add Episode</button></a>
+                                        <a href="{{route('episodes.create', [$podcast->slug])}}"><button class="btn btn-dark mx-2">Add Episode</button></a>
 
 
                                                 <a href="{{ route('podcast.edit', [$podcast->slug]) }}"><button class="btn btn-success mx-2"><i

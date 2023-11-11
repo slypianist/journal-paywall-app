@@ -10,7 +10,7 @@
                 <h5 class="card-header">All Posts</h5>
                 <div class="table-responsive text-nowrap">
                     <table class="table">
-                        <thead class="table-light">
+                        <thead class="table-dark">
                             <tr>
                                 <th>#</th>
                                 <th>Title</th>
