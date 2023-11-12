@@ -18,15 +18,15 @@ class GeneralSettingController extends Controller
     public function index()
     {
         // General Setting of the website
-        /* $general_setting = GeneralSetting::first();
+         $general_setting = GeneralSetting::first();
 
         SEOTools::setTitle("General Setitngs | Dashboard");
         SEOTools::setDescription("$general_setting->site_meta_description");
         SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'webiste'); */
+        SEOTools::opengraph()->addProperty('type', 'webiste');
 
         return view('pages.admin.general-settings', [
-           // "general" => GeneralSetting::where('id', '1')->first(),
+            "general" => GeneralSetting::where('id', '1')->first(),
             "user" => Auth::user()
         ]);
     }
@@ -38,7 +38,7 @@ class GeneralSettingController extends Controller
      * @param  \App\Models\GeneralSetting  $generalSetting
      * @return \Illuminate\Http\Response
      */
-    /* public function update(GeneralSettingRequest $request, $id)
+     public function update(GeneralSettingRequest $request, $id)
     {
         $data = $request->all();
 
@@ -46,5 +46,5 @@ class GeneralSettingController extends Controller
         $settings->update($data);
 
         return Redirect::route('general-settings.index')->with('success', "Success Update Site Settings!");
-    } */
+    }
 }

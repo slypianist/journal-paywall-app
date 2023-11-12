@@ -16,156 +16,127 @@
                                 General Settings</a>
                         </li>
                     </ul>
-                    @if ($user->user_types == 'admin')
+                    @if ($user->user_types == 'admin'|| $user->user_types == 'Admin')
                         <div class="card mb-4">
                             <div class="card-body">
                                 <div class="row">
-                                    <form method="POST" action="{{ route('general-settings.update', $general->id) }}"
+                                    <form method="POST" action="{{ route('general-settings.update') }}"
                                         enctype="multipart/form-data">
                                         @csrf
-                                        @method('PUT')
+                                        @method('PATCH')
 
                                         <div class="form-group mb-3 col-md-8">
-                                            <label for="site_title" class="form-label">Site Title</label>
-                                            <input class="form-control" type="text" id="site_title" name="site_title"
-                                                value="{{ old('site_title') ? old('site_title') : $general->site_title }}" />
-                                            @error('site_title')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
+                                            <label for="site_title" class="form-label">Header Advert</label>
+                                            <input type="file" name="headerAd" id="" class="form-control">
+                                            <br>
+                                            <img src=" {{asset('adverts/'.$setting->headerAd)}} " class="img-fluid" alt="Ad-image">
                                         </div>
 
-                                        <div class="form-group mb-3 col-md-8">
-                                            <label for="site_tagline" class="form-label">Site Tagline</label>
-                                            <input class="form-control" type="text" id="site_tagline" name="site_tagline"
-                                                value="{{ old('site_tagline') ? old('site_tagline') : $general->site_tagline }}" />
-                                            @error('site_tagline')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
+                                        <div class="mt-2">
+                                            <button type="submit" class="btn btn-dark me-2 mb-2">Save changes</button>
+
                                         </div>
 
-                                        <div class="form-group mb-3 col-md-8">
-                                            <label for="site_meta_tags" class="form-label">Site Meta Tags</label>
-                                            <input class="form-control" type="text" id="site_meta_tags"
-                                                name="site_meta_tags"
-                                                value="{{ old('site_meta_tags') ? old('site_meta_tags') : $general->site_meta_tags }}" />
-                                            @error('site_meta_tags')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                    </form>
 
-                                        <div class="form-group mb-3 col-md-8">
-                                            <label for="site_meta_description" class="form-label">Site Meta
-                                                Description</label>
-                                            <input class="form-control" type="text" id="site_meta_description"
-                                                name="site_meta_description"
-                                                value="{{ old('site_meta_description') ? old('site_meta_description') : $general->site_meta_description }}" />
-                                            @error('site_meta_description')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="form-group mb-3 col-md-8">
-                                            <label for="logo_image" class="form-label">Logo Image</label>
-                                            <input class="form-control" type="text" id="logo_image" name="logo_image"
-                                                value="{{ old('logo_image') ? old('logo_image') : $general->logo_image }}" />
-                                            @error('logo_image')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="form-group mb-3 col-md-8">
-                                            <label for="footer_copyright" class="form-label">Footer Copyright
-                                                Message</label>
-                                            <input class="form-control" type="text" id="footer_copyright"
-                                                name="footer_copyright"
-                                                value="{{ old('footer_copyright') ? old('footer_copyright') : $general->footer_copyright }}" />
-                                            @error('footer_copyright')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
 
                                 </div>
-                                <div class="mt-2">
-                                    <button type="submit" class="btn btn-primary me-2 mb-2">Save changes</button>
 
-                                </div>
-                                </form>
+
                             </div>
                         </div>
-                    @else
+
                         <div class="card mb-4">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="form-group mb-3 col-md-8">
-                                        <label for="site_title" class="form-label">Site Title</label>
-                                        <input class="form-control" type="text" id="site_title" name="site_title"
-                                            value="{{ old('site_title') ? old('site_title') : $general->site_title }}" />
-                                        @error('site_title')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                    <form method="POST" action="{{ route('general-settings.update') }}"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PATCH')
 
-                                    <div class="form-group mb-3 col-md-8">
-                                        <label for="site_tagline" class="form-label">Site Tagline</label>
-                                        <input class="form-control" type="text" id="site_tagline" name="site_tagline"
-                                            value="{{ old('site_tagline') ? old('site_tagline') : $general->site_tagline }}" />
-                                        @error('site_tagline')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                        <div class="form-group mb-3 col-md-8">
+                                            <label for="site_title" class="form-label">Homepage Advert</label>
+                                            <input type="file" name="homeAd" id="" class="form-control">
+                                            <br>
+                                            <img src="{{asset('adverts/'.$setting->homeAd)}}" class="img-fluid" alt="Ad-image">
+                                        </div>
 
-                                    <div class="form-group mb-3 col-md-8">
-                                        <label for="site_meta_tags" class="form-label">Site Meta Tags</label>
-                                        <input class="form-control" type="text" id="site_meta_tags"
-                                            name="site_meta_tags"
-                                            value="{{ old('site_meta_tags') ? old('site_meta_tags') : $general->site_meta_tags }}" />
-                                        @error('site_meta_tags')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                        <div class="mt-2">
+                                            <button type="submit" class="btn btn-dark me-2 mb-2">Save changes</button>
 
-                                    <div class="form-group mb-3 col-md-8">
-                                        <label for="site_meta_description" class="form-label">Site Meta
-                                            Description</label>
-                                        <input class="form-control" type="text" id="site_meta_description"
-                                            name="site_meta_description"
-                                            value="{{ old('site_meta_description') ? old('site_meta_description') : $general->site_meta_description }}" />
-                                        @error('site_meta_description')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                        </div>
 
-                                    <div class="form-group mb-3 col-md-8">
-                                        <label for="logo_image" class="form-label">Logo Image</label>
-                                        <input class="form-control" type="text" id="logo_image" name="logo_image"
-                                            value="{{ old('logo_image') ? old('logo_image') : $general->logo_image }}" />
-                                        @error('logo_image')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                    </form>
 
-                                    <div class="form-group mb-3 col-md-8">
-                                        <label for="footer_copyright" class="form-label">Footer Copyright Message</label>
-                                        <input class="form-control" type="text" id="footer_copyright"
-                                            name="footer_copyright"
-                                            value="{{ old('footer_copyright') ? old('footer_copyright') : $general->footer_copyright }}" />
-                                        @error('footer_copyright')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
 
                                 </div>
-                                <div class="mt-2">
-                                    <button type="submit" class="btn btn-primary me-2 mb-2">Save
-                                        changes</button>
-                                        <p>Only Admin can make changes</p>
+
+
+                            </div>
+                        </div>
+
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <form method="POST" action="{{ route('general-settings.update') }}"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PATCH')
+
+                                        <div class="form-group mb-3 col-md-8">
+                                            <label for="site_title" class="form-label">Footer Advert</label>
+                                            <input type="file" name="footerAd" id="" class="form-control">
+                                            <br>
+                                            <img src="{{asset('adverts/'.$setting->footerAd)}}" class="img-fluid" alt="Ad-image">
+                                        </div>
+
+                                        <div class="mt-2">
+                                            <button type="submit" class="btn btn-dark me-2 mb-2">Save changes</button>
+
+                                        </div>
+
+                                    </form>
+
 
                                 </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <form method="POST" action="{{ route('general-settings.update') }}"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PATCH')
+
+                                        <div class="form-group mb-3 col-md-8">
+                                            <label for="site_title" class="form-label">Single Page Advert</label>
+                                            <input type="file" name="singleAd" id="" class="form-control">
+                                            <br>
+                                            <img src="{{asset('adverts/'.$setting->singleAd)}}" class="img-fluid" alt="Ad-image">
+                                        </div>
+
+                                        <div class="mt-2">
+                                            <button type="submit" class="btn btn-dark me-2 mb-2">Save changes</button>
+
+                                        </div>
+
+                                    </form>
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
                             </div>
                         </div>
                     @endif
-                </div>
-            </div>
         </div>
 
         @include('includes.admin.footer')
@@ -179,6 +150,6 @@
 
     <!-- Overlay -->
     <div class="layout-overlay layout-menu-toggle"></div>
-    </div>
+
     <!-- / Layout wrapper -->
 @endsection

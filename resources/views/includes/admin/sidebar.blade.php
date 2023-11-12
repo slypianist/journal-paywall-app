@@ -128,7 +128,7 @@
                 </li>
 
                 <li class="menu-item {{ request()->is('admin/readers') ? 'active' : '' }}">
-                    <a href="{{ route('admin.readers') }}" class="menu-link">
+                    <a href="{{ route('admin.subscribers') }}" class="menu-link">
                         <div data-i18n="Account">All Subscribers</div>
                     </a>
                 </li>
@@ -191,11 +191,11 @@
                 <div data-i18n="Settings">Settings</div>
             </a>
             <ul class="menu-sub">
-                {{-- <li class="menu-item {{ request()->is('general-settings*') ? 'active' : '' }}">
+                <li class="menu-item {{ request()->is('general-settings*') ? 'active' : '' }}">
                     <a href="{{ route('general-settings.index') }}" class="menu-link">
-                        <div data-i18n="Site Settings">General Site Settings</div>
+                        <div data-i18n="Site Settings">Site Settings</div>
                     </a>
-                </li> --}}
+                </li>
                 <li class="menu-item {{ request()->is('profile') ? 'active' : '' }}">
                     <a href="{{ route('profile.edit') }}" class="menu-link">
                         <div data-i18n="Account">Account</div>

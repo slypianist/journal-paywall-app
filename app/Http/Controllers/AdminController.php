@@ -6,6 +6,7 @@ use App\Models\Reader;
 use App\Models\Transaction;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -28,7 +29,15 @@ class AdminController extends Controller
         return view('pages.admin.transactions', compact('transactions', 'user'));
     }
 
-    /* public function getSubscribers(){
-        $users = DB::table('readers')->
-    } */
+    public function getSubscribers(){
+        $user = Auth::user();
+        $subscribers = DB::table('subscriptions')
+                ->where('status', 'active')
+                ->join('readers', 'readers.email', '=', 'subscriptions.recipientID')
+                ->orderBy('subscriptions.created_at', 'DESC')
+                ->get();
+
+        dd($subscribers);
+
+    }
 }

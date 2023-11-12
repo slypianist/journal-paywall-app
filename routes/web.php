@@ -1,26 +1,27 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Models\Post;
+use App\Models\Subscription;
 use App\Models\GeneralSetting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 //use Artesaos\SEOTools\Facades\SEOTools;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\PodcastController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReadersController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\EpisodeController;
-use App\Http\Controllers\PaystackWebhookController;
-use App\Http\Controllers\PlanController;
 use App\Http\Controllers\SubscriptionController;
-use App\Models\Subscription;
+use App\Http\Controllers\PaystackWebhookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -145,6 +146,8 @@ Route::middleware('auth')->group(function(){
 
     Route::get('categories/checkCategorySlug', [CategoryController::class, 'checkCategorySlug'])->name('checkCategorySlug');
     Route::get('pod/checkPodcastSlug', [PodcastController::class, 'checkPodcastSlug'])->name('checkPodcastSlug');
+    Route::get('general-settings', [SettingController::class, 'index'])->name('general-settings.index');
+    Route::patch('general-settings', [SettingController::class, 'update'])->name('general-settings.update');
 
    // Route::get('manage-sub', [TestController::class, 'index'])->name('manage.sub');
 
@@ -156,8 +159,9 @@ Route::middleware('auth')->group(function(){
     Route::get('plan/{id}/edit', [PlanController::class, 'edit'])->name('plan.edit');
     Route::put('plan/{id}', [PlanController::class, 'update'])->name('plan.update');
     Route::get('admin/subscriptions', [AdminController::class, 'getSubscriptions'])->name('admin.subscriptions');
-    Route::get('admin/readers', [AdminController::class, 'getReaders'])->name('admin.readers');
+    Route::get('admin/registered-users', [AdminController::class, 'getReaders'])->name('admin.readers');
     Route::get('admin/transactions', [AdminController::class, 'transactions'])->name('admin.transaction');
+    Route::get('admin/subscribers', [AdminController::class, 'getSubscribers'])->name('admin.subscribers');
     // Paystack Webhook
 
     Route::resource('authors', AuthorController::class);
