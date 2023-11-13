@@ -101,8 +101,14 @@
                 </div>
                 <div class="col-md-6">
                     <div class="img-wrap">
-                        <img class="img-style" src="images/adsimages.jpg" alt="">
-                        <div class="centered"><p>Place your ADS here</p></div>
+                        @if ($advert)
+                            <img class="img-style" src="{{asset('adverts/'.$advert->headerAd)}}" alt="">
+                           {{--  <div class="centered"><p>Place your ADS here</p></div> --}}
+                        @else
+                            <img class="img-style" src="images/adsimages.jpg" alt="">
+                            <div class="centered"><p>Place your ADS here</p></div>
+                        @endif
+
                     </div>
                 </div>
             </div>

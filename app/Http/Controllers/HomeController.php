@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Podcast;
+use App\Models\Setting;
 use App\Models\Category;
 use App\Models\GeneralSetting;
 use Illuminate\Support\Facades\DB;
@@ -19,9 +20,7 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::latest()->filter(request(['search', 'category', 'author']))->paginate(8)->withQueryString();
-       // $posts = Post::with(['category'])->orderBy('posts.created_at', 'desc')->get();
-
-       //Get random post
+       $advert = Setting::where('id', 1)->first();
        $post = Post::all();
 
         $random_id = $post->random()->id;
@@ -200,7 +199,7 @@ class HomeController extends Controller
 
         return view('news.home', compact('posts', 'business','politicsPost', 'energy',
         'energyPosts', 'africaID', 'briefs','opinion', 'tech', 'life', 'social', 'economy', 'ecoPosts', 'randomPost', 'lifesRelated',
-         'socialsRelated', 'opinionsRelated', 'podcasts'));
+         'socialsRelated', 'opinionsRelated', 'podcasts', 'advert'));
     }
 
     public function allCategories()
