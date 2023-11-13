@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Setting;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use App\Models\Subscription;
@@ -90,6 +91,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        $advert = Setting::where('id', 1)->first();
         $isSubscribed = false;
         if (auth('reader')->check() && $post->isPremium()) {
             $user = auth('reader')->user();
@@ -105,7 +107,7 @@ class PostController extends Controller
         $truncatedBody = Str::limit($post->body, 500);
 
 
-        return view('news.show', compact('post', 'related', 'truncatedBody', 'isSubscribed'));
+        return view('news.show', compact('post', 'related', 'truncatedBody', 'isSubscribed', 'advert'));
     }
 
     /**

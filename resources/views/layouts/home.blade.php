@@ -101,7 +101,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="img-wrap">
-                        @if ($advert)
+                        @if (!$advert->headerAd == NULL)
                             <img class="img-style" src="{{asset('adverts/'.$advert->headerAd)}}" alt="">
                            {{--  <div class="centered"><p>Place your ADS here</p></div> --}}
                         @else

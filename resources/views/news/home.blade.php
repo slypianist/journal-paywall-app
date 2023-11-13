@@ -161,8 +161,13 @@
     </div>
     <div class="container mt-5">
         <div class="adbanner">
-            <img src="https://source.unsplash.com/random/?entertainment" alt="adverts image">
-            <p class="adsInfo">Place your ADS here</p>
+            @if (!$advert->home == NULL)
+                <img class="img-style" src="{{asset('adverts/'.$advert->home)}}" alt="">
+                           {{--  <div class="centered"><p>Place your ADS here</p></div> --}}
+            @else
+                <img class="img-style" src="images/adsimages.jpg" alt="">
+                <div class="centered"><p>Place your ADS here</p></div>
+            @endif
         </div>
     </div>
 
@@ -399,8 +404,13 @@
 
     <div class="container mt-5">
         <div class="adbanner">
-            <img src="https://source.unsplash.com/random/?digital" alt="adverts image">
-            <p class="adsInfo">Place your ADS here</p>
+            @if (!$advert->footer == NULL)
+                <img class="img-style" src="{{asset('adverts/'.$advert->footer)}}" alt="">
+                           {{--  <div class="centered"><p>Place your ADS here</p></div> --}}
+            @else
+                <img class="img-style" src="images/adsimages.jpg" alt="">
+                <div class="centered"><p>Place your ADS here</p></div>
+            @endif
         </div>
     </div>
 

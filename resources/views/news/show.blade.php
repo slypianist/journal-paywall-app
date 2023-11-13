@@ -78,6 +78,15 @@
                    </button>
                 </div>
                 <div class="adsbanner mt-5">
+                    @if (!$advert->singleAd == NULL)
+
+                    <a href="#">
+                        <img src="{{asset('adverts/'.$advert->singleAd)}}" alt="advert banner" class="adsbannerimg">
+
+                    </a>
+
+                    @else
+
                     <a href="#">
                         <img src="{{asset('storage/'.$post->image)}}" alt="advert banner" class="adsbannerimg">
                         <div class="adsinfo">
@@ -88,6 +97,8 @@
                             </div>
                         </div>
                     </a>
+
+                    @endif
                 </div>
 
             </div>
