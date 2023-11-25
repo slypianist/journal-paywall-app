@@ -106,11 +106,12 @@ html, body {
       background-color: #000;
   }
   .banner {
-      height: 350px;
+      height: 400px;
       background-size: 100% auto;
       object-fit: cover;
       width: 100%;
       opacity: 0.6;
+      background-position: center center;
   }
   .bottom-left {
       position: absolute;
@@ -488,6 +489,13 @@ html, body {
     list-style: none;
     border-bottom: 1px solid black;
   }
+  .brieflinks {
+    color: #000;
+    text-decoration: none;
+  }
+  .brieflinks:hover{
+    color: unset;
+  }
   .hred {
     margin-top: 3px;
   }
@@ -497,9 +505,10 @@ html, body {
   .ctned {
     text-decoration: none;
     color: red;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: bold;
     cursor: pointer;
+    padding-left: 2rem;
   }
   .newsimage {
     width: 300px;
@@ -703,9 +712,7 @@ html, body {
   .news_desription {
     margin-left: 10px;
   }
-  .texted {
-    margin-bottom: 0;
-  }
+
   .titledd {
     font-weight: bolder;
     text-align: center;

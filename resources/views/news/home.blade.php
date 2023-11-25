@@ -86,6 +86,7 @@
                           </button>
                         </div>
                         <h5 class="briefed mt-4" >AFRICA IN BRIEF</h5>
+                        <a href="" class="brieflinks">
                         <div class="briefdeatil">
                             <ul class="brief-list">
                                 @foreach ($briefs as $brief)
@@ -97,9 +98,11 @@
                                 </li>
                                 <hr class="hred">
                                 @endforeach
-
+                                <a href="../NewsInBrief/newsinbrief.html" class="ctned">Continue reading</a>
                             </ul>
+
                         </div>
+                    </a>
                      </div>
                 </div>
             </div>
