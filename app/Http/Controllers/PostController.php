@@ -92,6 +92,14 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $advert = Setting::where('id', 1)->first();
+
+        if(!auth('reader')->check()){
+
+            //Store intended URL for current route
+            session(['intendedURL' =>   route('post.list', [$post->slug])]);
+
+        }
+
         $isSubscribed = false;
         if (auth('reader')->check() && $post->isPremium()) {
             $user = auth('reader')->user();

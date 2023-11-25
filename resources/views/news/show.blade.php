@@ -67,6 +67,60 @@
                         @endif
                     @endguest
 
+
+                    @guest('reader')
+                    @if ($post->isFree())
+
+                        <article>
+
+                            {!! $post->body!!}
+
+                          </article>
+                    @else
+                        <p class="newsdetail">
+                            <article>
+
+                               {!! $truncatedBody!!}
+
+                             </article>
+
+                             <div id="paywall-wrapper">
+                                <h4>Journal Africa News</h4>
+                                <p>This story is free to read but is available to registered members. <br>To continue reading, <strong>register</strong> or <strong>sign in.</strong></p>
+                                <a class="btn btn-danger wall-button" href="{{route('reader.showRegisterForm')}}">Register</a>
+                                <a class="btn btn-dark wall-button" href="{{route('reader.showLoginForm')}}">Sign in</a>
+                             </div>
+                        </p>
+
+                    @endif
+                @endguest
+
+                @auth('reader')
+                        @if ($post->isFree())
+
+                            <article>
+
+                                {!! $post->body!!}
+
+                              </article>
+                            {{-- <p class="newsdetail">
+                                <article>
+
+                                   {!! $truncatedBody!!}
+
+                                 </article>
+
+                                 <div id="paywall-wrapper">
+                                    <h4>Journal Africa News</h4>
+                                    <p>This story is only available to Premium Subscribers. You have no active subscription. <br><strong>Click Subscribe to choose a subscription plan</strong> to read.</p>
+                                    <a class="btn btn-danger" href="{{route('news.subscribe')}}">Subscribe</a>
+                                 </div>
+                            </p> --}}
+
+                        @endif
+                    @endauth
+
+
                     </div>
                 </div>
             </div>

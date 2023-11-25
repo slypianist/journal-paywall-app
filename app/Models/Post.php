@@ -60,4 +60,8 @@ class Post extends Model
     return $this->type === 'PREMIUM';
 
     }
+
+    public function isFree(){
+        return $this->type ==='FREE';
+    }
 }

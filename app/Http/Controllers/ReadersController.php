@@ -39,12 +39,16 @@ class ReadersController extends Controller
         ]);
 
         $credentials = $request->only('email','password');
-
-
-//dd($data);
-
         if(Auth::guard('reader')->attempt($credentials)){
-            return redirect()->route('reader.dashboard')->with(['message'=>'You are logged in successfully']);
+            $intendedUrl = session('intendedURL');
+
+            if ($intendedUrl) {
+                // Redirect to the intended URL for the latest post attempted
+
+                return redirect()->intended($intendedUrl)->with(['message'=> 'Login successful']);
+            }
+
+            return redirect()->intended()->with(['message'=>'Login successful']);
 
         }
 
@@ -54,7 +58,7 @@ class ReadersController extends Controller
     public function logout(){
         Session::flush();
         Auth::guard('reader')->logout();
-        return redirect()->route('reader.login');
+        return redirect()->route('home');
 
     }
 
