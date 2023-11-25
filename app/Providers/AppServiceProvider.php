@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Setting;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Gate;
@@ -41,6 +42,14 @@ class AppServiceProvider extends ServiceProvider
         // Authorize if user types is 'Admin'
         Gate::define('Admin', function (User $user) {
             return $user->user_types === 'Admin';
+        });
+
+        // Display advert to all pages
+
+        view()->composer('layouts.home', function ($view) {
+            $advert = Setting::where('id', 1)->first();
+            $view->with('advert', $advert);
+
         });
     }
 }

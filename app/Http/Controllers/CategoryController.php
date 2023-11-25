@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Setting;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\GeneralSetting;
@@ -17,6 +18,12 @@ use Illuminate\Support\Facades\Storage as FacadesStorage;
 
 class CategoryController extends Controller
 {
+    public function __construct(){
+        $advert = Setting::where('id', 1)->first();
+        return compact('advert');
+    }
+
+
     /**
      * Display a listing of the resource.
      *

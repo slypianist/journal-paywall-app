@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reader;
+use App\Models\Setting;
 use App\Models\Transaction;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
