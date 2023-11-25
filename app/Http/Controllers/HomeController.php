@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Podcast;
 use App\Models\Setting;
 use App\Models\Category;
+use Illuminate\Support\Arr;
 use App\Models\GeneralSetting;
 use Illuminate\Support\Facades\DB;
 use Artesaos\SEOTools\Facades\SEOTools;
@@ -23,9 +24,12 @@ class HomeController extends Controller
        $advert = Setting::where('id', 1)->first();
        $post = Post::all();
 
+       $carouselPosts = Post::orderBy('id', 'DESC')->limit(4)->get();
+
+
         $random_id = $post->random()->id;
         $randomPost = Post::where('id', $random_id)->first();
-     // dd($randomPost);
+
 
 
 
@@ -197,7 +201,7 @@ class HomeController extends Controller
 
         $podcasts = Podcast::OrderBy('id', 'DESC')->get();
 
-        return view('news.home', compact('posts', 'business','politicsPost', 'energy',
+        return view('news.home', compact('carouselPosts', 'business','politicsPost', 'energy',
         'energyPosts', 'africaID', 'briefs','opinion', 'tech', 'life', 'social', 'economy', 'ecoPosts', 'randomPost', 'lifesRelated',
          'socialsRelated', 'opinionsRelated', 'podcasts', 'advert'));
     }

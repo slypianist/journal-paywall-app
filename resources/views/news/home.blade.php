@@ -2,7 +2,7 @@
 @push('styles')
 
 <link rel="stylesheet" href="{{asset('assets/news/css/home.css')}}">
-
+<link rel="stylesheet" href="{{asset('assets/news/css/media.css')}}">
 @endpush
  @section('h-content')
 
@@ -21,84 +21,30 @@
     </div>
 
     <div class="news-carousel-wrap">
-        <div class="">
-            <div class="row mx-auto my-auto justify-content-center">
-                <div class="col">
-                    <div class="row">
-                        <!-- <div class="col-1 d-flex align-items-center justify-content-center">
-                            <a role="button" href="#recipeCarousel" role="button" data-bs-slide="prev">
-                                <div class="carousel-nav-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                        <path d="m88.6,121.3c0.8,0.8 1.8,1.2 2.9,1.2s2.1-0.4 2.9-1.2c1.6-1.6 1.6-4.2 0-5.8l-51-51 51-51c1.6-1.6 1.6-4.2 0-5.8s-4.2-1.6-5.8,0l-54,53.9c-1.6,1.6-1.6,4.2 0,5.8l54,53.9z"/>
-                                    </svg>
-                                </div>
-                            </a>
-                        </div> -->
-                        <div class="col-12">
-                            <div id="recipeCarousel" class="carousel customcarousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner" role="listbox">
-                                    <div class="carousel-item customed active">
-                                        <div class="col-md-3">
-                                            <a href="">
-                                                <div class="card">
-                                                    <div class="card-img">
-                                                        <img src="storage/{{$randomPost->image}}" class="img-fluid news-img">
-                                                        <div class="card-img-overlay h-100 align-items-center justify-content-center text-white">
-                                                            <h5 class="carouselHeadings">{{$randomPost->category->name}}</h5>
-                                                            <p class="mb-3 textOwl">
-                                                                {{$randomPost->excerpt}}
-                                                            </p>
-                                                            <div class="dateflex">
-                                                                <p class="dated">{{$randomPost->created_at}}</p>
+        <div class="wrapperCarousel">
 
-                                                                <p class="iconwrap"><i class="fa-solid fa-greater-than"></i></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    @foreach ($posts as $post)
-                                    <div class="carousel-item customed">
-                                        <div class="col-md-3">
-                                            <a href="{{route('post.list', [$post->slug])}}">
-                                                <div class="card">
-                                                    <div class="card-img">
-                                                        <img src="storage/{{$post->image}}" class="img-fluid news-img">
-                                                        <div class="card-img-overlay h-100 align-items-center justify-content-center text-white">
-                                                            <h5 class="carouselHeadings">{{$post->category->name}}</h5>
-                                                            <p class="mb-3 textOwl">
-                                                                {{$post->excerpt}}
-                                                            </p>
-                                                            <div class="dateflex">
-                                                                <p class="dated">14-05-2021</p>
+        @foreach ($carouselPosts as $carouselPost)
 
-                                                                <p class="iconwrap"><i class="fa-solid fa-greater-than"></i></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    @endforeach
+        <div class="card">
+            <div class="card-img">
+                <img src="{{asset('storage/'.$carouselPost->image)}}" class="img-fluid news-img">
+                <div class="card-img-overlay h-100 align-items-center justify-content-center text-white">
+                    <h5 class="carouselHeadings">{{$carouselPost->title}}</h5>
+                    <p class="mb-3 textOwl">
+                        {{$carouselPost->excerpt}}
+                    </p>
+                    <div class="dateflex">
+                        <p class="dated">{{date('F-d-Y', strtotime($carouselPost->created_at))}}</p>
 
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div class="col-1 d-flex align-items-center justify-content-center">
-                            <a role="button" href="#recipeCarousel" role="button" data-bs-slide="next">
-                                <div class="carousel-nav-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                        <path d="m40.4,121.3c-0.8,0.8-1.8,1.2-2.9,1.2s-2.1-0.4-2.9-1.2c-1.6-1.6-1.6-4.2 0-5.8l51-51-51-51c-1.6-1.6-1.6-4.2 0-5.8 1.6-1.6 4.2-1.6 5.8,0l53.9,53.9c1.6,1.6 1.6,4.2 0,5.8l-53.9,53.9z"/>
-                                    </svg>
-                                </div>
-                            </a>
-                        </div> -->
+                        <p class="iconwrap"><i class="fa-solid fa-greater-than"></i></p>
                     </div>
                 </div>
             </div>
+        </div>
+
+        @endforeach
+
+
         </div>
     </div>
     <div class="categories mt-5">
@@ -187,7 +133,7 @@
                                 <p class="postInfor">By <b class="postby">{{$biz->writer}}</b> 13/02/2021</p>
                                 <p>
                                     {{$biz->excerpt}}...
-                                    <a href="{{route('post.list', [$post->slug])}}" class="ctned"><i>Read More</i></a>
+                                    <a href="{{route('post.list', [$biz->slug])}}" class="ctned"><i>Read More</i></a>
                                 </p>
                             </figcaption>
                         </figure>
@@ -216,7 +162,7 @@
                                     </a>
                                     <p class="postInfor">By <b class="postby">{{$economy->writer}} </b> {{date('F-d-Y', strtotime($economy->created_at))}}</p>
                                     <p>
-                                        {{$economy->excerpt}}...<a href="{{route('post.list', [$post->slug])}}" class="mored"><i>Read More</i></a>
+                                        {{$economy->excerpt}}...<a href="{{route('post.list', [$economy->slug])}}" class="mored"><i>Read More</i></a>
                                     </p>
                                 </figcaption>
                             </figure>
