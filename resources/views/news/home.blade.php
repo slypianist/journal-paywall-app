@@ -86,7 +86,7 @@
                           </button>
                         </div>
                         <h5 class="briefed mt-4" >AFRICA IN BRIEF</h5>
-                        <a href="" class="brieflinks">
+                        <a href="{{route('aib')}}" class="brieflinks">
                         <div class="briefdeatil">
                             <ul class="brief-list">
                                 @foreach ($briefs as $brief)

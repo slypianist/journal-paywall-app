@@ -50,6 +50,7 @@ use App\Http\Controllers\PaystackWebhookController;
     Route::get('subscribe/gift', [PagesController::class, 'subGift'])->name('subscribe.gift');
     Route::get('subscribe/group', [PagesController::class, 'subGroup'])->name('subscribe.group');
     Route::get('news/subscribe', [PagesController::class, 'newsSub'])->name('news.sub');
+    Route::get('africa-in-brief', [PagesController::class, 'africaInBrief'])->name('aib');
     //Route::get('manage-sub', [TestController::class, 'index'])->name('manage.sub');
 
     Route::get('/categories', [HomeController::class, 'allCategories'])->name('show-categories');

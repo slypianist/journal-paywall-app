@@ -78,5 +78,18 @@ class PagesController extends Controller
     return view('pages.contact');
    }
 
+   public function africaInBrief(){
+
+    $posts = DB::table('categories')
+    ->where('categories.name','Africa in Brief')
+    ->join('posts', 'categories.id', '=', 'posts.category_id')
+    ->select( 'posts.title', 'posts.created_at','posts.excerpt', 'posts.body')
+    ->orderBy('posts.created_at', 'desc')
+    ->get();
+
+    return view('news.africa-in-brief', compact('posts'));
+
+   }
+
 
 }

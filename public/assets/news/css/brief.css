@@ -1,0 +1,305 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html, body {
+    font-family: 'Lato', sans-serif;
+  }
+
+  /* .topbarCarousel {
+    width: 50%;
+  } */
+  ul {
+    margin-bottom: unset;
+  }
+  .top-bar {
+      background-color: #eee;
+  }
+  .links li{
+      display: inline-block;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-left: 10px;
+  }
+  .links a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .top-bar-wrap {
+      display: flex;
+      justify-content: space-between;
+  }
+  .icons li {
+      list-style: none;
+      display: inline-block;
+      margin-left: 10px;
+  }
+  .img-wrap, .adwraped {
+      background-color: #000;
+  }
+  .img-style {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      opacity: 0.5;
+      cursor: pointer;
+  }
+  .centered {
+      text-transform: uppercase;
+      position: absolute;
+      top: 20%;
+      left: 72%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-weight: bolder;
+      font-size: 20px;
+  }
+  .newsDetail {
+    text-decoration: none;
+    color: inherit;
+  }
+  .newsDetail:hover{
+    color: inherit;
+  }
+  .adwraped {
+    position: relative;
+  }
+  .centered-new {
+    position: absolute;
+    right: 16%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-weight: bolder;
+    font-size: 20px;
+  }
+  .navigation {
+      background-color: #eee;
+  }
+  .nav-item {
+      margin-left: 20px;
+      text-transform: uppercase;
+  }
+  .nav-item a {
+      color: #000;
+      font-size: small;
+      font-weight: bold;
+  }
+  .nav-item a:hover {
+      color: red;
+  }
+  .nav-item .active {
+      background-color: red;
+      color: #fff !important;
+  }
+  .btn-nav {
+      margin-left: 10px;
+      background-color: red;
+      color: #fff;
+      font-weight: bolder;
+  }
+  .containered {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .newsimg-wrap {
+      background-color: #000;
+  }
+  .fullheading {
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
+  }
+  .briefwrap {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .headingsTag {
+    text-align: center;
+  }
+  .headingsTag h1 {
+    font-weight: bolder;
+  }
+  .brieflist {
+    list-style: none;
+  }
+  .brieflist p {
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 400;
+  }
+  .briefsubscribe {
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 20px;
+    background-color: rgb(100, 38, 38);
+    border-top: 4px solid red;
+    color: white;
+  }
+  .subInfo {
+    font-weight: 400;
+  }
+
+  .brief-sub-btn {
+    background-color: red;
+    border: none;
+    padding: 10px 40px;
+    border-radius: 5px;
+    font-weight: 800;
+    color: #fff;
+  }
+  .newsafrica-briefpros {
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .contin {
+    font-weight: bolder;
+  }
+
+  .subRegister {
+    color: white;
+  }
+  .subRegister:hover {
+    color: red;
+  }
+  footer {
+    background-color: #1f1f1f;
+    padding: 20px;
+  }
+
+  .footertext {
+    margin-left: 20px;
+  }
+  .newsimage_footer {
+    width: 300px;
+    height: 200px;
+    margin-left: 10px;
+  }
+  .relatived {
+    position: relative;
+  }
+  .played {
+    position: absolute;
+    top: 30%;
+    left: 38%;
+    background-color: #000;
+    opacity: 0.8;
+    border-radius: 50%;
+    padding: 10px 14px 11px 14px;
+    cursor: pointer;
+    font-size: 25px;
+  }
+  .played:hover {
+    background-color: unset;
+  }
+  .journalafricasubfooterflex {
+    background-color: #000;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px 10px 10px;
+  }
+  .subfooter p {
+    margin-bottom: 0;
+  }
+  .initialflexed a{
+    color: red;
+  }
+  .spannedfooter {
+    color: #fff;
+  }
+  .bordered {
+    border-right: 1px solid #fff;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .footerdesc {
+    color: #fff;
+    margin-bottom: 0;
+    font-size: 13px;
+  }
+  .titlefooter {
+    margin-bottom: 0;
+  }
+  .journalafricafooterlogo {
+    object-fit: cover;
+    width: 250px;
+    height: 70px;
+    margin-bottom: 15px;
+    margin-top: -10px;
+  }
+  .journalafricafootertitle {
+    color: white;
+    text-transform: uppercase;
+    width: 50%;
+    padding: 5px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    border-color: #292929;
+  }
+  .thumbnail_style_footer {
+    height: 100px;
+    width: 100px;
+  }
+  .journalnewsleft {
+    float: left;
+    font-size: 12px;
+  }
+  .journalnewsright {
+    float: right;
+    font-size: 12px;
+  }
+  .titlewidth {
+    width: 100% !important;
+  }
+  .journalafricafooterlist {
+     padding-left: 0px;
+     line-height: 30px;
+  }
+  .journalafricafooterlist li{
+    list-style-type:circle;
+    color: grey;
+  }
+  .journalafricafooterlistexmt {
+    list-style: none;
+    color: grey;
+
+  }
+  .clocked {
+    background-color: unset;
+    font-size: 12px;
+  }
+  .listssocial {
+    list-style: none;
+    display: inline-block;
+    margin-left: 30px;
+  }
+  .twitsocial {
+    margin-left: 0px !important;
+  }
+  .listssocial a {
+    color: #fff;
+  }
+  .listssocial a:hover {
+    color: #fff;
+  }
+  .lists {
+    color: inherit;
+    text-decoration: none;
+  }
+  .lists:hover {
+    color: #fff;
+  }
+  .journalafricaapp{
+    object-fit: cover;
+    border: 1px solid #fff;
+    vertical-align: middle;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+
+
