@@ -35,8 +35,10 @@
             </div>
             <div class="col-md-3">
                 <a href="{{route('home')}}">
-                    <img src="{{asset('images/journal-africa-logo.png')}}" alt="" class="journalafricafooterlogo">
+                    <img src="{{asset('images/journalAfrica-logo.png')}}" alt="" class="journalafricafooterlogo">
                 </a>
+                <img src="images/googleplay.png" alt="googleplay" class="appstyle android">
+                <img src="images/ios.jpeg" alt="ios" class="appstyle">
             </div>
         </div>
     </div>
