@@ -35,9 +35,9 @@ class AdminController extends Controller
                 ->where('status', 'active')
                 ->join('readers', 'readers.email', '=', 'subscriptions.recipientID')
                 ->orderBy('subscriptions.created_at', 'DESC')
-                ->get();
+                ->paginate(10);
 
-        dd($subscribers);
+        return view('pages.admin.subscribers', compact('subscribers', 'user'));
 
     }
 }

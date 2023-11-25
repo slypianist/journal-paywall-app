@@ -152,7 +152,7 @@ Route::middleware('auth')->group(function(){
 
    // Route::get('manage-sub', [TestController::class, 'index'])->name('manage.sub');
 
-    //Subscription Plans
+    // Subscription Plans
 
     Route::get('plan', [PlanController::class, 'index'])->name('plan.index');
     Route::get('plan/create', [PlanController::class, 'create'])->name('plan.create');

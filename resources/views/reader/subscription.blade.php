@@ -33,7 +33,7 @@
           </div>
           <!-- ========== title-wrapper end ========== -->
 
-                        @if (!$subs->isEmpty())
+             @if (!$subs->isEmpty())
 
          <div class="row">
              <div class="col-lg-12">

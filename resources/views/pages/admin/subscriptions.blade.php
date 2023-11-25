@@ -20,7 +20,7 @@
                             <th>Interval</th>
                             <th>Status</th>
                             <th>Validity</th>
-                            {{-- <th>Actions</th> --}}
+
                         </tr>
                     </thead>
                     @foreach ($subscriptions as $subscription)

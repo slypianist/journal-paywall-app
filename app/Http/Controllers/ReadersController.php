@@ -96,7 +96,7 @@ class ReadersController extends Controller
 
     $id =    Auth::guard('reader')->id();
     $reader = Reader::find($id);
-   // dd($reader);
+
 
     $fname =  auth('reader')->user()->first_name;
 
@@ -149,15 +149,11 @@ class ReadersController extends Controller
      return view('reader.subscription', compact('fname', 'subs'));
     }
 
-
-
     public function transactions(){
         $fname =  auth('reader')->user()->first_name;
         $email = auth('reader')->user()->email;
 
         $transactions = Transaction::where('email', $email)->get();
-
-     //   dd($transactions);
 
         return view('reader.transactions', compact('fname', 'transactions'));
 
