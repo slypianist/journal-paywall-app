@@ -43,16 +43,24 @@ class SubscriptionController extends Controller
             'Cache-Control' => 'no-cache',
         ])->get("https://api.paystack.co/transaction/verify/{$paymentReference}");
 
-        $verificationData = $verificationResponse->json();
+        $payload = $verificationResponse->json();
 
         if ($verificationResponse->successful()) {
 
 
-            Log::warning('Payment verification successful.', ['message' => $verificationData['message']]);
-            dd($verificationData);
-            // Update your records and perform additional processing as needed.
+            Log::warning('Payment verification successful.', ['message' => $payload['message']]);
 
-            return redirect()->route('home')->with('success', 'Payment successful');
+            // Updating records and perform additional processing as needed.
+            $test = [];
+
+            $data['reference'] = $payload['data']['reference'];
+            $data['amount ']= $payload['data']['amount'];
+            $data['plan'] = $payload['data']['plan_object']['name'];
+            $data['email'] = $payload['data']['customer']['email'];
+
+
+
+            return view('pages.test', compact('data'))->with('success', 'Payment successful');
         } else {
             // Verification failed; handle the error
             $error = $verificationData['message'] ?? 'Payment verification failed';

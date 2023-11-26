@@ -2,29 +2,42 @@
 @push('styles')
 
 <link rel="stylesheet" href="{{asset('assets/news/css/home.css')}}">
+<link rel="stylesheet" href="{{asset('assets/news/css/payment.css')}}">
 
 @endpush
 @section('h-content')
+<h2 class="customText">PAYMENT CONFIRMATION</h2>
 
-<div class="container">
-    <b>This is working</b>
+    <div class="container-cus">
 
-    <ol>
-        @foreach ($posts as $post)
+        <div class="printer-top"></div>
 
-        <li> <p>{{$post->category->name}}</p><li>
-            <ul>
+        <div class="paper-container">
+            <div class="printer-bottom"></div>
 
-              <li><p>{{$post->title}}</p></li>
+            <div class="paper">
+                <div class="main-contents">
+                    <div class="success-icon">&#10004;</div>
+                    <div class="success-title">
+                        Payment Complete
+                    </div>
+                    <div class="success-description">
+                        Thank you for completing the payment and subscribing! You will shortly receive an email of your payment.
+                    </div>
+                    <div class="order-details">
+                        <div class="order-number-label">SUBSCRIBED PLAN</div>
+                        <div class="order-number">{{$data['plan']}}</div>
 
-            </ul>
-<hr>
-         @endforeach
+                        <div class="complement">Thank You!</div>
+<p></p>
+                  <a href="{{route('home')}}">Click here</a>
 
-    </ol>
-
-
-</div>
+                    </div>
+                </div>
+                <div class="jagged-edge"></div>
+            </div>
+        </div>
+    </div>
 
 @include('includes.news.foot')
 @endsection
