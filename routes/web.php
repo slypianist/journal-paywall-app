@@ -91,7 +91,7 @@ use App\Http\Controllers\PaystackWebhookController;
 });
 
     Route::post('paystack/webhook', [PaystackWebhookController::class, 'handleWebhook'])->name('paystack.webhook');
-    Route::post('payment/callback', [SubscriptionController::class, 'handlePaymentCallback'])->name('payment.callback');
+    Route::get('payment/callback', [SubscriptionController::class, 'handlePaymentCallback'])->name('payment.callback');
 
 
 /* Readers Autheticated Routes........................ */
