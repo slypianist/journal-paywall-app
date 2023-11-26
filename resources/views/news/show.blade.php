@@ -101,7 +101,7 @@
 
                               </article>
                             {{-- <p class="newsdetail">
-                                <article>
+                                <articles>
 
                                    {!! $truncatedBody!!}
 
