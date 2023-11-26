@@ -46,7 +46,10 @@ class SubscriptionController extends Controller
         $verificationData = $verificationResponse->json();
 
         if ($verificationResponse->successful()) {
+
+
             Log::warning('Payment verification successful.', ['message' => $verificationData['message']]);
+            dd($verificationData);
             // Update your records and perform additional processing as needed.
 
             return redirect()->route('home')->with('success', 'Payment successful');
