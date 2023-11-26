@@ -13,8 +13,8 @@
                 <img src="storage/{{$randomPost->image}}" class="banner" alt="">
                 <div class="bottom-left">
                     <h2>{{$randomPost->category->name}}</h2>
-                    <p>{{$randomPost->excerpt}}</p>
-                    <p><i class="fa-thin fa-clock"></i> {{$randomPost->created_at}}</p>
+                    <p><b>{{$randomPost->title}}</b></p>
+                    {{-- <p><i class="fa-thin fa-clock"></i> {{$randomPost->created_at}}</p> --}}
                 </div>
             </div>
         </div>

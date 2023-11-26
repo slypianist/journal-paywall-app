@@ -19,17 +19,33 @@ class ReadersController extends Controller
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required|email:unique:readers',
+            'email' => 'required|email|unique:readers',
             'password' => 'required|min:6|confirmed'
         ]);
 
-       $data=  $request->all();
-       $data['password'] = Hash::make($data['password']);
+        $data = $request->all();
+        $data['password'] = Hash::make($data['password']);
 
-     //   $check = $this->create($data);
-        Reader::create($data);
-        return redirect()->route('reader.showLoginForm')->with('message','Registration successful.');
+        $reader = Reader::create($data);
+
+        if ($reader) {
+            // Authenticate the user after successful registration
+            if (Auth::guard('reader')->attempt(['email' => $data['email'], 'password' => $request->input('password')])) {
+                $intendedUrl = session('intendedURL');
+
+                if ($intendedUrl) {
+                    return redirect()->intended($intendedUrl)->with(['message' => 'Login successful']);
+                }
+
+                return redirect()->intended(route('home'))->with(['message' => 'Login successful']);
+            }
+        }
+
+        // If the login attempt fails or encounters an issue
+        return back()->with('message', 'An error occurred during login. Please try again.');
     }
+
+
 
 
     public function login(Request $request){

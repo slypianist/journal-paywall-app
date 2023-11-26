@@ -37,8 +37,8 @@
                 <a href="{{route('home')}}">
                     <img src="{{asset('images/journalAfrica-logo.png')}}" alt="" class="journalafricafooterlogo">
                 </a>
-                <img src="images/googleplay.png" alt="googleplay" class="appstyle android">
-                <img src="images/ios.jpeg" alt="ios" class="appstyle">
+                <img src="{{asset('images/googleplay.png')}}" alt="googleplay" class="appstyle android">
+                <img src="{{asset('images/ios.jpeg')}}" alt="ios" class="appstyle')}}">
             </div>
         </div>
     </div>

@@ -5,11 +5,17 @@
 @section('h-content')
 
 <div class="signup-forms">
+    <div class="centere">
+        @include('includes.news.error-alert')
+    </div>
+    <div class="centere">
+        <h2 class="headings mb-3">Create Account</h2>
+    </div>
     <div class="container mb-5">
         <div class="row">
             <div class="col-md-6">
                 <div class="registerInfo">
-                    <ul>
+                    <ul class="registred-writeup">
                         <li>
                             Read beyond the news.
                         </li>
@@ -45,7 +51,7 @@
                         </div>
                         <div class="mb-3">
                           <label for="email" class="form-label">Email</label>
-                          <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Enter email" name="email">
+                          <input type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Enter email" name="email">
                           @error('email')
                           <div class="invalid-feedback">{{ $message }}</div>
                       @enderror

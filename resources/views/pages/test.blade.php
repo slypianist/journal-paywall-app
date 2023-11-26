@@ -2,6 +2,8 @@
 @push('styles')
 
 <link rel="stylesheet" href="{{asset('assets/news/css/home.css')}}">
+<link rel="stylesheet" href="{{asset('assets/news/css/media.css')}}">
+
 <link rel="stylesheet" href="{{asset('assets/news/css/payment.css')}}">
 
 @endpush
@@ -29,8 +31,9 @@
                         <div class="order-number">{{$data['plan']}}</div>
 
                         <div class="complement">Thank You!</div>
-<p></p>
+                <p>
                   <a href="{{route('home')}}">Click here</a>
+                </p>
 
                     </div>
                 </div>

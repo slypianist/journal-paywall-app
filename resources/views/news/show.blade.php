@@ -2,6 +2,9 @@
 @push('styles')
 
 <link rel="stylesheet" href="{{asset('assets/news/css/single.css')}}">
+<link rel="stylesheet" href="{{asset('assets/news/css/singlemedia.css')}}">
+<link rel="stylesheet" href="{{asset('assets/news/css/home.css')}}">
+
 
 @endpush
 @section('h-content')
@@ -67,16 +70,10 @@
                         @endif
                     @endguest
 
+                    @guest
+                        @if ($post->isFree())
 
-                    @guest('reader')
-                    @if ($post->isFree())
 
-                        <article>
-
-                            {!! $post->body!!}
-
-                          </article>
-                    @else
                         <p class="newsdetail">
                             <article>
 

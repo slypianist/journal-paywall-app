@@ -91,8 +91,7 @@ use App\Http\Controllers\PaystackWebhookController;
 });
 
     Route::post('paystack/webhook', [PaystackWebhookController::class, 'handleWebhook'])->name('paystack.webhook');
-    Route::get('payment/callback', [SubscriptionController::class, 'handlePaymentCallback'])->name('payment.callback');
-    Route::get('test-page', [PagesController::class, 'test'])->name('payment.success');
+
 
 
 /* Readers Autheticated Routes........................ */
@@ -108,6 +107,10 @@ Route::middleware('reader.auth')->group(function (){
     Route::post('subscribe', [SubscriptionController::class, 'newSubscription'])->name('subscribe');
     Route::get('user/transaction', [ReadersController::class, 'transactions'])->name('reader.transaction');
     Route::get('subscription/cancel/{subscriptionCode}', [SubscriptionController::class, 'cancelSubscription'])->name('subscription.cancel');
+    Route::get('test-page', [PagesController::class, 'test'])->name('payment.success');
+    Route::get('payment/callback', [SubscriptionController::class, 'handlePaymentCallback'])->name('payment.callback');
+
+
 
 
 
