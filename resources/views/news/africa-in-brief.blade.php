@@ -36,6 +36,8 @@
             <p class="text-center">
                 Already have an account? <a href="{{route('reader.showLoginForm')}}">Log in</a>
             </p>
+
+
             <div class="briefsubscribe">
                 <h5 class="fullheading">Get the full story</h5>
                 <p class="subInfo">
