@@ -47,7 +47,6 @@ class SubscriptionController extends Controller
 
         if ($verificationResponse->successful()) {
 
-
             Log::warning('Payment verification successful.', ['message' => $payload['message']]);
 
             // Updating records and perform additional processing as needed.
@@ -58,15 +57,11 @@ class SubscriptionController extends Controller
             $data['plan'] = $payload['data']['plan_object']['name'];
             $data['email'] = $payload['data']['customer']['email'];
 
-
-
             return view('pages.test', compact('data'))->with('success', 'Payment successful');
         } else {
             // Verification failed; handle the error
             $error = $verificationData['message'] ?? 'Payment verification failed';
-
             // Handle the error, log it, and respond accordingly
-
 }
 
     }

@@ -152,14 +152,14 @@
                             <p>
                                 Empower your group or team members with our carefully curated group subscription package at discounted rates
                             </p>
-                            <a href="./groupsub.html" class="journalafricalearnmore">Learn more</a>
+                            <a href="{{route('subscribe.group')}}" class="journalafricalearnmore">Learn more</a>
                         </div>
                         <div class="flexed">
                             <strong>Gift a subscription</strong>
                             <p>
                                 Give the gift of Journal Africa and share powerful insights on Africa with your friends, family and colleagues
                             </p>
-                            <a href="./subgift.html" class="journalafricalearnmore">Learn more</a>
+                            <a href="{{route('subscribe.gift')}}" class="journalafricalearnmore">Learn more</a>
                         </div>
                         </ul>
                     </div>
