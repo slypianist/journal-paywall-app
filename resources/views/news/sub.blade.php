@@ -1,10 +1,9 @@
 @extends('layouts.home')
 @push('styles')
 <link rel="stylesheet" href="{{asset('assets/news/css/sub.css')}}">
+<link rel="stylesheet" href="{{asset('assets/news/css/submedia.css')}}">
 @endpush
 @section('h-content')
-
-<p class="card-text">
 
         <div class="container mt-5" id="susbscriptions">
             <div>
@@ -16,84 +15,111 @@
                 </p>
                 <p class="text-center">
                     Pay from Nigeria/Pay from Outside Nigeria <br>
-                    <span class="cursored">{{ $plans['data'][0]['currency'] }}</span> <span class="cursored">/ USD</span>
+                    <span class="cursored">NGN</span> <span class="cursored">/ USD</span>
                 </p>
             </div>
             <div class="subscription-wrapper">
                 <div class="sub-type">
                     <div class="card text-center wrap" style="width: 18rem;">
-                        <span class="sub-option">{{ $plans['data'][0]['name'] }}</span>
-                        <h4 class="priced"><b>	&#8358;{{ $plans['data'][0]['amount'] / 100 }}</b></h4>
-                        <p>You can cancel anytime</p>
-                        <b>What You Get</b>
-                        <ul>
-                            <li class="journalafricasub">One {{ $plans['data'][0]['interval'] }} unlimited access to the journal africa website and app</li>
-                            <li class="journalafricasub">Access to Daily and Weekly Newsletters.</li>
-                            <li class="journalafricasub">Daily update of Africa in Brief.</li>
-                            <li class="journalafricasub">Unlimited access to our digital archive.</li>
-                            <li class="journalafricasub">Access to Journal Africa events at discounted rates.</li>
-                        </ul>
-                      {{--   <a class="btn-style" href="{{route('subscribe')}}">Subscribe now</a> --}}
-
-                        <form action="{{route('subscribe')}}" method="POST">
-                            <input type="hidden" name="plan" value="{{$plans['data'][0]['plan_code']}}">
-                        <input type="hidden" name="description" value="{{$plans['data'][0]['description']}}">
-                        <input type="hidden" name="amount" value="{{$plans['data'][0]['amount']}}">
-
-                            <button type="submit" class="btn-style">Subscribe</button>
-                            @csrf
-                        </form>
+                        <span class="sub-option">Premium Monthly</span>
+                        <h4 class="priced">	&#8358;4000/$10</h4>
+                        <div class="instance">
+                            <p>
+                                One month unlimited digital access to an expansive coverage of Africa <br> Billed Monthly
+                            </p>
+                            <div class="mb-4">
+                                <a href="../login.html" class="subscribe-link"><b>Subscribe now</b></a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="cancel mt-2">You can cancel anytime</p>
+                            <h5>WHAT YOU GET</h5>
+                            <ul>
+                                <li class="journalafricasub">
+                                    One month unlimited access to the journal africa website and app
+                                </li>
+                                <li class="journalafricasub">
+                                    Access to Daily and Weekly Newsletters
+                                </li>
+                                <li class="journalafricasub">
+                                    Daily update of Africa in Brief
+                                </li>
+                                <li class="journalafricasub">
+                                    Unlimited access to our digital achive
+                                </li>
+                                <li class="journalafricasub">
+                                    Access to journal Africa events  at discounted rates
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="sub-type">
-                    <div class="card text-center wrap regwrap" style="width: 18rem;">
-                        <span class="sub-option">Get a Free Account</span>
-                        <p>Dont't want to subscribe to our premium package?</p>
-                        <p>Sign up to a free account</p>
-                        <b>WHAT YOU GET?</b>
-                        <ul>
-                            <li class="journalafricasub regs">
-                                Limited Access to articles on the Journal Africa Website and Apps
-                            </li>
-                            <li class="journalafricasub">Daily update of Africa in Brief</li>
-                        </ul>
-                        <a class="btn-style regbtn" href="{{route('reader.register')}}">Register now</a>
-                    </div>
-                </div>
-
-
-                @foreach ($plans['data'] as $index => $plan)
-                @if ($index > 0) <!-- Skip the first plan -->
 
                 <div class="sub-type">
                     <div class="card text-center wrap" style="width: 18rem;">
-                        <span class="sub-option">{{$plan['name']}}</span>
-                        <h4 class="priced"><b>	&#8358;{{$plan['amount']}}</b></h4>
-                        <p>You can cancel anytime</p>
-                        <b>What You Get</b>
-                        <ul>
-                            <li class="journalafricasub">One {{$plan['interval']}} unlimited access to the journal africa website and app.</li>
-                            <li class="journalafricasub">Access to Daily and Weekly Newsletters.</li>
-                            <li class="journalafricasub">Daily update of Africa in Brief.</li>
-                            <li class="journalafricasub">Unlimited access to our digital archive.</li>
-                            <li class="journalafricasub">Access to Journal Africa events at discounted rates.</li>
-                        </ul>
-                       {{--  <a class="btn-style" href="{{route('subscribe')}}">Subscribe now</a> --}}
-                        <form action="{{route('subscribe')}}" method="POST">
-                            <input type="hidden" name="plan" value="{{$plan['plan_code']}}">
-                        <input type="hidden" name="description" value="{{$plan['description']}}">
-                        <input type="hidden" name="amount" value="{{$plan['amount']}}">
+                        <span class="sub-option">GET A FREE ACCOUNT</span>
+                        <div class="instance">
+                            <p>
+                                Don't want to subscribe to our premium package? <br> Sign up for  free account
+                            </p>
+                        </div>
+                        <div class="mt-4">
+                            <h5>WHAT YOU GET</h5>
+                            <ul class="mb-5">
+                                <li class="journalafricasub free">
+                                    Limited access to articles on the journal Africa Website and Apps
+                                </li>
 
-                            <button type="submit" class="btn-style">Subscribe</button>
-                            @csrf
-                        </form>
+                                <li class="journalafricasub free">
+                                    Daily update of Africa in Brief
+                                </li>
+                                <li class="journalafricasub free">
+                                    Daily Newsletter
+                                </li>
+                            </ul>
+                            <div class="mb-4">
+                                <a href="../login.html" class="subscribe-link"><b>Register now</b></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                @endif
 
-                @endforeach
-
+                <div class="sub-type">
+                    <div class="card text-center wrap" style="width: 18rem;">
+                        <span class="sub-option">Premium Yearly</span>
+                        <h4 class="priced">	&#8358;20000/$40</h4>
+                        <div class="instance">
+                            <p>
+                                One year unlimited digital access to an expansive coverage of Africa <br> Billed Yearly
+                            </p>
+                            <div class="mb-4">
+                                <a href="../login.html" class="subscribe-link"><b>Subscribe now</b></a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="cancel mt-4">You can cancel anytime</p>
+                            <h5>WHAT YOU GET</h5>
+                            <ul>
+                                <li class="journalafricasub">
+                                    One year unlimited access to the journal africa website and app
+                                </li>
+                                <li class="journalafricasub">
+                                    Access to Daily and Weekly Newsletters
+                                </li>
+                                <li class="journalafricasub">
+                                    Daily update of Africa in Brief
+                                </li>
+                                <li class="journalafricasub">
+                                    Unlimited access to our digital achive
+                                </li>
+                                <li class="journalafricasub">
+                                    Full Access to journal Africa
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
             </div>
             <div class="groupgiftwrapper">
@@ -104,14 +130,14 @@
                             <p>
                                 Empower your group or team members with our carefully curated group subscription package at discounted rates
                             </p>
-                            <a href="{{route('subscribe.gift')}}" class="journalafricalearnmore">Learn more</a>
+                            <a href="./groupsub.html" class="journalafricalearnmore">Learn more</a>
                         </div>
                         <div class="flexed">
                             <strong>Gift a subscription</strong>
                             <p>
                                 Give the gift of Journal Africa and share powerful insights on Africa with your friends, family and colleagues
                             </p>
-                            <a href="{{route('subscribe.group')}}" class="journalafricalearnmore">Learn more</a>
+                            <a href="./subgift.html" class="journalafricalearnmore">Learn more</a>
                         </div>
                         </ul>
                     </div>
@@ -167,7 +193,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                </div>
             </div>
         </div>
 
@@ -178,5 +204,10 @@
                 <a href="#susbscriptions" class="backtop">Back To Top</a>
             </div>
         </div>
-        @include('includes.news.foot')
-@endsection
+
+        <div class="support mt-3">
+            <p>For More Questions, Contact <b>support@journal.africa</b></p>
+        </div>
+
+    @include('includes.news.foot')
+    @endsection

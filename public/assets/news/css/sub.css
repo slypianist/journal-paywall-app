@@ -57,7 +57,7 @@ ul {
   border-radius: 3px;
 }
 .heighgted {
-    width: 400px;
+    width: 100%;
     font-size: 15px;
 }
 .heighgted a {
@@ -290,11 +290,35 @@ ul {
     border: none;
     background-color: red;
     color: white;
-    border-radius: 27px;
-    padding: 8px;
-    padding-bottom: 3px;
-    font-weight: 400;
-    text-decoration: none;
+}
+.subscribe-link {
+  text-align: center;
+  background-color: red;
+  color: #fff;
+  border-radius: 27px;
+  padding: 8px;
+  font-weight: bolder;
+  text-decoration: none;
+}
+.free{
+  margin-bottom: 5px;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+.support {
+  text-align: center;
+}
+.cancel {
+  font-weight: 400;
+}
+.instance {
+  border-bottom: 2px solid black;
+}
+.instance p {
+  font-weight: 400;
+}
+.subscribe-link:hover {
+  color: #fff;
 }
 .paymentbtn {
   margin: 10px 0 10px 10px;
@@ -401,6 +425,9 @@ label {
   display: block;
   color: black;
   font-weight: bolder;
+}
+.backtop:hover{
+  color: red;
 }
 /* .btn-style:hover{
     background-color: black;
@@ -544,4 +571,14 @@ footer {
   .journalafricafooterlistexmt {
     list-style: none;
     color: grey;
+  }
+  .benefits {
+    border-bottom: 2px solid black;
+  }
+  .journalafricafooterlogo {
+    object-fit: cover;
+    width: 250px;
+    height: 70px;
+    margin-bottom: 15px;
+    margin-top: -10px;
   }

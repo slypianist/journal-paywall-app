@@ -16,7 +16,7 @@
                 Subscribe and enjoy insightful analysis.
                 Cancel at any time
             </p>
-           {{--  <small>Updated 1hr ago</small> --}}
+           {{--  <small>Updated 1hr ago</small> Sample time indicated. --}}
         </div>
         <hr>
         <ul class="newsbrief">
