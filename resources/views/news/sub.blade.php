@@ -21,14 +21,22 @@
             <div class="subscription-wrapper">
                 <div class="sub-type">
                     <div class="card text-center wrap" style="width: 18rem;">
-                        <span class="sub-option">Premium Monthly</span>
-                        <h4 class="priced">	&#8358;4000/$10</h4>
+                        <span class="sub-option">{{ $plans['data'][0]['name']}}</span>
+                        <h4 class="priced">	&#8358;{{ $plans['data'][0]['amount']}}</h4>
                         <div class="instance">
                             <p>
-                                One month unlimited digital access to an expansive coverage of Africa <br> Billed Monthly
+                                One month unlimited digital access to an expansive coverage of Africa <br> Billed {{ $plans['data'][0]['interval'] }}
                             </p>
                             <div class="mb-4">
-                                <a href="../login.html" class="subscribe-link"><b>Subscribe now</b></a>
+                                <form action="{{route('subscribe')}}" method="POST">
+                                    <input type="hidden" name="plan" value="{{$plans['data'][0]['plan_code']}}">
+                                <input type="hidden" name="description" value="{{$plans['data'][0]['description']}}">
+                                <input type="hidden" name="amount" value="{{$plans['data'][0]['amount']}}">
+
+                                    <button type="submit" class="subscribe-link">Subscribe now</button>
+                                    @csrf
+                                </form>
+                                {{-- <a href="../login.html" class="subscribe-link"><b>Subscribe now</b></a> --}}
                             </div>
                         </div>
                         <div>
@@ -78,23 +86,33 @@
                                 </li>
                             </ul>
                             <div class="mb-4">
-                                <a href="../login.html" class="subscribe-link"><b>Register now</b></a>
+                                <a href="{{route('reader.register')}}" class="subscribe-link"><b>Register now</b></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                @foreach ($plans['data'] as $index => $plan)
+                @if ($index > 0) <!-- Skip the first plan -->
 
                 <div class="sub-type">
                     <div class="card text-center wrap" style="width: 18rem;">
-                        <span class="sub-option">Premium Yearly</span>
-                        <h4 class="priced">	&#8358;20000/$40</h4>
+                        <span class="sub-option">{{$plan['name']}}</span>
+                        <h4 class="priced">	&#8358;{{$plan['amount']}}</h4>
                         <div class="instance">
                             <p>
                                 One year unlimited digital access to an expansive coverage of Africa <br> Billed Yearly
                             </p>
                             <div class="mb-4">
-                                <a href="../login.html" class="subscribe-link"><b>Subscribe now</b></a>
+                                <form action="{{route('subscribe')}}" method="POST">
+                                    <input type="hidden" name="plan" value="{{$plan['plan_code']}}">
+                                <input type="hidden" name="description" value="{{$plan['description']}}">
+                                <input type="hidden" name="amount" value="{{$plan['amount']}}">
+
+                                    <button type="submit" class="subscribe-link">Subscribe</button>
+                                    @csrf
+                                </form>
+                               {{--  <a href="../login.html" class="subscribe-link"><b>Subscribe now</b></a> --}}
                             </div>
                         </div>
                         <div>
@@ -120,6 +138,10 @@
                         </div>
                     </div>
                 </div>
+
+                @endif
+
+                @endforeach
 
             </div>
             <div class="groupgiftwrapper">
