@@ -122,11 +122,6 @@ class SubscriptionController extends Controller
 
                 $url = env('PAYSTACK_PAYMENT_URL').'/transaction/initialize';
 
-                //$email = Auth::guard('reader')->user()->email;
-
-              //  $planCode = $request->plan;
-              //  $amount = $request->amount;
-
                 // Initialize a payment transaction with Paystack
                 $transactionResponse = Http::withHeaders([
                     'Authorization' => 'Bearer ' . env('PAYSTACK_SECRET_KEY'),
