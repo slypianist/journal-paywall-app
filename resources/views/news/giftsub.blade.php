@@ -8,18 +8,19 @@
 <div class="giftsimg mt-5">
     <div class="container">
         <h2 class="headings">Give the gift of <b class="journalafrica">Journal Africa</b> </h2>
+        <form class="giftypewrapper mt-5" method="post" action="{{route('gift.subscription')}}">
         <div class="flexedcurr">
             <div class="form-check checks">
                 <label class="form-check-label currlabels" for="currencyRadio1">
                     &#8358;
                 </label>
-                <input class="form-check-input radios" type="radio" value="" name="currencyRadio" id="currencyRadio1" checked>
+                <input class="form-check-input radios" type="radio" value="NGN" name="currency" id="currencyRadio1" checked>
             </div>
             <div class="form-check checks">
                 <label class="form-check-label currlabels" for="currencyRadio2">
                     $
                 </label>
-                <input class="form-check-input radios" value="" type="radio" name="currencyRadio" id="currencyRadio2">
+                <input class="form-check-input radios" value="USD" type="radio" name="currency" id="currencyRadio2">
             </div>
         </div>
         <div class="giftimgwrap">
@@ -28,7 +29,7 @@
     </div>
 </div>
 
-<form class="giftypewrapper mt-5" method="post" action="{{route('gift.subscription')}}">
+
     <div class="container">
         <div class="groupwrapperflex">
             <div class="flexed giftflexed quatsub">
@@ -38,7 +39,7 @@
                 </p>
                 <b>&#8358;{{ $plans['data'][0]['amount']}}</b> <br>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="plan-code" id="flexRadioDefault1" value="{{ $plans['data'][0]['plan_code']}}">
+                    <input class="form-check-input" type="radio" name="plan_code" id="flexRadioDefault1" value="{{ $plans['data'][0]['plan_code']}}">
                     <label class="form-check-label" for="flexRadioDefault1">
                         {{ $plans['data'][0]['name']}}
                     </label>
@@ -52,7 +53,7 @@
                 </p>
                 <b>&#8358;{{ $plans['data'][1]['amount']}}</b> <br>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="plan-code" id="flexRadioDefault2" checked value="{{ $plans['data'][1]['plan_code']}}">
+                    <input class="form-check-input" type="radio" name="plan_code" id="flexRadioDefault2" checked value="{{ $plans['data'][1]['plan_code']}}">
                     <label class="form-check-label" for="flexRadioDefault2">
                       Monthly
                     </label>
@@ -70,13 +71,13 @@
                         <div class="row mb-3">
                             <label for="colFormLabelSm" class="">Name</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control form-control-sm inputs" name="sender-name" required>
+                            <input type="text" class="form-control form-control-sm inputs" name="sender_name" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="colFormLabel">Your Email address</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control form-control-sm inputs" name="sender-email" required>
+                                <input type="email" class="form-control form-control-sm inputs" name="sender_email" required>
                             </div>
                         </div>
                     </div>
@@ -88,13 +89,13 @@
                             <div class="row mb-3">
                                 <label for="colFormLabel">Recipient email address</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control inputs" name="rep-email" required>
+                                    <input type="email" class="form-control inputs" name="rep_email" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="colFormLabelSm" class="">Message</label>
                                 <div class="col-sm-10">
-                                <textarea type="text" class="form-control inputs" required></textarea>
+                                <textarea type="text" class="form-control inputs" required name="message"></textarea>
                                 </div>
                             </div>
                             <small>Leave them a note to receive with their gift</small>
@@ -103,9 +104,9 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" name="plan" >
+        {{-- <input type="hidden" name="plan" >
         <input type="hidden" name="description" >
-        <input type="hidden" name="amount" >
+        <input type="hidden" name="" > --}}
         <button class="btn paymentbtn">Continue to payment</button>
     </div>
     @csrf

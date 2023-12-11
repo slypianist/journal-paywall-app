@@ -17,6 +17,7 @@ class SubscriptionController extends Controller
 
     $planCode = $request->plan;
     $amount = $request->amount;
+    $metadata = [];
 
     // Initialize a payment transaction with Paystack
     $transactionResponse = Http::withHeaders([
@@ -26,6 +27,7 @@ class SubscriptionController extends Controller
         'email' => $email,
         'amount' => $amount,
         'plan' => $planCode,
+        'metadata' => $metadata
     ])->json();
 
     // Redirect the user to the Paystack payment gateway
@@ -92,7 +94,59 @@ class SubscriptionController extends Controller
     }
 
     public function handleSubGift(Request $request){
-        dd($request->all());
+       // dd($request->all());
+
+        $id = $request->plan_code;
+       // dd($id);
+
+       $repMail = $request->rep_email;
+       $email = $request->sender_email;
+       $message = $request->message;
+       $senderName = $request->sender_name;
+
+        $url = env('PAYSTACK_PAYMENT_URL').'/plan/'.$id;
+
+        try {
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . env('PAYSTACK_SECRET_KEY'),
+                'Cache-Control' => 'no-cache',
+            ])->get($url);
+
+            if ($response->successful()) {
+                $plan = $response->json();
+               $amount = $plan['data']['amount'];
+               $email = $email;
+               $metadata = ['repEmail'=>$repMail, 'message'=> $message, 'senderName' => $senderName];
+
+                // Perform action.
+
+                $url = env('PAYSTACK_PAYMENT_URL').'/transaction/initialize';
+
+                //$email = Auth::guard('reader')->user()->email;
+
+              //  $planCode = $request->plan;
+              //  $amount = $request->amount;
+
+                // Initialize a payment transaction with Paystack
+                $transactionResponse = Http::withHeaders([
+                    'Authorization' => 'Bearer ' . env('PAYSTACK_SECRET_KEY'),
+                    'Cache-Control' => 'no-cache',
+                ])->post($url, [
+                    'email' => $email,
+                    'amount' => $amount,
+                    'plan' => $id,
+                    'metadata' => $metadata,
+                ])->json();
+
+                // Redirect the user to the Paystack payment gateway
+                return redirect()->away($transactionResponse['data']['authorization_url']);
+
+            } else {
+                return back()->with(['error'=> 'Invalid request ID.']);
+            }
+        } catch (\Exception $e) {
+            return response('An error occurred: ' . $e->getMessage(), 500);
+        }
 
     }
 }
