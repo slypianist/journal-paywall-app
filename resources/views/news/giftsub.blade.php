@@ -23,36 +23,36 @@
             </div>
         </div>
         <div class="giftimgwrap">
-            <img src="../subscription/images/giftbox.png" alt="gift subscription" class="gifts">
+            <img src="{{asset('images/giftbox.png')}}" alt="gift subscription" class="gifts">
         </div>
     </div>
 </div>
 
-<form class="giftypewrapper mt-5" method="" action="">
+<form class="giftypewrapper mt-5" method="post" action="{{route('gift.subscription')}}">
     <div class="container">
         <div class="groupwrapperflex">
             <div class="flexed giftflexed quatsub">
-                <strong>Quaterly Subscription</strong>
+                <strong>{{ $plans['data'][0]['name']}}</strong>
                 <p>
                     Empower your group or team members with our carefully curated group subscription package at discounted rates
                 </p>
-                <b>&#8358;4000</b> <br>
+                <b>&#8358;{{ $plans['data'][0]['amount']}}</b> <br>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="plan-code" id="flexRadioDefault1" value="{{ $plans['data'][0]['plan_code']}}">
                     <label class="form-check-label" for="flexRadioDefault1">
-                      Quaterly
+                        {{ $plans['data'][0]['name']}}
                     </label>
                   </div>
 
             </div>
             <div class="flexed giftflexed">
-                <strong>Monthly Subscription</strong>
+                <strong>{{ $plans['data'][1]['name']}}</strong>
                 <p>
                     Empower your group or team members with our carefully curated group subscription package at discounted rates
                 </p>
-                <b>&#8358;1000</b> <br>
+                <b>&#8358;{{ $plans['data'][1]['amount']}}</b> <br>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <input class="form-check-input" type="radio" name="plan-code" id="flexRadioDefault2" checked value="{{ $plans['data'][1]['plan_code']}}">
                     <label class="form-check-label" for="flexRadioDefault2">
                       Monthly
                     </label>
@@ -64,19 +64,19 @@
                 <div class="sender">
                     <b >Who is this gift from?</b>
                     <p>
-                        Already have an account?<a href="../login.html"> Sign in</a> for faster checkout
+                        Already have an account?<a href="{{route('reader.showLoginForm')}}"> Sign in</a> for faster checkout
                     </p>
                     <div class="senderform">
                         <div class="row mb-3">
-                            <label for="colFormLabelSm" class="">First name</label>
+                            <label for="colFormLabelSm" class="">Name</label>
                             <div class="col-sm-10">
-                            <input type="text" nameclass="form-control form-control-sm" class="inputs">
+                            <input type="text" class="form-control form-control-sm inputs" name="sender-name" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="colFormLabel">Your Email address</label>
                             <div class="col-sm-10">
-                                <input type="email" nameclass="form-control form-control-sm" class="inputs">
+                                <input type="email" class="form-control form-control-sm inputs" name="sender-email" required>
                             </div>
                         </div>
                     </div>
@@ -88,13 +88,13 @@
                             <div class="row mb-3">
                                 <label for="colFormLabel">Recipient email address</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control inputs">
+                                    <input type="email" class="form-control inputs" name="rep-email" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="colFormLabelSm" class="">Message</label>
                                 <div class="col-sm-10">
-                                <textarea type="text" class="form-control inputs" ></textarea>
+                                <textarea type="text" class="form-control inputs" required></textarea>
                                 </div>
                             </div>
                             <small>Leave them a note to receive with their gift</small>
@@ -103,8 +103,12 @@
                 </div>
             </div>
         </div>
+        <input type="hidden" name="plan" >
+        <input type="hidden" name="description" >
+        <input type="hidden" name="amount" >
         <button class="btn paymentbtn">Continue to payment</button>
     </div>
+    @csrf
 </form>
         @include('includes.news.foot')
 @endsection

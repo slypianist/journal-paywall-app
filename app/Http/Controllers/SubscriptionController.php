@@ -90,4 +90,9 @@ class SubscriptionController extends Controller
        return view('reader.subscription', compact('subscriptions'));
 
     }
+
+    public function handleSubGift(Request $request){
+        dd($request->all());
+
+    }
 }

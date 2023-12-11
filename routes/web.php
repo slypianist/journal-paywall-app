@@ -48,6 +48,7 @@ use App\Http\Controllers\PaystackWebhookController;
     Route::get('subscribe', [PagesController::class, 'subscribe'])->name('news.subscribe');
     Route::get('contact', [PagesController::class, 'contactUs'])->name('contact');
     Route::get('subscribe/gift', [PagesController::class, 'subGift'])->name('subscribe.gift');
+    Route::post('subscribe/gift', [SubscriptionController::class, 'handleSubGift'])->name('gift.subscription');
     Route::get('subscribe/group', [PagesController::class, 'subGroup'])->name('subscribe.group');
     Route::get('news/subscribe', [PagesController::class, 'newsSub'])->name('news.sub');
     Route::get('africa-in-brief', [PagesController::class, 'africaInBrief'])->name('aib');

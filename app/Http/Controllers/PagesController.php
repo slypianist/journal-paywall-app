@@ -67,7 +67,25 @@ class PagesController extends Controller
     }
 
     public function subGift(){
-        return view('news.giftsub');
+
+        $url = env('PAYSTACK_PAYMENT_URL').'/plan?status=active';
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . env('PAYSTACK_SECRET_KEY'),
+            'Cache-Control' => 'no-cache',
+        ])->get($url);
+
+        if($response->successful()){
+
+            $plans = $response->json();
+
+          //  dd($plans);
+
+        return view('news.giftsub', compact('plans'));
+        }
+
+
+       // Catch exception ;
     }
 
     public function subGroup(){
