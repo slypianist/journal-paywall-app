@@ -20,15 +20,7 @@ class SubscriptionController extends Controller
     $metadata = [];
 
     // Initialize a payment transaction with Paystack
-    $transactionResponse = Http::withHeaders([
-        'Authorization' => 'Bearer ' . env('PAYSTACK_SECRET_KEY'),
-        'Cache-Control' => 'no-cache',
-    ])->post($url, [
-        'email' => $email,
-        'amount' => $amount,
-        'plan' => $planCode,
-        'metadata' => $metadata
-    ])->json();
+    $transactionResponse = $this->initializePayment($email, $amount, $planCode, $metadata, $url);
 
     // Redirect the user to the Paystack payment gateway
     return redirect()->away($transactionResponse['data']['authorization_url']);
@@ -51,7 +43,7 @@ class SubscriptionController extends Controller
 
             Log::warning('Payment verification successful.', ['message' => $payload['message']]);
 
-            // Updating records and perform additional processing as needed.
+            // Updating records and perform additional processing.
             $test = [];
 
             $data['reference'] = $payload['data']['reference'];
@@ -81,6 +73,8 @@ class SubscriptionController extends Controller
         dd($data);
 
       $token = $data['data']['email_token'];
+
+
     }
 
     public function fetchSubscription(){
@@ -94,54 +88,75 @@ class SubscriptionController extends Controller
     }
 
     public function handleSubGift(Request $request){
-       // dd($request->all());
 
-        $id = $request->plan_code;
-       // dd($id);
 
-       $repMail = $request->rep_email;
-       $email = $request->sender_email;
-       $message = $request->message;
-       $senderName = $request->sender_name;
 
-        $url = env('PAYSTACK_PAYMENT_URL').'/plan/'.$id;
+     //   $url = env('PAYSTACK_PAYMENT_URL').'/plan/'.$id;
 
         try {
-            $response = Http::withHeaders([
+            $id = $request->plan_code;
+
+            $repMail = $request->rep_email;
+            $email = $request->sender_email;
+            $message = $request->message;
+            $senderName = $request->sender_name;
+            /* $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . env('PAYSTACK_SECRET_KEY'),
                 'Cache-Control' => 'no-cache',
-            ])->get($url);
+            ])->get($url); */
 
-            if ($response->successful()) {
-                $plan = $response->json();
+            $plan = $this->getPlanDetails($id);
+
+            if ($plan) {
+
                $amount = $plan['data']['amount'];
                $email = $email;
-               $metadata = ['repEmail'=>$repMail, 'message'=> $message, 'senderName' => $senderName];
+               $metadata = [
+                'repEmail'=>$repMail,
+                'message'=> $message,
+                'senderName' => $senderName
+            ];
 
                 // Perform action.
 
                 $url = env('PAYSTACK_PAYMENT_URL').'/transaction/initialize';
 
                 // Initialize a payment transaction with Paystack
-                $transactionResponse = Http::withHeaders([
-                    'Authorization' => 'Bearer ' . env('PAYSTACK_SECRET_KEY'),
-                    'Cache-Control' => 'no-cache',
-                ])->post($url, [
-                    'email' => $email,
-                    'amount' => $amount,
-                    'plan' => $id,
-                    'metadata' => $metadata,
-                ])->json();
+                $transactionResponse = $this->initializePayment($email, $amount, $id, $metadata, $url);
 
                 // Redirect the user to the Paystack payment gateway
                 return redirect()->away($transactionResponse['data']['authorization_url']);
 
             } else {
-                return back()->with(['error'=> 'Invalid request ID.']);
+                return back()->with(['error'=> 'Incorrect parameters. Try again']);
             }
         } catch (\Exception $e) {
             return response('An error occurred: ' . $e->getMessage(), 500);
         }
+
+    }
+
+    private function getPlanDetails($planId){
+        $url = env('PAYSTACK_PAYMENT_URL').'/plan/'.$planId;
+
+        return Http::withHeaders([
+        'Authorization' => 'Bearer ' . env('PAYSTACK_SECRET_KEY'),
+        'Cache-Control' => 'no-cache',
+        ])->get($url)->json();
+
+    }
+
+    private function initializePayment($email, $amount, $planId, $metadata, $url){
+
+        return Http::withHeaders([
+            'Authorization' => 'Bearer ' . env('PAYSTACK_SECRET_KEY'),
+            'Cache-Control' => 'no-cache',
+        ])->post($url, [
+            'email' => $email,
+            'amount' => $amount,
+            'plan' => $planId,
+            'metadata' => $metadata,
+        ])->json();
 
     }
 }
