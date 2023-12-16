@@ -21,7 +21,7 @@
                         <a href="{{route('reader.dashboard')}}">Dashboard</a>
                       </li>
                       <li class="breadcrumb-item active" aria-current="page">
-                        Subscription
+                        Subscriptions
                       </li>
                     </ol>
                   </nav>
@@ -40,8 +40,7 @@
                 <div class="card-style mb-30">
                     <h6 class="mb-10">Data Table</h6>
                     <p class="text-sm mb-20">
-                    For basic styling—light padding and only horizontal
-                    dividers—use the class table.
+                    All your active subscriptions.
                     </p>
                     <div class="table-wrapper table-responsive">
                     <table class="table">

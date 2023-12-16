@@ -151,20 +151,21 @@ class ReadersController extends Controller
         $reader->update($data);
 
         return back()->with('message', 'Your profile updated successfully');
-
-
     }
 
+
+    // Fetch subscriptions history for a reader
     public function showSub(){
        $fname =  auth('reader')->user()->first_name;
 
         $user = Auth::guard('reader')->user();
        $subs = Subscription::where('customerEmail', $user->email)->get();
 
-
      return view('reader.subscription', compact('fname', 'subs'));
     }
 
+
+    // Fetch transaction details for a user.
     public function transactions(){
         $fname =  auth('reader')->user()->first_name;
         $email = auth('reader')->user()->email;

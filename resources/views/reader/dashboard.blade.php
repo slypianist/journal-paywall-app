@@ -23,10 +23,10 @@
                   <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item">
-                        <a href="#0">Dashboard</a>
+                        <a href="/">News portal</a>
                       </li>
                       <li class="breadcrumb-item active" aria-current="page">
-                        eCommerce
+                        Dashboard
                       </li>
                     </ol>
                   </nav>

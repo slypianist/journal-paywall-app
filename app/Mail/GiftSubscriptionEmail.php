@@ -13,14 +13,16 @@ class GiftSubscriptionEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $data;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -31,7 +33,7 @@ class GiftSubscriptionEmail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Gift Subscription Email',
+            subject: 'Gift Subscription',
         );
     }
 
@@ -44,6 +46,7 @@ class GiftSubscriptionEmail extends Mailable
     {
         return new Content(
             view: 'view.name',
+            with: [$this->data],
         );
     }
 

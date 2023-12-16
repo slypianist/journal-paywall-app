@@ -17,6 +17,8 @@ class SettingController extends Controller
         ]);
     }
 
+
+
     public function update(Request $request){
         $request->validate([
             'headerAd'=> 'mimes:png,jpg,jpeg',

@@ -12,15 +12,16 @@ use Illuminate\Queue\SerializesModels;
 class ContactUsEmail extends Mailable
 {
     use Queueable, SerializesModels;
+    public $data;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -32,6 +33,7 @@ class ContactUsEmail extends Mailable
     {
         return new Envelope(
             subject: 'Contact Us Email',
+            bcc: 'sly.umole@gmail.com',
         );
     }
 
@@ -43,7 +45,8 @@ class ContactUsEmail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'view.name',
+            view: 'email.ContactUs' ,
+            with: [$this->data]
         );
     }
 

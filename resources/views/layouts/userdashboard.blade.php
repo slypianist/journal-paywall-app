@@ -176,7 +176,7 @@
                     <div class="profile-info">
                       <div class="info">
                         <div class="image">
-                          <img src="assets/images/profile/profile-image.png" alt="" />
+                          <img src="{{asset('assets/img/profile-image.png')}}" alt="" />
                         </div>
                         <div>
                           <h6 class="fw-500">{{$fname}}</h6>
@@ -189,11 +189,11 @@
                     <li>
                       <div class="author-info flex items-center !p-1">
                         <div class="image">
-                          <img src="assets/images/profile/profile-image.png" alt="image">
+                          <img src="{{asset('assets/img/profile-image.png')}}" alt="image">
                         </div>
                         <div class="content">
                           <h4 class="text-sm">{{$fname}}</h4>
-                          <a class="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs" href="#">Email@gmail.com</a>
+                          <a class="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs" href="#">{{auth('reader')->user()->email}}</a>
                         </div>
                       </div>
                     </li>

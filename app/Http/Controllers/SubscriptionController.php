@@ -4,12 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\Subscription;
 use Illuminate\Http\Request;
+use App\Mail\GiftSubscriptionEmail;
+use App\Mail\PaymentConfirmEmail;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 
 class SubscriptionController extends Controller
 {
+    /*
+
+    Create a new subscription
+
+    */
+
+
     public function newSubscription(Request $request){
         $url = env('PAYSTACK_PAYMENT_URL').'/transaction/initialize';
 
@@ -41,7 +52,7 @@ class SubscriptionController extends Controller
 
         if ($verificationResponse->successful()) {
 
-            Log::warning('Payment verification successful.', ['message' => $payload['message']]);
+            Log::warning('Payment verification successful.', ['payload' => $payload]);
 
             // Updating records and perform additional processing.
             $test = [];
@@ -51,31 +62,85 @@ class SubscriptionController extends Controller
             $data['plan'] = $payload['data']['plan_object']['name'];
             $data['email'] = $payload['data']['customer']['email'];
 
+            if(isset($payload['data']['metadata']) && !empty(['data']['metadata'])){
+                $data['repEmail'] = $payload['data']['metadata']['repEmail'];
+                $data['senderName'] = $payload['data']['metadata']['senderName'];
+                $data['message'] = $payload['data']['metadata']['message'];
+
+                Mail::to($data['repEmail'])->send(new GiftSubscriptionEmail($data));
+
+            }
+
+            Mail::to($data['email'])->send(new PaymentConfirmEmail($data));
+
             return view('pages.test', compact('data'))->with('success', 'Payment successful');
         } else {
-            // Verification failed; handle the error
-            $error = $verificationData['message'] ?? 'Payment verification failed';
-            // Handle the error, log it, and respond accordingly
+            // Verification failed; handling the error
+            $error = $payload['message'] ?? 'Payment verification failed';
+            Log::error('Payment verification failed.', ['error' => $error, 'payload' => $payload]);
+
+            return back()->with('error', $error);
 }
 
     }
 
+    /*
+
+    Cancel a subscription.
+
+    */
+
     public function cancelSubscription($subscriptionCode){
-        $url = env('PAYSTACK_PAYMENT_URL').'/subscription/'.$subscriptionCode;
+        /* $url = env('PAYSTACK_PAYMENT_URL').'/subscription/'.$subscriptionCode;
         $paystackSecretKey = env('PAYSTACK_SECRET_KEY');
         $response = Http::withHeaders([
             'Authorization' => 'Bearer '.$paystackSecretKey,
             'Cache-Control' => 'no-cache'
-        ])->get($url);
+        ])->get($url); */
 
-        $data = $response->json();
+        try {
+            $data = $this->getSubscriptionToken($subscriptionCode);
+            $paystackSecretKey = env('PAYSTACK_SECRET_KEY');
 
-        dd($data);
+            if($data){
 
-      $token = $data['data']['email_token'];
+                $token = $data['data']['email_token'];
 
+             //   dd($token);
+
+                $url = "https://api.paystack.co/subscription/disable";
+
+                try {
+                    $Data = Http::withHeaders([
+                        'Authorization' => 'Bearer ' . $paystackSecretKey,
+                        'Cache-Control' => 'no-cache',
+                    ])->post($url, [
+                        'code' => $subscriptionCode,
+                        'token' => $token,
+                    ]);
+
+                    if($Data->successful() ){
+                        $response = $Data->json();
+
+                        dd($response);
+
+                        return back()->with('success', $response['message']);
+                    }else{
+                        return back()->with('error', 'Subscription already inactive.');
+                    }
+
+                } catch (ConnectionException $th) {
+                    return back()->with('error', 'Error in network connection.');
+                }
+            }
+
+        } catch (ConnectionException $th) {
+            return back()->with('error', 'An error occurred.');
+        }
 
     }
+
+    /* Fetch all subscriptions */
 
     public function fetchSubscription(){
        $user = Auth::guard('reader')->user();
@@ -87,10 +152,12 @@ class SubscriptionController extends Controller
 
     }
 
+    /*
+
+    Handle gift a subscription
+    */
+
     public function handleSubGift(Request $request){
-
-
-
      //   $url = env('PAYSTACK_PAYMENT_URL').'/plan/'.$id;
 
         try {
@@ -107,7 +174,7 @@ class SubscriptionController extends Controller
 
             $plan = $this->getPlanDetails($id);
 
-            if ($plan) {
+            if ($plan->successful()) {
 
                $amount = $plan['data']['amount'];
                $email = $email;
@@ -136,6 +203,8 @@ class SubscriptionController extends Controller
 
     }
 
+
+
     private function getPlanDetails($planId){
         $url = env('PAYSTACK_PAYMENT_URL').'/plan/'.$planId;
 
@@ -158,5 +227,24 @@ class SubscriptionController extends Controller
             'metadata' => $metadata,
         ])->json();
 
+    }
+
+    private function handlePayment($reference){
+
+        $paystackSecretKey = env('PAYSTACK_SECRET_KEY');
+
+        return Http::withHeaders([
+            'Authorization' => 'Bearer ' . $paystackSecretKey,
+            'Cache-Control' => 'no-cache',
+        ])->get("https://api.paystack.co/transaction/verify/{$reference}")->json();
+
+    }
+
+    private function getSubscriptionToken($subscriptionCode){
+        $paystackSecretKey = env('PAYSTACK_SECRET_KEY');
+        return Http::withHeaders([
+            'Authorization' => 'Bearer ' . $paystackSecretKey,
+            'Cache-Control' => 'no-cache',
+        ])->get("https://api.paystack.co/subscription/{$subscriptionCode}")->json();
     }
 }

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactUsEmail;
+use App\Mail\GroupSubscriptionEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 
 class PagesController extends Controller
 {
@@ -44,6 +47,11 @@ class PagesController extends Controller
 
     public function privacyPolicy(){
         return view('pages.privacy-policy');
+    }
+
+    public function showEmailForm(){
+        return view('news.pass-reset');
+
     }
 
     public function subscribe(){
@@ -89,11 +97,29 @@ class PagesController extends Controller
     }
 
     public function subGroup(){
+        Mail::to('admin@journalafrica.com')->send(new GroupSubscriptionEmail);
         return view('news.groupsub');
     }
 
-   public function contactUs(){
+   public function contactUs(Request $request){
+
     return view('pages.contact');
+   }
+
+   public function SendContactInfo(Request $request){
+
+     $request->validate([
+        'firstName' => 'required|string',
+        'lastName' => 'required|string',
+        'email' => 'required|email',
+        'message' => 'required'
+
+    ]);
+    $data = $request->all();
+    //dd($data);
+    Mail::to($data['email'])->send(new ContactUsEmail($data));
+    return back()->with(['message' => 'Message sent.']);
+
    }
 
    public function africaInBrief(){

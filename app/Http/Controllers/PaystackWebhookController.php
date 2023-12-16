@@ -22,8 +22,8 @@ class PaystackWebhookController extends Controller
                 case 'charge.success':
                     $this->handlePaymentSuccess($payload);
                     break;
-                case 'invoice.create':
-                    $this->handleNewInvoice($payload);
+                case 'subscription.cancel':
+                    $this->subscriptionCancel($payload);
                     break;
                 case 'invoice.update':
                     $this->handleInvoiceUpdate($payload);
@@ -79,9 +79,19 @@ class PaystackWebhookController extends Controller
         // You can update your database, send notifications, etc.
     }
 
-    private function handleNewInvoice($payload)
-    {
-        Log::info('An invoice has been created for a subscription on your account.');
+    private function subscriptionCancel($payload){
+
+        $email = $payload['data']['customer']['email'];
+        $status = $payload['data']['status'];
+
+        $subscription = Subscription::where('customer_email', $email)->get();
+
+        $subscription->status= $status;
+
+        $subscription->update();
+
+        Log::info('Subscription is cancelled', ['event' => $payload]);
+
     }
 
     private function handleSubscriptionSuccess($payload)
@@ -130,8 +140,17 @@ class PaystackWebhookController extends Controller
 
     private function handleSubscriptionCancellation($payload)
     {
-        Log::info('Subscription is cancelled', ['event' => 'Cancelled']);
 
+        $email = $payload['data']['customer']['email'];
+        $status = $payload['data']['status'];
+
+        $subscription = Subscription::where('customer_email', $email)->get();
+
+        $subscription->status= $status;
+
+        $subscription->update();
+
+        Log::info('Subscription is cancelled', ['event' => $payload]);
 
     }
 
