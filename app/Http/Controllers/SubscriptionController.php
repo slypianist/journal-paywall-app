@@ -57,7 +57,6 @@ class SubscriptionController extends Controller
             Log::warning('Payment verification successful.', ['payload' => $payload]);
 
             // Updating records and perform additional processing.
-            $test = [];
 
             $data['reference'] = $payload['data']['reference'];
             $data['amount ']= $payload['data']['amount'];

@@ -6,7 +6,7 @@
 <body>
     <h1>Payment Receipt</h1>
     <p>Reference: {{ $data['reference'] }}</p>
-    <p>Amount: {{ $data['amount'] }}</p>
+ {{--    <p>Amount: {{ $data['amount'] }}</p> --}}
     <p>Plan: {{ $data['plan'] }}</p>
     <p>Email: {{ $data['email'] }}</p>
 </body>
