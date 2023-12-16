@@ -32,7 +32,7 @@ class PaystackWebhookController extends Controller
                     $this->handleSubscriptionSuccess($payload);
                     break;
                 case 'subscription.not_renew':
-                    $this->handleSubscriptionCancellation($payload);
+                    $this->handleSubscriptionNotRenew($payload);
                     break;
                 default:
                     // Log unsupported events
@@ -81,10 +81,10 @@ class PaystackWebhookController extends Controller
 
     private function subscriptionCancel($payload){
 
-        $email = $payload['data']['customer']['email'];
+        $subscriptionCode = $payload['data']['subscription_code'];
         $status = $payload['data']['status'];
 
-        $subscription = Subscription::where('customer_email', $email)->get();
+        $subscription = Subscription::where('subscriptionCode', $subscriptionCode)->first();
 
         $subscription->status= $status;
 
@@ -138,13 +138,13 @@ class PaystackWebhookController extends Controller
 
     }
 
-    private function handleSubscriptionCancellation($payload)
+    private function handleSubscriptionNotRenew($payload)
     {
 
-        $email = $payload['data']['customer']['email'];
+        $code = $payload['data']['subscription_code'];
         $status = $payload['data']['status'];
 
-        $subscription = Subscription::where('customer_email', $email)->get();
+        $subscription = Subscription::where('subscription_code', $code)->get();
 
         $subscription->status= $status;
 
