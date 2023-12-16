@@ -45,7 +45,7 @@ class GiftSubscriptionEmail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'view.name',
+            view: 'email.GiftSubscription',
             with: [$this->data],
         );
     }
