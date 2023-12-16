@@ -32,7 +32,7 @@ class PaymentConfirmEmail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Payment Confirm Email',
+            subject: 'Payment Confirmation',
         );
     }
 

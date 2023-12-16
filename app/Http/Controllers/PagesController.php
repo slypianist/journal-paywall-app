@@ -97,7 +97,7 @@ class PagesController extends Controller
     }
 
     public function subGroup(){
-        Mail::to('admin@journalafrica.com')->send(new GroupSubscriptionEmail);
+       // Mail::to('admin@journalafrica.com')->send(new GroupSubscriptionEmail($data));
         return view('news.groupsub');
     }
 
