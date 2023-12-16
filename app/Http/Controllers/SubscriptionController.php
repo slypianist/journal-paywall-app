@@ -38,6 +38,8 @@ class SubscriptionController extends Controller
 
     }
 
+    //Very
+
     public function handlePaymentCallback(Request $request){
 
         $paymentReference = $request->input('reference');
@@ -122,7 +124,6 @@ class SubscriptionController extends Controller
                     if($Data->successful() ){
                         $response = $Data->json();
 
-                        dd($response);
 
                         return back()->with('success', $response['message']);
                     }else{
