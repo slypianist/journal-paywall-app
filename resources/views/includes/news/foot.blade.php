@@ -35,7 +35,7 @@
             </div>
             <div class="col-md-3">
                 <a href="{{route('home')}}">
-                    <img src="{{asset('images/journalAfrica-logo.png')}}" alt="" class="journalafricafooterlogo">
+                   {{-- Logo --}}
                 </a>
                 <img src="{{asset('images/googleplay.png')}}" alt="googleplay" class="appstyle android">
                 <img src="{{asset('images/ios.jpeg')}}" alt="ios" class="appstyle')}}">
