@@ -95,7 +95,7 @@
                 <div class="col-md-6">
                     <div class="logo">
                         <a href="/">
-                            <img src="{{asset('images/journal-africa-logo.png')}}" alt="journal-africa-logo">
+                            {{-- Logo --}}
                         </a>
                     </div>
                 </div>

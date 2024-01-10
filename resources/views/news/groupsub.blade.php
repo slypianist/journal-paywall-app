@@ -19,34 +19,34 @@
                             <form>
                                 <div class="row form-row">
                                     <div class="col">
-                                      <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                                      <input type="text" class="form-control" placeholder="First name" name="first_name" aria-label="First name">
                                     </div>
                                     <div class="col">
-                                      <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
-                                    </div>
-                                </div>
-                                <div class="row form-row">
-                                    <div class="col">
-                                      <input type="text" class="form-control" placeholder="Business Email" aria-label="Business Email">
-                                    </div>
-                                    <div class="col">
-                                      <input type="text" class="form-control" placeholder="Business Phone" aria-label="Business Phone">
+                                      <input type="text" class="form-control" placeholder="Last name" name="last_name" aria-label="Last name">
                                     </div>
                                 </div>
                                 <div class="row form-row">
                                     <div class="col">
-                                      <input type="text" class="form-control" placeholder="Job Title" aria-label="Job Title">
+                                      <input type="text" class="form-control" placeholder="Business Email" name="email" aria-label="Business Email">
                                     </div>
                                     <div class="col">
-                                      <input type="text" class="form-control" placeholder="Company" aria-label="Company">
+                                      <input type="text" class="form-control" placeholder="Business Phone" name="phone" aria-label="Business Phone">
                                     </div>
                                 </div>
                                 <div class="row form-row">
                                     <div class="col">
-                                      <input type="text" class="form-control" placeholder="Industry" aria-label="Industry">
+                                      <input type="text" class="form-control" placeholder="Job Title" name="job_title" aria-label="Job Title">
                                     </div>
                                     <div class="col">
-                                      <input type="text" class="form-control" placeholder="Country" aria-label="Country">
+                                      <input type="text" class="form-control" placeholder="Company" name="company" aria-label="Company">
+                                    </div>
+                                </div>
+                                <div class="row form-row">
+                                    <div class="col">
+                                      <input type="text" class="form-control" placeholder="Industry" name="industry" aria-label="Industry">
+                                    </div>
+                                    <div class="col">
+                                      <input type="text" class="form-control" placeholder="Country" name="country" aria-label="Country">
                                     </div>
                                 </div>
                                 <div class="row form-row">

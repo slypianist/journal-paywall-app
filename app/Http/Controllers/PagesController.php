@@ -122,6 +122,21 @@ class PagesController extends Controller
 
    }
 
+   public function sendGroupInfo(Request $request){
+    $request->validate([
+        'firstName' => 'required|string',
+        'lastName' => 'required|string',
+        'email' => 'required|email',
+        'message' => 'required'
+
+    ]);
+    $data = $request->all();
+    //dd($data);
+    Mail::to($data['email'])->send(new ContactUsEmail($data));
+    return back()->with(['message' => 'Message sent.']);
+
+   }
+
    public function africaInBrief(){
 
     $posts = DB::table('categories')
